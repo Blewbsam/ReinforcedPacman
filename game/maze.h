@@ -3,20 +3,9 @@
 
 #include <vector>
 #include <map>
+#include "globals.h"
 
 // Define or include CellType
-enum Cell {
-    PACMAN_CELL,
-    GHOST_FICKLE,
-    GHOST_CHASER,
-    GHOST_AMBUSHER,
-    GHOST_STUPID,
-    WALL,
-    EMPTY,
-    PELLET,
-    POWER_PELLET,
-    DOOR
-};
 
 
 typedef std::vector<std::vector<Cell>> grid_t;
@@ -33,8 +22,8 @@ class Maze {
         int getGridWidth() const;
         int getGridHeight() const;
         
-        Cell getCell(int x, int y) const; 
-        void setCell(int x, int y, Cell type); 
+        Cell getCell(Position pos) const; 
+        void setCell(Position pos, Cell type); 
         void printGrid();
 };
 

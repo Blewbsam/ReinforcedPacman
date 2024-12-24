@@ -1,6 +1,7 @@
 
 #include <iostream>
 #include "maze.h"
+#include "agent.h"
 
 using std::cout;
 using std::endl;
@@ -45,7 +46,7 @@ Maze::Maze(const std::vector<std::string>& layout){
         for (char cell: layout[row]) {
             switch (cell) {
                 case 'X': grid[row].push_back(WALL); break;
-                case '.': grid[row].push_back(EMPTY); break;
+                case '.': grid[row].push_back(PELLET); break;
                 // case 'O': grid[row].push_back(POWER_PELLET); break;
                 case ' ': grid[row].push_back(EMPTY); break;
                 // case 'P': grid[row].push_back(PACMAN_CELL); break;
@@ -61,17 +62,16 @@ Maze::Maze(const std::vector<std::string>& layout){
 }
 
 
-Cell Maze::getCell(int x, int y) const {
-    return grid[y][x];
+Cell Maze::getCell(Position pos) const {
+    return grid[pos.y][pos.x];
 }
 
 grid_t Maze::getGrid() const {
     return grid;    
 }
 
-
-void Maze::setCell(int x, int y, Cell type) {
-    grid[x][y] = type;
+void Maze::setCell(Position pos, Cell type) {
+    grid[pos.y][pos.x] = type;
 }
 
 

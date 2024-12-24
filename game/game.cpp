@@ -86,6 +86,18 @@ bool GameState::validPacmanMove(Direction dir) const {
     if (pos.x < 0 || pos.x >= maze_p->getGridWidth()) return false;
     if (pos.y < 0 || pos.y >= maze_p->getGridHeight()) return false;
     
-    Cell cell = maze_p->getCell(pos.x, pos.y);
+    Cell cell = maze_p->getCell(pos);
     return cell != WALL;
+}
+
+
+
+ 
+void GameState::handlePelletCollision() {
+    Position pacPos = this->pacman_p->getPos();
+    if (maze_p->getCell(pacPos) == PELLET) {
+        maze_p->setCell(pacPos,EMPTY);
+        score += 20;
+    }
+
 }

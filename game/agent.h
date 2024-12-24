@@ -3,14 +3,8 @@
 #define AGENT
 #include <utility> 
 #include <vector>
+#include "globals.h"
 
- 
-enum Direction {UP,DOWN,LEFT,RIGHT,IDLE}; // Represents Direction in which agent is moving in
-
-struct Position { // Represents Position where agent is located correspondig to gameState.
-    int x;
-    int y;
-};
 
 extern std::vector<Direction> directions;
 

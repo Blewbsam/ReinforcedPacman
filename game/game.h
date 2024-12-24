@@ -3,6 +3,7 @@
 #ifndef GAME
 #define GAME    
 
+#include "globals.h"
 #include "ghost.h"
 #include "pacman.h"
 #include "maze.h"
@@ -24,7 +25,9 @@ class GameState {
     Maze * maze_p;
     Pacman * pacman_p;
     Ghosts ghosts;
+    unsigned int score;
     bool gameOver;
+
 public:
     GameState(const std::vector<std::string>& layout);
     ~GameState();
@@ -43,6 +46,10 @@ public:
 
     // assesses wether pacman moving in given direction encounters a wall.
     bool validPacmanMove(Direction dir) const;
+
+    // check if there is a pellet at pacman's position
+    // and remove it if there is so
+    void handlePelletCollision();
 
 
 

@@ -1,5 +1,6 @@
 #include <iostream>
 #include "display.h"
+#include "pacmanUI.h"
 
 
 
@@ -9,7 +10,6 @@ using std::endl;
 
 void Display::initVariables(GameState * gamestate) {
     this->window = nullptr;
-    this->gs = gamestate;
 }
 
 void Display::initWindow() {
@@ -22,13 +22,12 @@ void Display::initWindow() {
 
 
 void Display::initGameObjects() {
-    this->pacman.setRadius(PACMAN_RADIUS);
-    this->pacman.setFillColor(sf::Color::Yellow);
-    this->pacmanPos.x = PACMAN_START_X * PIXEL_SIZE;
-    this->pacmanPos.y = PACMAN_START_Y * PIXEL_SIZE;
-    this->pacmanDir = IDLE;
-    this->nextDir = RIGHT;
-    gs->updatePacmanPos(this->getIndexedPacmanPos());
+    // Pellet
+    this->pellet.setRadius(PELLET_RADIUS);
+    sf::Color orange(254,138,24);
+    this->pellet.setFillColor(orange);
+
+    gs->updatePacmanPos(this->pacman.getIndexedPosition());
     this->wall.setSize(sf::Vector2f(PIXEL_SIZE,PIXEL_SIZE));
     this->wall.setFillColor(sf::Color::Blue);
     this->empty.setSize(sf::Vector2f(PIXEL_SIZE,PIXEL_SIZE));
@@ -37,7 +36,7 @@ void Display::initGameObjects() {
 
 
 
-Display::Display(GameState * gameState) {
+Display::Display(GameState * gameState) :pacman(gameState), gs(gameState) {
     this->initVariables(gameState);
     this->initGameObjects();
     this->initWindow();
@@ -57,7 +56,7 @@ void Display::update() {
     this->pollEvents();
     
     // movePacman
-    this->pacmanMove();
+    this->pacman.pacmanMove();
 
     // moveGhosts
 
@@ -84,66 +83,30 @@ void Display::pollEvents() {
         
         if (this->ev.type == sf::Event::KeyPressed) {
             if (this->ev.key.code == sf::Keyboard::Up) {
-                setNextDir(UP);
+                this->pacman.setNextDir(UP);
             } else if (this->ev.key.code == sf::Keyboard::Down) {
-                setNextDir(DOWN);
+                this->pacman.setNextDir(DOWN);
             } else if (this->ev.key.code == sf::Keyboard::Right) {
-                setNextDir(RIGHT);
+                this->pacman.setNextDir(RIGHT);
             } else if (this->ev.key.code == sf::Keyboard::Left) {
-                setNextDir(LEFT);
+                this->pacman.setNextDir(LEFT);
             }
         }
     }
 }
 
-
-
 bool Display::running() const {
     return this->window->isOpen();
 }
 
-
-
-
-bool Display::validPacmanMove(Direction dir)  {
-    return this->pacmanContainedInCell() && gs->validPacmanMove(dir);
-}
-
-void Display::setNextDir(Direction dir) {
-    this->nextDir = dir;
-}
-
-void Display::pacmanMove() {
-    if (this->pacmanContainedInCell() && this->nextDir != this->pacmanDir && gs->validPacmanMove(this->nextDir)) this->pacmanDir = this->nextDir;
-    if (gs->validPacmanMove(pacmanDir)) {
-        switch (pacmanDir) {
-            case UP:    pacmanPos.y -= PACMAN_STEP_SIZE; break;
-            case DOWN:  pacmanPos.y += PACMAN_STEP_SIZE; break;
-            case LEFT:  pacmanPos.x -= PACMAN_STEP_SIZE; break;
-            case RIGHT: pacmanPos.x += PACMAN_STEP_SIZE; break;
-            default:    break;
-        }
-    }
-    // gs should know position of pacman for generating valid moves.
-    if (pacmanContainedInCell()) gs->updatePacmanPos(this->getIndexedPacmanPos());
-}
-
 void Display::renderPacman() {
-    this->pacman.setPosition(this->pacmanPos.x,this->pacmanPos.y);
-    this->window->draw(this->pacman);
+    cout << "Rendering pacman" << endl;
+    this->pacman.setPositionForRendering();
+    this->window->draw(this->pacman.graphic);
 }
-
-
-void Display::snapPacmanToGrid() {
-    pacmanPos.x = std::round(pacmanPos.x / PIXEL_SIZE) * PIXEL_SIZE;
-    pacmanPos.y = std::round(pacmanPos.y / PIXEL_SIZE) * PIXEL_SIZE;
-}
-
-
 
 
 void Display::renderMaze() {
-
 
     grid_t grid = gs->getGrid();
 
@@ -156,10 +119,10 @@ void Display::renderMaze() {
                 this->wall.setPosition(x * PIXEL_SIZE, y * PIXEL_SIZE);
                 this->window->draw(this->wall);
                 break; 
-            case PACMAN_CELL:
-                this->pacman.setPosition(x * PIXEL_SIZE, y * PIXEL_SIZE);
-                this->window->draw(this->pacman);
-                break;               
+            case PELLET:
+                this->pellet.setPosition(x * PIXEL_SIZE + PELLET_OFFSET, y * PIXEL_SIZE + PELLET_OFFSET);
+                this->window->draw(this->pellet);           
+                break;
             default:
                 this->empty.setPosition(x * PIXEL_SIZE, y * PIXEL_SIZE);
                 this->window->draw(this->empty);
@@ -167,23 +130,4 @@ void Display::renderMaze() {
             }
         }
     }
-}
-
-
-Position Display::getIndexedPacmanPos() {
-    Position pos;
-    pos.x = std::round((this->pacmanPos.x)/ PIXEL_SIZE);
-    pos.y = std::round((this->pacmanPos.y)/ PIXEL_SIZE);
-
-    cout << "Pixel" << endl;
-    cout << "(" << this->pacmanPos.x <<"," << this->pacmanPos.y << ")" << endl;
-    cout << "Position" << endl;
-    cout << "("<< pos.x << "," << pos.y << ")" << endl;
-    return pos;
-}
-
-
-
-bool Display::pacmanContainedInCell() {
-    return (std::fmod(this->pacmanPos.x,PIXEL_SIZE) == 0 && std::fmod(this->pacmanPos.y,PIXEL_SIZE) == 0);
 }
