@@ -29,10 +29,6 @@ public:
     GameState(const std::vector<std::string>& layout);
     ~GameState();
 
-    void update(); //timestep for game logic
-    void render() const; // Displaying the game
-
-
     // getters used to get position of agents: 
     Position getPacmanPos();
     Position getFicklePos();
@@ -40,6 +36,13 @@ public:
     Position getStupidPos();
     Position getChaserPos();
     grid_t getGrid();
+
+
+    // changes position of pacman  to given pos.
+    void updatePacmanPos(Position pos);
+
+    // assesses wether pacman moving in given direction encounters a wall.
+    bool validPacmanMove(Direction dir) const;
 
 
 

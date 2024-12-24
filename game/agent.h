@@ -21,11 +21,8 @@ protected:
 public:
     Agent(Position p, Direction direction);
 
-    // Requires move being made to be a valid move.
-    void move(Direction dir);
-
     Position getPos();
-
+    void setPos(Position p);
 
 };
 

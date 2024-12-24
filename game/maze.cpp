@@ -3,6 +3,7 @@
 #include "maze.h"
 
 using std::cout;
+using std::endl;
 
 
 
@@ -44,15 +45,16 @@ Maze::Maze(const std::vector<std::string>& layout){
         for (char cell: layout[row]) {
             switch (cell) {
                 case 'X': grid[row].push_back(WALL); break;
-                case '.': grid[row].push_back(PELLET); break;
-                case 'O': grid[row].push_back(POWER_PELLET); break;
+                case '.': grid[row].push_back(EMPTY); break;
+                // case 'O': grid[row].push_back(POWER_PELLET); break;
                 case ' ': grid[row].push_back(EMPTY); break;
-                case 'P': grid[row].push_back(PACMAN_CELL); break;
-                case 'F': grid[row].push_back(GHOST_FICKLE); break;
-                case 'C': grid[row].push_back(GHOST_CHASER); break;
-                case 'A': grid[row].push_back(GHOST_AMBUSHER); break;
-                case 'S': grid[row].push_back(GHOST_STUPID); break; 
+                // case 'P': grid[row].push_back(PACMAN_CELL); break;
+                // case 'F': grid[row].push_back(GHOST_FICKLE); break;
+                // case 'C': grid[row].push_back(GHOST_CHASER); break;
+                // case 'A': grid[row].push_back(GHOST_AMBUSHER); break;
+                // case 'S': grid[row].push_back(GHOST_STUPID); break; 
                 case '=': grid[row].push_back(DOOR); break;
+                default: cout << __LINE__ << ": got invalid cell" << cell << endl;
             }
         }
     }
@@ -60,7 +62,7 @@ Maze::Maze(const std::vector<std::string>& layout){
 
 
 Cell Maze::getCell(int x, int y) const {
-    return grid[x][y];
+    return grid[y][x];
 }
 
 grid_t Maze::getGrid() const {
@@ -71,6 +73,16 @@ grid_t Maze::getGrid() const {
 void Maze::setCell(int x, int y, Cell type) {
     grid[x][y] = type;
 }
+
+
+int Maze::getGridWidth() const {
+    return grid[0].size();
+}
+
+int Maze::getGridHeight() const {
+    return grid.size();
+}
+
 
 void Maze::printGrid() {
     for (std::vector<Cell> row : grid) {

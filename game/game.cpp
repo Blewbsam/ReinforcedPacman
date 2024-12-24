@@ -2,7 +2,8 @@
 
 #include "game.h"
 
-
+using std::cout;
+using std::endl;
 
 GameState::GameState(const std::vector<std::string>& layout) {
 
@@ -56,3 +57,35 @@ Position GameState::getAgentPositionBrute(Cell agentCell,const std::vector<std::
 
 
 
+void GameState::updatePacmanPos(Position pos) {
+    this->pacman_p->setPos(pos);
+}
+
+
+bool GameState::validPacmanMove(Direction dir) const {
+
+    Position pos = pacman_p->getPos();
+
+    switch (dir) {
+        case UP:
+            pos.y -= 1;
+            break;
+        case DOWN:
+            pos.y += 1;
+            break;
+        case RIGHT:
+            pos.x += 1;
+            break;
+        case LEFT:
+            pos.x -= 1;
+            break;
+        default:
+            break;
+    }    
+
+    if (pos.x < 0 || pos.x >= maze_p->getGridWidth()) return false;
+    if (pos.y < 0 || pos.y >= maze_p->getGridHeight()) return false;
+    
+    Cell cell = maze_p->getCell(pos.x, pos.y);
+    return cell != WALL;
+}

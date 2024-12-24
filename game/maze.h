@@ -29,8 +29,11 @@ class Maze {
         // Constructor with grid to be used for game state
         Maze(const std::vector<std::string>& layout);
 
-        Cell getCell(int x, int y) const; 
         grid_t getGrid() const;
+        int getGridWidth() const;
+        int getGridHeight() const;
+        
+        Cell getCell(int x, int y) const; 
         void setCell(int x, int y, Cell type); 
         void printGrid();
 };
