@@ -36,7 +36,7 @@ void Display::initGameObjects() {
 
 
 
-Display::Display(GameState * gameState) :pacman(gameState), gs(gameState) {
+Display::Display(GameState * gameState) :pacman(gameState), chaser(gameState), ambusher(gameState), fickle(gameState), stupid(gameState), gs(gameState) {
     this->initVariables(gameState);
     this->initGameObjects();
     this->initWindow();
@@ -56,7 +56,7 @@ void Display::update() {
     this->pollEvents();
     
     // movePacman
-    this->pacman.pacmanMove();
+    this->pacman.move();
 
     // moveGhosts
 
@@ -69,6 +69,7 @@ void Display::render() {
     this->window->clear();
     this->renderMaze();
     this->renderPacman();
+    this->renderGhosts();
     this->window->display();
 }
 
@@ -100,9 +101,23 @@ bool Display::running() const {
 }
 
 void Display::renderPacman() {
-    cout << "Rendering pacman" << endl;
     this->pacman.setPositionForRendering();
     this->window->draw(this->pacman.graphic);
+}
+
+void Display::renderGhosts() {
+    this->chaser.setPositionForRendering();
+    this->window->draw(this->chaser.graphic);
+
+    this->ambusher.setPositionForRendering();
+    this->window->draw(this->ambusher.graphic);
+
+    this->fickle.setPositionForRendering();
+    this->window->draw(this->fickle.graphic);
+
+    this->stupid.setPositionForRendering();
+    this->window->draw(this->stupid.graphic);
+
 }
 
 
