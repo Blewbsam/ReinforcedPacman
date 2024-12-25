@@ -28,6 +28,7 @@ private:
     StupidUI stupid;
 
     sf::RectangleShape wall;
+    sf::RectangleShape door;
     sf::RectangleShape empty;
     sf::CircleShape pellet;
 

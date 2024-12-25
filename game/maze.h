@@ -27,6 +27,7 @@ class Maze {
         Cell getCell(Position pos) const; 
         void setCell(Position pos, Cell type); 
         void printGrid();
+        bool validPos(Position pos) const;
 
 };
 

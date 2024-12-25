@@ -2,12 +2,17 @@
 #ifndef GLOBALS
 #define GLOBALS
 
+#include <iostream>
+
 enum Direction {UP,DOWN,LEFT,RIGHT,IDLE}; // Represents Direction in which agent is moving in
 
 struct Position { // Represents Position where agent is located correspondig to gameState.
     int x;
     int y;
     Position(int x_val, int y_val) : x(x_val), y(y_val) {}
+    bool operator==(const Position& other) const {
+    return (x == other.x && y == other.y);
+    }
 };
 
 enum Cell {

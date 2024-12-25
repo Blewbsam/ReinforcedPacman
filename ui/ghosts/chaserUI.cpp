@@ -13,7 +13,6 @@ ChaserUI::ChaserUI(GameState * gameState) : GhostUI(gameState,sf::Vector2f(CHASE
 
 
 void ChaserUI::move() {
-    std::cout << SFposition.x  << "Moving chaser" << std::endl;
     Direction ghostDir = this->gs->getChaserDir();
     switch (ghostDir) {
         case UP:    SFposition.y -= CHASER_STEP_SIZE; break;

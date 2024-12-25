@@ -142,6 +142,8 @@ bool GameState::validPacmanMove(Direction dir) const {
     return cell != WALL;
 }
 
+
+
 void GameState::handleCollisions() {
     this->handlePelletCollision();
     // handle ghost collisions here TODO:
@@ -171,6 +173,34 @@ Position GameState::jumpPortal(Position pos) {
 void GameState::changePacmanDir(Direction dir) {
     this->pacman_p->setDir(dir);
 }
+
+
+// takes position and way agent is facing and returns Position behind agent
+Position getReversePosition(Position pos, Direction dir) {
+    switch (dir) {
+        case UP: pos.y += 1; break;
+        case DOWN: pos.y -= 1; break;
+        case RIGHT: pos.x -= 1; break;
+        case LEFT: pos.x += 1; break;
+        default: break;
+    }
+    return pos;
+}
+
+
+std::vector<Position> GameState::getValidPositions(Position ghostPos, Direction ghostDir) const {
+
+    // get Empty neighbouring cells
+    std::vector<Position> validNeighbours = this->getValidNeighbours(ghostPos);
+    // remove the one behind the ghost
+    Position pos = getReversePosition(ghostPos, ghostDir);
+    auto index = std::find(validNeighbours.begin(), validNeighbours.end(), pos);
+    if (index != validNeighbours.end() && validNeighbours.size() > 1) {
+        validNeighbours.erase(index); 
+    }
+    return validNeighbours;
+}
+
 
 std::vector<Position> GameState::getValidNeighbours(Position pos) const {
     return this->maze_p->getValidNeighbours(pos);

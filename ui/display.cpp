@@ -19,18 +19,18 @@ void Display::initWindow() {
     this->window->setFramerateLimit(144);
 }
 
-
-
 void Display::initGameObjects() {
     this->pellet.setRadius(PELLET_RADIUS);
     sf::Color orange(254,138,24);
     this->pellet.setFillColor(orange);
 
     this->gs->updateGhostState(CHASER,CHASE);
-
+    gs->updateGhostPos(this->chaser.getIndexedPosition(),CHASER);
     gs->updatePacmanPos(this->pacman.getIndexedPosition());
     this->wall.setSize(sf::Vector2f(PIXEL_SIZE,PIXEL_SIZE));
     this->wall.setFillColor(sf::Color::Blue);
+    this->door.setSize(sf::Vector2f(PIXEL_SIZE,PIXEL_SIZE));
+    this->door.setFillColor(sf::Color::White);
     this->empty.setSize(sf::Vector2f(PIXEL_SIZE,PIXEL_SIZE));
     this->empty.setFillColor(sf::Color::Black);
 }
@@ -58,9 +58,10 @@ void Display::update() {
     this->pacman.move();
 
     // generateDirections ghosts should take
-    this->gs->generateGhostMoves();
+    if (this->chaser.containedInCell()) this->gs->generateGhostMoves();
 
     // move ghost towards that direction
+
     this->chaser.move();
     this->ambusher.move();
     this->fickle.move();
@@ -140,6 +141,10 @@ void Display::renderMaze() {
             case PELLET:
                 this->pellet.setPosition(x * PIXEL_SIZE + PELLET_OFFSET, y * PIXEL_SIZE + PELLET_OFFSET);
                 this->window->draw(this->pellet);           
+                break;
+            case DOOR:
+                this->door.setPosition(x * PIXEL_SIZE, y * PIXEL_SIZE);
+                this->window->draw(this->door);  
                 break;
             default:
                 this->empty.setPosition(x * PIXEL_SIZE, y * PIXEL_SIZE);
