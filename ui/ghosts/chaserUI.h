@@ -9,8 +9,9 @@
 #define CHASER_START_Y PIXEL_SIZE * 7
 
 class ChaserUI : public GhostUI{    
-    public:
+public:
     ChaserUI(GameState * gameState);
+    void move() override;
 };
 
 

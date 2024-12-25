@@ -22,7 +22,8 @@ class Maze {
         int getGridWidth() const;
         int getGridHeight() const;
         
-        std::vector<Position> getValidPositions(Position pos);
+        // returns all neighbors that are OPEN
+        std::vector<Position> getValidNeighbours(Position pos) const;
         Cell getCell(Position pos) const; 
         void setCell(Position pos, Cell type); 
         void printGrid();

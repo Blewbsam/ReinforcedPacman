@@ -6,7 +6,10 @@ GhostUI::GhostUI(GameState * gameState, sf::Vector2f pos) : AgentUI(gameState,po
 }
 
 // Gets which direction to move from gameState and moves in given direction.
-void GhostUI::move(){return;}
+void GhostUI::move(){
+    // this->gs->
+    return;
+}
 
 sf::RectangleShape GhostUI::getGraphic() {
     sf::RectangleShape * shape = dynamic_cast<sf::RectangleShape *>(this->graphic);

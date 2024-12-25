@@ -44,14 +44,11 @@ private:
 
     // move to helpers later
     // helpers
-    double calculateEuclidianDistance(Position pos1, Position pos2);
+    double calculateEuclidianDistance(Position pos1, Position pos2) const;
     
-
     // Gets which direction ghost should move in inorder to go on neighbour
     // requires ghost Posito and neighPos to be neighbouring cells
-    Direction getNeighbourDirection(Ghost * ghost, Position neighPos);
-
-
+    Direction getNeighbourDirection(Position ghostPos, Position neighPos) const;
 }; 
 
 #endif

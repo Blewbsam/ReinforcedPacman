@@ -23,6 +23,12 @@ enum Cell {
     DOOR
 };
 
+enum GhostType {
+    CHASER,
+    STUPID,
+    FICKLE,
+    AMBUSHER
+};
 
 enum GhostState {
     CHASE,

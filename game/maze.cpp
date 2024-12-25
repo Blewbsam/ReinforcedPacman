@@ -2,6 +2,7 @@
 #include <iostream>
 #include "maze.h"
 #include "agent.h"
+#include <vector>
 
 using std::cout;
 using std::endl;
@@ -63,17 +64,23 @@ Maze::Maze(const std::vector<std::string>& layout){
 
 
 Cell Maze::getCell(Position pos) const {
-    return grid[pos.y][pos.x];
+    if (pos.y >= 0 && pos.y < grid.size() && pos.x >= 0 && pos.x < grid[0].size()) {
+        return grid[pos.y][pos.x];
+    }
+    throw std::out_of_range("Position out of bounds");
+}
+
+void Maze::setCell(Position pos, Cell type) {
+    if (pos.y >= 0 && pos.y < grid.size() && pos.x >= 0 && pos.x < grid[0].size()) {
+        grid[pos.y][pos.x] = type;
+    } else {
+        throw std::out_of_range("Position out of bounds");
+    }
 }
 
 grid_t Maze::getGrid() const {
     return grid;    
 }
-
-void Maze::setCell(Position pos, Cell type) {
-    grid[pos.y][pos.x] = type;
-}
-
 
 int Maze::getGridWidth() const {
     return grid[0].size();
@@ -104,11 +111,11 @@ void Maze::printGrid() {
     }
 }
 
-std::vector<Position> Maze::getValidPositions(Position pos) {
+std::vector<Position> Maze::getValidNeighbours(Position pos) const {
     std::vector<Position> posVector;
     if (pos.y > 0 &&  this->grid[pos.y-1][pos.x] != WALL) posVector.push_back(Position(pos.x,pos.y-1));
     if ((pos.x < this->getGridWidth() - 1) && this->grid[pos.y][pos.x+1] != WALL) posVector.push_back(Position(pos.x+1,pos.y));
-    if (pos.y < this->getGridHeight() - 1 && this->grid[pos.y+1][pos.x] != WALL) posVector.push_back(Position(pos.x,pos.y+1));
+    if (pos.y < (this->getGridHeight() - 1) && this->grid[pos.y+1][pos.x] != WALL) posVector.push_back(Position(pos.x,pos.y+1));
     if (pos.x > 0 && this->grid[pos.y][pos.x-1] != WALL) posVector.push_back(Position(pos.x-1,pos.y));
     return posVector;
 }

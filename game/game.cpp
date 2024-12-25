@@ -2,8 +2,7 @@
 
 #include "game.h"
 
-using std::cout;
-using std::endl;
+
 
 std::vector<std::string>  levelLayout = {
 		"XXXXXXXXXXXXXXXXXXX",
@@ -66,6 +65,13 @@ Direction GameState::getStupidDir() {return ghosts.stupid_p->getDir();}
 grid_t GameState::getGrid() {return maze_p->getGrid();}
 
 
+void GameState::generateGhostMoves(){
+    ghostAI.moveChaser(this->ghosts.chaser_p,this->pacman_p);
+    // TODO: add the rest.
+}
+
+
+
 Position GameState::getAgentPositionBrute(Cell agentCell,const std::vector<std::vector<Cell>> grid) {
     Position pos = {-1,-1};
     for (unsigned int y = 0; y < grid.size(); y++) {
@@ -90,6 +96,23 @@ void GameState::updatePacmanPos(Position pos) {
     this->pacman_p->setPos(pos);
 }
 
+void GameState::updateGhostPos(Position pos, GhostType type) {
+    switch (type) {
+        case CHASER: this->ghosts.chaser_p->setPos(pos); break;
+        case AMBUSHER: this->ghosts.ambusher_p->setPos(pos); break;
+        case STUPID: this->ghosts.stupid_p->setPos(pos); break;
+        default: this->ghosts.fickle_p->setPos(pos); break;
+    }
+}
+
+void GameState::updateGhostState(GhostType type, GhostState state) {
+    switch (type) {
+        case CHASER: this->ghosts.chaser_p->setGhostState(state); break;
+        case AMBUSHER: this->ghosts.ambusher_p->setGhostState(state); break;
+        case STUPID: this->ghosts.stupid_p->setGhostState(state); break;
+        default: this->ghosts.fickle_p->setGhostState(state); break;
+    }
+}
 
 bool GameState::validPacmanMove(Direction dir) const {
 
@@ -149,6 +172,6 @@ void GameState::changePacmanDir(Direction dir) {
     this->pacman_p->setDir(dir);
 }
 
-std::vector<Position> GameState::getValidPositions(Position pos) {
-    return this->maze_p->getValidPositions(pos);
+std::vector<Position> GameState::getValidNeighbours(Position pos) const {
+    return this->maze_p->getValidNeighbours(pos);
 }

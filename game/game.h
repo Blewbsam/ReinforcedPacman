@@ -36,7 +36,7 @@ public:
     GameState();
     ~GameState();
 
-    // getters used to get position of agents: TODO: redo
+    // getters used to get position of agents:
     Position getPacmanPos();
     Direction getPacmanDir();
     Position getFicklePos();
@@ -59,6 +59,15 @@ public:
     // Changes direction of pacman to given direction
     void changePacmanDir(Direction dir);
 
+    // set the directon of each ghost given the board and pacman positions.
+    void generateGhostMoves();
+
+    // set position of given ghost
+    void updateGhostPos(Position pos,GhostType type);
+
+    // set state of type to given state
+    void updateGhostState(GhostType type, GhostState state);
+
     // handle all plausible collisions.
     void handleCollisions();
 
@@ -69,7 +78,10 @@ public:
     Position jumpPortal(Position pos);
 
     // Return neighbors of position on grid which are not walls.
-    std::vector<Position> getValidPositions(Position pos);
+    std::vector<Position> getValidNeighbours(Position pos) const;
+
+
+
 
 
 private:

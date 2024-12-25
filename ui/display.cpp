@@ -22,10 +22,11 @@ void Display::initWindow() {
 
 
 void Display::initGameObjects() {
-    // Pellet
     this->pellet.setRadius(PELLET_RADIUS);
     sf::Color orange(254,138,24);
     this->pellet.setFillColor(orange);
+
+    this->gs->updateGhostState(CHASER,CHASE);
 
     gs->updatePacmanPos(this->pacman.getIndexedPosition());
     this->wall.setSize(sf::Vector2f(PIXEL_SIZE,PIXEL_SIZE));
@@ -56,7 +57,10 @@ void Display::update() {
     // movePacman
     this->pacman.move();
 
-    // moveGhosts
+    // generateDirections ghosts should take
+    this->gs->generateGhostMoves();
+
+    // move ghost towards that direction
     this->chaser.move();
     this->ambusher.move();
     this->fickle.move();
@@ -64,7 +68,6 @@ void Display::update() {
 
     // check if game is over.
     gs->handleCollisions();
-
 }
 
 
