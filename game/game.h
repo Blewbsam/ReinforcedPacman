@@ -7,9 +7,12 @@
 #include "ghost.h"
 #include "pacman.h"
 #include "maze.h"
+#include "ghostAI.h"
 
 
 #include <vector>
+
+
 
 // Pointer to created Ghosts fond on maze
 struct Ghosts {
@@ -25,32 +28,48 @@ class GameState {
     Maze * maze_p;
     Pacman * pacman_p;
     Ghosts ghosts;
+    GhostAI ghostAI;
     unsigned int score;
     bool gameOver;
 
 public:
-    GameState(const std::vector<std::string>& layout);
+    GameState();
     ~GameState();
 
-    // getters used to get position of agents: 
+    // getters used to get position of agents: TODO: redo
     Position getPacmanPos();
+    Direction getPacmanDir();
     Position getFicklePos();
+    Direction getFickleDir();
     Position getAmbusherPos();
+    Direction getAmbusherDir();
     Position getStupidPos();
+    Direction getStupidDir();
     Position getChaserPos();
+    Direction getChaserDir();
     grid_t getGrid();
 
 
-    // changes position of pacman  to given pos.
+    // changes position of pacman to given pos.
     void updatePacmanPos(Position pos);
 
     // assesses wether pacman moving in given direction encounters a wall.
     bool validPacmanMove(Direction dir) const;
 
-    // check if there is a pellet at pacman's position
-    // and remove it if there is so
-    void handlePelletCollision();
+    // Changes direction of pacman to given direction
+    void changePacmanDir(Direction dir);
 
+    // handle all plausible collisions.
+    void handleCollisions();
+
+    // returns true if jump possible
+    bool jumpAvail(Position pos);
+    // takes current pos and returns what it would become
+    // requires jumpAvail to return true
+    Position jumpPortal(Position pos);
+
+    // Return neighbors of position on grid which are not walls.
+    std::vector<Position> getValidPositions(Position pos);
 
 
 private:
@@ -59,6 +78,13 @@ private:
     // {GHOST_FICKLE,GHOST_CHASER, GHOST_AMBUSER, GHOST_STUPID}
     // To be used in constructor only
     Position getAgentPositionBrute(Cell agentCell ,const std::vector<std::vector<Cell >> grid);    
+
+    // check if there is a pellet at pacman's position
+    // and remove it if there is so
+    void handlePelletCollision();
+
+    // return true if items are at same index
+    bool checkAgentCollison(Agent a1, Agent a2);
 
 };
 

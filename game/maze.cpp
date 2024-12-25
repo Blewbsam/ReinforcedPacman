@@ -104,3 +104,12 @@ void Maze::printGrid() {
     }
 }
 
+std::vector<Position> Maze::getValidPositions(Position pos) {
+    std::vector<Position> posVector;
+    if (pos.y > 0 &&  this->grid[pos.y-1][pos.x] != WALL) posVector.push_back(Position(pos.x,pos.y-1));
+    if ((pos.x < this->getGridWidth() - 1) && this->grid[pos.y][pos.x+1] != WALL) posVector.push_back(Position(pos.x+1,pos.y));
+    if (pos.y < this->getGridHeight() - 1 && this->grid[pos.y+1][pos.x] != WALL) posVector.push_back(Position(pos.x,pos.y+1));
+    if (pos.x > 0 && this->grid[pos.y][pos.x-1] != WALL) posVector.push_back(Position(pos.x-1,pos.y));
+    return posVector;
+}
+

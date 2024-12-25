@@ -1,12 +1,5 @@
-
-
 #ifndef GLOBALSUI
 #define GLOBALSUI
-
-
-
-
-
 
 #define WINDOW_HEIGHT 630
 #define WINDOW_WIDTH 570
@@ -17,10 +10,6 @@
 #define PACMAN_START_X 5
 #define PACMAN_START_Y 13
 #define PACMAN_STEP_SIZE 2
-
-
-
-
 
 
 

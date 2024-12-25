@@ -6,8 +6,17 @@
 #include "agent.h"
 
 class Ghost: public Agent {
+    protected:
+    // Ghosts target tile. initalized to (-1,-1)
+    Position target;
+    GhostState state;
+
     public:
     Ghost(Position position);
+
+
+    void setGhostState(GhostState ghostState);
+    GhostState getGhostState();
 };
 
 

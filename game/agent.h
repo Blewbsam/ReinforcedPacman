@@ -14,10 +14,10 @@ protected:
     Direction dir;
 public:
     Agent(Position p, Direction direction);
-
     Position getPos();
     void setPos(Position p);
-
+    void setDir(Direction dir);
+    Direction getDir();
 };
 
 

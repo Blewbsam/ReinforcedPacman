@@ -40,8 +40,6 @@ Display::Display(GameState * gameState) :pacman(gameState), chaser(gameState), a
     this->initVariables(gameState);
     this->initGameObjects();
     this->initWindow();
-    // this->initPacman();
-    // this->initGhosts();
 }
 
 Display::~Display() {
@@ -59,8 +57,13 @@ void Display::update() {
     this->pacman.move();
 
     // moveGhosts
+    this->chaser.move();
+    this->ambusher.move();
+    this->fickle.move();
+    this->stupid.move();
 
     // check if game is over.
+    gs->handleCollisions();
 
 }
 
@@ -81,7 +84,6 @@ void Display::pollEvents() {
         } else if (this->ev.key.code == sf::Keyboard::Escape) {
             this->window->close();
         } 
-        
         if (this->ev.type == sf::Event::KeyPressed) {
             if (this->ev.key.code == sf::Keyboard::Up) {
                 this->pacman.setNextDir(UP);
@@ -102,21 +104,21 @@ bool Display::running() const {
 
 void Display::renderPacman() {
     this->pacman.setPositionForRendering();
-    this->window->draw(this->pacman.graphic);
+    this->window->draw(this->pacman.getGraphic());
 }
 
 void Display::renderGhosts() {
     this->chaser.setPositionForRendering();
-    this->window->draw(this->chaser.graphic);
+    this->window->draw(this->chaser.getGraphic());
 
     this->ambusher.setPositionForRendering();
-    this->window->draw(this->ambusher.graphic);
+    this->window->draw(this->ambusher.getGraphic());
 
     this->fickle.setPositionForRendering();
-    this->window->draw(this->fickle.graphic);
+    this->window->draw(this->fickle.getGraphic());
 
     this->stupid.setPositionForRendering();
-    this->window->draw(this->stupid.graphic);
+    this->window->draw(this->stupid.getGraphic());
 
 }
 
@@ -124,8 +126,6 @@ void Display::renderGhosts() {
 void Display::renderMaze() {
 
     grid_t grid = gs->getGrid();
-
-    // Draw walls only for now
     for (size_t y = 0; y < grid.size(); ++y) {
         for (size_t x = 0; x < grid[y].size(); ++x) {
             switch (grid[y][x])

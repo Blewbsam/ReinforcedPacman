@@ -2,10 +2,13 @@
 #define DISPLAY
 
 #include <SFML/Graphics.hpp>
-// #include "../game/maze.h"
+#include "pacmanUI.h"
 #include "globalsUI.h"
 #include "../game/game.h"
-#include "pacmanUI.h"
+#include "ghosts/chaserUI.h"
+#include "ghosts/ambusherUI.h"
+#include "ghosts/fickleUI.h"
+#include "ghosts/stupidUI.h"
 
 
 
@@ -19,6 +22,11 @@ private:
 
     // game objects
     PacmanUI pacman;
+    ChaserUI chaser;
+    AmbusherUI ambusher;
+    FickleUI fickle;
+    StupidUI stupid;
+
     sf::RectangleShape wall;
     sf::RectangleShape empty;
     sf::CircleShape pellet;
@@ -42,10 +50,17 @@ public:
     void render();
     // check for and handle triggered events.
     void pollEvents();
-    // places pacman in appropriate position
+
+    // following set of functions set agent in approriat position to be displayed
     void renderPacman();
+    void renderGhosts();
+
+
+
     // use the grid_t structure to render display
     void renderMaze(); 
+
+
     // returns wether the window is open or not
     bool running() const;
 

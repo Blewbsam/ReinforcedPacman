@@ -15,3 +15,11 @@ Position Agent::getPos() {
 void Agent::setPos(Position p) {
     this->pos = p;
 }
+
+void Agent::setDir(Direction dir) {
+    this->dir = dir;
+}
+
+Direction Agent::getDir() {
+    return this->dir;
+}

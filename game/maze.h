@@ -22,9 +22,11 @@ class Maze {
         int getGridWidth() const;
         int getGridHeight() const;
         
+        std::vector<Position> getValidPositions(Position pos);
         Cell getCell(Position pos) const; 
         void setCell(Position pos, Cell type); 
         void printGrid();
+
 };
 
 #endif
