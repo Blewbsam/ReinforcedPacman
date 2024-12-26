@@ -91,8 +91,8 @@ void Display::update() {
 void Display::render() {
     this->window->clear();
     this->renderMaze();
-    this->renderPacman();
     this->renderGhosts();
+    this->renderPacman();
     this->window->display();
 }
 
@@ -123,8 +123,10 @@ bool Display::running() const {
 }
 
 void Display::renderPacman() {
+
     this->pacman.setPositionForRendering();
-    this->window->draw(this->pacman.getGraphic());
+    this->pacman.setOrientationForRendering();
+    this->window->draw(this->pacman.getSprite());
 }
 
 void Display::renderGhosts() {

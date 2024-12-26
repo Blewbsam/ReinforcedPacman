@@ -14,6 +14,8 @@ protected:
     sf::Vector2f SFposition;
 public:
     sf::Shape * graphic;
+    sf::Sprite * sprite;
+    sf::Texture * texture;
     AgentUI(GameState * gameState, sf::Vector2f start, sf::Shape * shape);
     ~AgentUI();
 
@@ -25,11 +27,14 @@ public:
     bool containedInCell();
     // Graphic position setter
     // also handles teleports  
-    void setPositionForRendering();
+    virtual void setPositionForRendering();
     // conersts Vector2f SFPosition to Position struct
     Position getIndexedPosition();
     // setter for SFPosition
     void setSFPosition(Position pos);
+
+    // sprite dereference getter
+    sf::Sprite getSprite();
 };
 
 

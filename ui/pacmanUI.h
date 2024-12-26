@@ -16,10 +16,11 @@ class PacmanUI : public AgentUI {
     private:
         Direction pacmanDir;
         Direction nextDir;
-
-        int animationCycle;
+        int frame;
+        float animationSpeed;
         sf::Clock animationClock;
-        flaot animationSpeed;
+    // definitely remove
+
 
     public:
         PacmanUI(GameState * gamestate);
@@ -36,8 +37,15 @@ class PacmanUI : public AgentUI {
         // sets pacmanDir to nextDir
         void switchDirection();
 
-        void animationUpdate();
+        void setOrientationForRendering();
 
+        // returns row index of image to be used for pacman. 
+        int getRowIndex();
+
+        // increases frame by one or resets it.
+        void nextFrame();
+
+        void setPositionForRendering() override;
 };
 
 

@@ -9,9 +9,15 @@ AgentUI::AgentUI(GameState * gameState, sf::Vector2f start, sf::Shape * shape) {
     this->gs = gameState;
     this->SFposition = start;
     this->graphic = shape;
+    this->sprite = new sf::Sprite();
+    this->texture = new sf::Texture();
 }
 
-AgentUI::~AgentUI() {delete this->graphic;}
+AgentUI::~AgentUI() {
+    delete this->graphic;
+    delete this->sprite;
+    delete this->texture;    
+}
 
 
 void AgentUI::snapToGrid() {
@@ -31,6 +37,7 @@ void AgentUI::setPositionForRendering() {
     this->graphic->setPosition(this->SFposition.x, this->SFposition.y);
 }
 
+
 Position AgentUI::getIndexedPosition() { // this
     Position pos(std::round((this->SFposition.x)/ PIXEL_SIZE),std::round((this->SFposition.y)/ PIXEL_SIZE));
     return pos;
@@ -38,4 +45,9 @@ Position AgentUI::getIndexedPosition() { // this
 void AgentUI::setSFPosition(Position pos) { //  this
     this->SFposition.x = pos.x * PIXEL_SIZE;
     this->SFposition.y = pos.y * PIXEL_SIZE;
+}
+
+
+sf::Sprite AgentUI::getSprite() {
+    return *(this->sprite);
 }
