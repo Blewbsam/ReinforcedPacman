@@ -10,6 +10,8 @@ PacmanUI::PacmanUI(GameState * gameState) : AgentUI(gameState,startPos,new sf::C
     this->graphic->setFillColor(sf::Color::Yellow);
     this->pacmanDir = IDLE;
     this->nextDir = RIGHT;
+    this->animationCycle = 0;
+    animationSpeed = 0.1f;
 }
 
 sf::CircleShape PacmanUI::getGraphic() {
@@ -37,10 +39,20 @@ void PacmanUI::move() {
             default:    break;
         }
     }
+    this->animationUpdate();
     // gs should know position of pacman for generating valid moves.
     if (this->containedInCell()) gs->updatePacmanPos(this->getIndexedPosition());
 }
+
 void PacmanUI::switchDirection() {
     this->pacmanDir = this->nextDir;
     this->gs->changePacmanDir(this->pacmanDir);
 }
+
+void PacmanUI::animationUpdate() {
+    if (animationClock.getElapsedTime().asSeconds() > animationSpeed) {
+        // Cycle through animation states
+    }
+    animationClock.restart();
+}
+

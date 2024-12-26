@@ -15,5 +15,3 @@ void StupidUI::move() {
     GhostUI::move(ghostDir, STUPID_STEP_SIZE);
     if (this->containedInCell()) gs->updateGhostPos(this->getIndexedPosition(),STUPID);
 }
-
-

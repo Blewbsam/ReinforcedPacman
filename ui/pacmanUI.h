@@ -10,10 +10,17 @@
 
 
 
+
+
 class PacmanUI : public AgentUI {
     private:
         Direction pacmanDir;
         Direction nextDir;
+
+        int animationCycle;
+        sf::Clock animationClock;
+        flaot animationSpeed;
+
     public:
         PacmanUI(GameState * gamestate);
 
@@ -29,6 +36,7 @@ class PacmanUI : public AgentUI {
         // sets pacmanDir to nextDir
         void switchDirection();
 
+        void animationUpdate();
 
 };
 
