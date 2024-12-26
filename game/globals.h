@@ -41,6 +41,7 @@ enum GhostState {
     SCATTER,
     EATEN,
     FRIGHTENED,
+    ESCAPE,
     SLEEP
 };
 

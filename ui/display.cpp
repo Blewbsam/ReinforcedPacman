@@ -29,13 +29,13 @@ void Display::initGameObjects() {
     this->gs->updateGhostState(CHASER,CHASE);
     this->gs->updateGhostPos(this->chaser.getIndexedPosition(),CHASER);
 
-    this->gs->updateGhostState(AMBUSHER,CHASE);
+    this->gs->updateGhostState(AMBUSHER,ESCAPE);
     this->gs->updateGhostPos(this->ambusher.getIndexedPosition(),AMBUSHER);
 
-    this->gs->updateGhostState(STUPID,CHASE);
+    this->gs->updateGhostState(STUPID,ESCAPE);
     this->gs->updateGhostPos(this->stupid.getIndexedPosition(), STUPID);
 
-    this->gs->updateGhostState(FICKLE,CHASE);
+    this->gs->updateGhostState(FICKLE,ESCAPE);
     this->gs->updateGhostPos(this->stupid.getIndexedPosition(),FICKLE);
     // TODO:
 

@@ -111,17 +111,28 @@ void Maze::printGrid() {
     }
 }
 
+std::vector<Position> Maze::getValidEscapedNeighbours(Position pos) const {
+    std::vector<Position> posVector;
+    if (!this->validPos(pos)) throw std::runtime_error("Invalid Index");
+    if (pos.y > 0 &&  this->grid[pos.y-1][pos.x] != WALL && this->grid[pos.y-1][pos.x] != DOOR) posVector.push_back(Position(pos.x,pos.y-1));
+    if ((pos.x < this->getGridWidth() - 1) && this->grid[pos.y][pos.x+1] != WALL && this->grid[pos.y][pos.x+1] != DOOR) posVector.push_back(Position(pos.x+1,pos.y));
+    if (pos.y < (this->getGridHeight() - 1) && this->grid[pos.y+1][pos.x] != WALL && this->grid[pos.y+1][pos.x] != DOOR) posVector.push_back(Position(pos.x,pos.y+1));
+    if (pos.x > 0 && this->grid[pos.y][pos.x-1] != WALL && this->grid[pos.y][pos.x-1] != DOOR) posVector.push_back(Position(pos.x-1,pos.y));
+    return posVector;
+}
+
+
 std::vector<Position> Maze::getValidNeighbours(Position pos) const {
     std::vector<Position> posVector;
-    std::cout << pos.x << std::endl;
-    std::cout << pos.y << std::endl;
     if (!this->validPos(pos)) throw std::runtime_error("Invalid Index");
-    if (pos.y > 0 &&  this->grid[pos.y-1][pos.x] != WALL) posVector.push_back(Position(pos.x,pos.y-1));
-    if ((pos.x < this->getGridWidth() - 1) && this->grid[pos.y][pos.x+1] != WALL) posVector.push_back(Position(pos.x+1,pos.y));
+    if (pos.y > 0 &&  this->grid[pos.y-1][pos.x] != WALL ) posVector.push_back(Position(pos.x,pos.y-1));
+    if ((pos.x < this->getGridWidth() - 1) && this->grid[pos.y][pos.x+1] != WALL ) posVector.push_back(Position(pos.x+1,pos.y));
     if (pos.y < (this->getGridHeight() - 1) && this->grid[pos.y+1][pos.x] != WALL) posVector.push_back(Position(pos.x,pos.y+1));
     if (pos.x > 0 && this->grid[pos.y][pos.x-1] != WALL) posVector.push_back(Position(pos.x-1,pos.y));
     return posVector;
 }
+
+
 
 bool Maze::validPos(Position pos) const {
     return (pos.x >= 0 && pos.y >= 0 && pos.x < this->getGridWidth() && pos.y < this->getGridHeight());

@@ -10,23 +10,46 @@ GhostAI::GhostAI(GameState * gameState) {
 void GhostAI::moveChaser(ChaserGhost * chaser, Pacman * pacman) {
     switch(chaser->getGhostState()) {
         case CHASE: moveChaseChaser(chaser,pacman); break;
+        case SCATTER: moveScatterGhost(chaser);
+        case ESCAPE: moveEscapeGhost(chaser); break;
         default: break;
     }
 }
 
 
-void GhostAI::moveChaseChaser(ChaserGhost * chaser, Pacman * pacman) {
-    std::vector<Position> validPositions = this->gs->getValidPositions(chaser->getPos(), chaser->getDir()); 
-    Position validNextPos = this->getMinEuclidianPosition(validPositions,pacman->getPos());
-    Direction moveDir = this->getNeighbourDirection(chaser->getPos(),validNextPos);
-    chaser->setDir(moveDir);
-}
-
 void GhostAI::moveAmbusher(AmbusherGhost * ambusher, Pacman * pacman) {
     switch (ambusher->getGhostState()) {
         case CHASE: moveChaseAmbusher(ambusher,pacman); break;
+        case SCATTER: moveScatterGhost(ambusher);break;
+        case ESCAPE: moveEscapeGhost(ambusher); break;
         default: std::cout << "Sleeping" << std::endl;
     }
+}
+
+void GhostAI::moveStupid(StupidGhost * stupid, Pacman * pacman) {
+    switch (stupid->getGhostState()) {
+        case CHASE: moveChaseStupid(stupid,pacman); break;
+        case SCATTER: moveScatterGhost(stupid); break;
+        case ESCAPE: moveEscapeGhost(stupid); break;
+        default: std::cout << "Sleeping" << std::endl;
+    }
+}
+
+void GhostAI::moveFickle(FickleGhost * fickle, Pacman * pacman, Position chaserPos) {
+    switch (fickle->getGhostState()) {
+        case CHASE: moveChaseFickle(fickle,pacman,chaserPos); break;
+        case SCATTER: moveScatterGhost(fickle); break;
+        case ESCAPE: moveEscapeGhost(fickle); break;
+        default: std::cout << "Sleeping" << std::endl;
+    }
+}
+
+
+void GhostAI::moveChaseChaser(ChaserGhost * chaser, Pacman * pacman) {
+    std::vector<Position> validPositions = this->gs->getValidPositions(chaser->getPos(), chaser->getDir(), true); 
+    Position validNextPos = this->getMinEuclidianPosition(validPositions,pacman->getPos());
+    Direction moveDir = this->getNeighbourDirection(chaser->getPos(),validNextPos);
+    chaser->setDir(moveDir);
 }
 
 
@@ -34,20 +57,11 @@ void GhostAI::moveAmbusher(AmbusherGhost * ambusher, Pacman * pacman) {
 
 void GhostAI::moveChaseAmbusher(AmbusherGhost * ambusher, Pacman * pacman) {
     // 
-    std::vector<Position> validPositions = this->gs->getValidPositions(ambusher->getPos(), ambusher->getDir()); 
+    std::vector<Position> validPositions = this->gs->getValidPositions(ambusher->getPos(), ambusher->getDir(), true); 
     Position targetPos = this->getAmbusherTarget(pacman->getPos(),pacman->getDir());
     Position validNextPos = this->getMinEuclidianPosition(validPositions,targetPos);
     Direction moveDir = this->getNeighbourDirection(ambusher->getPos(), validNextPos);
     ambusher->setDir(moveDir);
-}
-
-
-
-void GhostAI::moveStupid(StupidGhost * stupid, Pacman * pacman) {
-    switch (stupid->getGhostState()) {
-        case CHASE: moveChaseStupid(stupid,pacman); break;
-        default: std::cout << "Sleeping" << std::endl;
-    }
 }
 
 
@@ -58,34 +72,43 @@ void GhostAI::moveChaseStupid(StupidGhost * stupid, Pacman * pacman) {
     } else {
         targetPos = pacman->getPos();
     }
-    std::vector<Position> validPositions = this->gs->getValidPositions(stupid->getPos(), stupid->getDir()); 
+    std::vector<Position> validPositions = this->gs->getValidPositions(stupid->getPos(), stupid->getDir(),true); 
     Position validNextPos = this->getMinEuclidianPosition(validPositions,targetPos);
     Direction moveDir = this->getNeighbourDirection(stupid->getPos(), validNextPos);
     stupid->setDir(moveDir);
 }
 
 
-
-void GhostAI::moveFickle(FickleGhost * fickle, Pacman * pacman, Position chaserPos) {
-    switch (fickle->getGhostState()) {
-        case CHASE: moveChaseFickle(fickle,pacman,chaserPos); break;
-        default: std::cout << "Sleeping" << std::endl;
-    }
-}
-
-
 void GhostAI::moveChaseFickle(FickleGhost * fickle, Pacman * pacman, Position chaserPos) {
     Position targetPos = this->getFickleTarget(pacman->getPos(),pacman->getDir(), chaserPos);
-    std::vector<Position> validPositions = this->gs->getValidPositions(fickle->getPos(), fickle->getDir()); 
+    std::vector<Position> validPositions = this->gs->getValidPositions(fickle->getPos(), fickle->getDir(),true); 
     Position validNextPos = this->getMinEuclidianPosition(validPositions,targetPos);
     Direction moveDir = this->getNeighbourDirection(fickle->getPos(), validNextPos);
     fickle->setDir(moveDir);
 }
 
+void GhostAI::moveScatterGhost(Ghost * ghost) {
+    Position targetPos = ghost->getScatterCorner();
+    std::vector<Position> validPositions = this->gs->getValidPositions(ghost->getPos(), ghost->getDir(),true); 
+    Position validNextPos = this->getMinEuclidianPosition(validPositions,targetPos);
+    Direction moveDir = this->getNeighbourDirection(ghost->getPos(), validNextPos);
+    ghost->setDir(moveDir);
+}
+
+const Position EscapePos = {8,7};
+
+void GhostAI::moveEscapeGhost(Ghost * ghost) {
+    Position targetPos = EscapePos;
+    std::vector<Position> validPositions = this->gs->getValidPositions(ghost->getPos(), ghost->getDir(), false); 
+    Position validNextPos = this->getMinEuclidianPosition(validPositions,targetPos);
+    Direction moveDir = this->getNeighbourDirection(ghost->getPos(), validNextPos);
+    ghost->setDir(moveDir);
+    if (ghost->getPos() == EscapePos) ghost->setGhostState(CHASE);
+}
+
+
 
 // helpers
-
-
 Position getNTilesAhead(Position pacmanPos, Direction pacmanDir, int n) {
         switch (pacmanDir) {
         case UP: pacmanPos.y -= n; break;
@@ -119,7 +142,7 @@ Position GhostAI::getFickleTarget(Position pacmanPos, Direction pacmanDir, Posit
 }
 
 
-Position GhostAI::getMinEuclidianPosition(std::vector<Position>& possiblePositions,Position srcPos) const{
+Position GhostAI::getMinEuclidianPosition(std::vector<Position>& possiblePositions,Position srcPos) const {
     double minDistance = 1000;
     int minIndex = -1;
     int index = 0;

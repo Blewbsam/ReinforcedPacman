@@ -24,6 +24,7 @@ class Maze {
         
         // returns all neighbors that are OPEN
         std::vector<Position> getValidNeighbours(Position pos) const;
+        std::vector<Position> getValidEscapedNeighbours(Position pos) const;
         Cell getCell(Position pos) const; 
         void setCell(Position pos, Cell type); 
         void printGrid();

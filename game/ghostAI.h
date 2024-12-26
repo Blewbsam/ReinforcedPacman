@@ -39,6 +39,12 @@ private:
     void moveChaseFickle(FickleGhost * fickle, Pacman * pacman, Position chaserPos);
     void moveChaseStupid(StupidGhost * stupid, Pacman * pacman);
 
+    // ghostMoves to its specified scatterCorner
+    void moveScatterGhost(Ghost * ghost);
+    // Forces ghost to leave home
+    // sets ghost mode to CHASE when ghost is out.
+    void moveEscapeGhost(Ghost * ghost);
+
 
 
     // helpers

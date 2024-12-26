@@ -194,10 +194,10 @@ Position getReversePosition(Position pos, Direction dir) {
 }
 
 
-std::vector<Position> GameState::getValidPositions(Position ghostPos, Direction ghostDir) const {
+std::vector<Position> GameState::getValidPositions(Position ghostPos, Direction ghostDir, bool hasEscaped) const {
 
     // get Empty neighbouring cells
-    std::vector<Position> validNeighbours = this->getValidNeighbours(ghostPos);
+    std::vector<Position> validNeighbours = this->getValidNeighbours(ghostPos, hasEscaped);
     // remove the one behind the ghost
     Position pos = getReversePosition(ghostPos, ghostDir);
     auto index = std::find(validNeighbours.begin(), validNeighbours.end(), pos);
@@ -208,6 +208,7 @@ std::vector<Position> GameState::getValidPositions(Position ghostPos, Direction 
 }
 
 
-std::vector<Position> GameState::getValidNeighbours(Position pos) const {
+std::vector<Position> GameState::getValidNeighbours(Position pos, bool hasEscaped) const {
+    if (hasEscaped) return this->maze_p->getValidEscapedNeighbours(pos);
     return this->maze_p->getValidNeighbours(pos);
 }

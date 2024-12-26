@@ -86,9 +86,9 @@ public:
     Position jumpPortal(Position pos);
 
     // returns valid positions that the ghost can move in.
-    std::vector<Position> getValidPositions(Position ghostPos, Direction ghostDir) const;
+    std::vector<Position> getValidPositions(Position ghostPos, Direction ghostDir, bool hasEscaped) const;
     // Return neighbors of position on grid which are not walls.
-    std::vector<Position> getValidNeighbours(Position pos) const;
+    std::vector<Position> getValidNeighbours(Position pos, bool hasEscaped) const;
 
 
 
