@@ -27,13 +27,9 @@ public:
 private:
     // determine how ghosts should move.
 
-    // moveChaser
-    // getpacman pos
-    // get chaserPos
-    // getValidPositions 
-    // calculate euclidian distances to pacman from valid positions
-    // pick the minimum.
-    // move chaser in that direction.
+    // sets ghost to correct direction in persuit of targetPos
+    void moveToTarget(Ghost * ghost,Position targetPos);
+
     void moveChaseChaser(ChaserGhost * chaser, Pacman * pacman);
     void moveChaseAmbusher(AmbusherGhost * ambusher, Pacman * pacman);
     void moveChaseFickle(FickleGhost * fickle, Pacman * pacman, Position chaserPos);
@@ -41,11 +37,18 @@ private:
 
     // ghostMoves to its specified scatterCorner
     void moveScatterGhost(Ghost * ghost);
+
+     // moves ghost back to home tile, 
+    // sets ghost mode to ESCAPE when ghost is home.
+    void moveEatenGhost(Ghost * ghost);
+
+
     // Forces ghost to leave home
     // sets ghost mode to CHASE when ghost is out.
     void moveEscapeGhost(Ghost * ghost);
 
-
+    // ghost takes random direction at each corner
+    void moveFrightenedGhost(Ghost * ghost);
 
     // helpers
     // gets position which is of least distance from srcPos
@@ -64,7 +67,6 @@ private:
     Position getFickleTarget(Position pacmanPos, Direction pacmanDir, Position chaserPos) const;
 
     bool stupidShouldFlee(Position stupidPos, Position pacmanPos) const; 
-
 
 }; 
 

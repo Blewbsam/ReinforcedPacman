@@ -77,7 +77,10 @@ void GameState::generateGhostMoves(){
     ghostAI.moveFickle(this->ghosts.fickle_p, this->pacman_p, this->ghosts.chaser_p->getPos());
 }
 
-
+void GameState::generateAmbusherMove(){ghostAI.moveAmbusher(this->ghosts.ambusher_p,this->pacman_p);}
+void GameState::generateChaserMove(){ghostAI.moveChaser(this->ghosts.chaser_p,this->pacman_p);}
+void GameState::generateStupidMove(){ghostAI.moveStupid(this->ghosts.stupid_p,this->pacman_p);}
+void GameState::generateFickleMove(){ghostAI.moveFickle(this->ghosts.fickle_p,this->pacman_p,this->ghosts.chaser_p->getPos());}
 
 Position GameState::getAgentPositionBrute(Cell agentCell,const std::vector<std::vector<Cell>> grid) {
     Position pos = {-1,-1};

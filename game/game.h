@@ -70,6 +70,11 @@ public:
     // set the directon of each ghost given the board and pacman positions.
     void generateGhostMoves();
 
+    void generateAmbusherMove();
+    void generateChaserMove();
+    void generateStupidMove();
+    void generateFickleMove();
+
     // set position of given ghost
     void updateGhostPos(Position pos,GhostType type);
 

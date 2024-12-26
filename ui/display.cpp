@@ -26,7 +26,7 @@ void Display::initGameObjects() {
 
 
     // TODO: move these handlings into game
-    this->gs->updateGhostState(CHASER,CHASE);
+    this->gs->updateGhostState(CHASER,FRIGHTENED);
     this->gs->updateGhostPos(this->chaser.getIndexedPosition(),CHASER);
 
     this->gs->updateGhostState(AMBUSHER,ESCAPE);
@@ -71,7 +71,11 @@ void Display::update() {
     this->pacman.move();
 
     // generateDirections ghosts should take
-    if (this->chaser.containedInCell()) this->gs->generateGhostMoves();
+    // if (this->chaser.containedInCell()) this->gs->generateGhostMoves();
+    if (this->chaser.containedInCell()) this->gs->generateChaserMove();
+    if (this->ambusher.containedInCell()) this->gs->generateAmbusherMove();
+    if (this->stupid.containedInCell()) this->gs->generateStupidMove();
+    if (this->fickle.containedInCell()) this->gs->generateFickleMove();
 
     // move ghost towards that direction
 
