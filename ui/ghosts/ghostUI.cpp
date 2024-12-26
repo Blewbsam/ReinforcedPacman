@@ -16,6 +16,16 @@ sf::RectangleShape GhostUI::getGraphic() {
     return *shape;
 }
 
+void GhostUI::move(Direction dir,int step_size) {
+    switch (dir) {
+        case UP:    SFposition.y -= step_size; break;
+        case DOWN:  SFposition.y += step_size; break;
+        case LEFT:  SFposition.x -= step_size; break;
+        case RIGHT: SFposition.x += step_size; break;
+        default: break;
+    }
+}
+
 void GhostUI::awake() {
     this->active = true;
 }

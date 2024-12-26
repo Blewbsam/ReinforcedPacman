@@ -11,6 +11,7 @@
 class AmbusherUI : public GhostUI {
     public:
     AmbusherUI(GameState * gameState);
+    void move() override;
 };
 
 

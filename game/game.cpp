@@ -36,6 +36,8 @@ GameState::GameState() : ghostAI(this){
     ghosts.ambusher_p = new AmbusherGhost(getAgentPositionBrute(GHOST_AMBUSHER,maze_p->getGrid()));
     ghosts.stupid_p = new StupidGhost(getAgentPositionBrute(GHOST_STUPID,maze_p->getGrid()));
     gameOver = false;
+
+
 }
 
 
@@ -51,23 +53,28 @@ GameState::~GameState() {
 
 
 
-Position GameState::getPacmanPos() {return pacman_p->getPos();}
-Direction GameState::getPacmanDir() {return pacman_p->getDir();};
+Position GameState::getPacmanPos() const {return pacman_p->getPos();}
+Direction GameState::getPacmanDir() const {return pacman_p->getDir();};
 
-Position GameState::getFicklePos() {return ghosts.fickle_p->getPos();}
-Direction GameState::getFickleDir() {return ghosts.fickle_p->getDir();}
-Position GameState::getAmbusherPos() {return ghosts.ambusher_p->getPos();}
-Direction GameState::getAmbusherDir() {return ghosts.ambusher_p->getDir();};
-Position GameState::getChaserPos() {return ghosts.chaser_p->getPos();}
-Direction GameState::getChaserDir() {return ghosts.chaser_p->getDir();}
-Position GameState::getStupidPos() {return ghosts.stupid_p->getPos();}
-Direction GameState::getStupidDir() {return ghosts.stupid_p->getDir();}
-grid_t GameState::getGrid() {return maze_p->getGrid();}
+Position GameState::getFicklePos() const {return ghosts.fickle_p->getPos();}
+Direction GameState::getFickleDir() const {return ghosts.fickle_p->getDir();}
+Position GameState::getAmbusherPos() const {return ghosts.ambusher_p->getPos();}
+Direction GameState::getAmbusherDir() const {return ghosts.ambusher_p->getDir();};
+Position GameState::getChaserPos() const {return ghosts.chaser_p->getPos();}
+Direction GameState::getChaserDir() const {return ghosts.chaser_p->getDir();}
+Position GameState::getStupidPos() const {return ghosts.stupid_p->getPos();}
+Direction GameState::getStupidDir() const {return ghosts.stupid_p->getDir();}
+
+grid_t GameState::getGrid() const {return maze_p->getGrid();}
+int GameState::getGridWidth()const {return maze_p->getGridWidth();}
+int GameState::getGridHeight() const {return maze_p->getGridHeight();}
 
 
 void GameState::generateGhostMoves(){
     ghostAI.moveChaser(this->ghosts.chaser_p,this->pacman_p);
-    // TODO: add the rest.
+    ghostAI.moveAmbusher(this->ghosts.ambusher_p,this->pacman_p);
+    ghostAI.moveStupid(this->ghosts.stupid_p,this->pacman_p);
+    ghostAI.moveFickle(this->ghosts.fickle_p, this->pacman_p, this->ghosts.chaser_p->getPos());
 }
 
 
@@ -84,7 +91,6 @@ Position GameState::getAgentPositionBrute(Cell agentCell,const std::vector<std::
         }
     }
     done:
-
     if (pos.x == -1 || pos.y == -1) std::cout << __LINE__ << ": specified cell was not found on layout" << std::endl;
     return pos;
 }

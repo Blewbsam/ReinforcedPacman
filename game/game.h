@@ -8,6 +8,7 @@
 #include "pacman.h"
 #include "maze.h"
 #include "ghostAI.h"
+#include "globals.h"
 
 
 #include <vector>
@@ -37,17 +38,24 @@ public:
     ~GameState();
 
     // getters used to get position of agents:
-    Position getPacmanPos();
-    Direction getPacmanDir();
-    Position getFicklePos();
-    Direction getFickleDir();
-    Position getAmbusherPos();
-    Direction getAmbusherDir();
-    Position getStupidPos();
-    Direction getStupidDir();
-    Position getChaserPos();
-    Direction getChaserDir();
-    grid_t getGrid();
+    Position getPacmanPos() const;
+    Direction getPacmanDir() const;
+    Position getFicklePos() const;
+    Direction getFickleDir() const;
+    Position getAmbusherPos() const;
+    Direction getAmbusherDir() const;
+    Position getStupidPos() const;
+    Direction getStupidDir() const;
+    Position getChaserPos() const;
+    Direction getChaserDir() const;
+
+    // maze_p accessors for communicating with GhostAI
+    grid_t getGrid() const;
+    int getGridWidth() const;
+    int getGridHeight() const;
+
+
+
 
 
     // changes position of pacman to given pos.

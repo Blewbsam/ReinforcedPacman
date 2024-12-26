@@ -11,6 +11,7 @@
 class FickleUI : public GhostUI{    
     public:
     FickleUI(GameState * gameState);
+    void move() override;
 };
 
 

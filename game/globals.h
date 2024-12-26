@@ -9,6 +9,7 @@ enum Direction {UP,DOWN,LEFT,RIGHT,IDLE}; // Represents Direction in which agent
 struct Position { // Represents Position where agent is located correspondig to gameState.
     int x;
     int y;
+    Position():x(-1),y(-1){}
     Position(int x_val, int y_val) : x(x_val), y(y_val) {}
     bool operator==(const Position& other) const {
     return (x == other.x && y == other.y);

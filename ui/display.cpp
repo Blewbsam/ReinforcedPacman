@@ -24,8 +24,21 @@ void Display::initGameObjects() {
     sf::Color orange(254,138,24);
     this->pellet.setFillColor(orange);
 
+
+    // TODO: move these handlings into game
     this->gs->updateGhostState(CHASER,CHASE);
-    gs->updateGhostPos(this->chaser.getIndexedPosition(),CHASER);
+    this->gs->updateGhostPos(this->chaser.getIndexedPosition(),CHASER);
+
+    this->gs->updateGhostState(AMBUSHER,CHASE);
+    this->gs->updateGhostPos(this->ambusher.getIndexedPosition(),AMBUSHER);
+
+    this->gs->updateGhostState(STUPID,CHASE);
+    this->gs->updateGhostPos(this->stupid.getIndexedPosition(), STUPID);
+
+    this->gs->updateGhostState(FICKLE,CHASE);
+    this->gs->updateGhostPos(this->stupid.getIndexedPosition(),FICKLE);
+    // TODO:
+
     gs->updatePacmanPos(this->pacman.getIndexedPosition());
     this->wall.setSize(sf::Vector2f(PIXEL_SIZE,PIXEL_SIZE));
     this->wall.setFillColor(sf::Color::Blue);
