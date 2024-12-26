@@ -55,22 +55,22 @@ void GhostAI::moveFickle(FickleGhost * fickle, Pacman * pacman, Position chaserP
 
 
 
-void GhostAI::moveToTarget(Ghost * ghost, Position targetPos) {
-    std::vector<Position> validPositions = this->gs->getValidPositions(ghost->getPos(), ghost->getDir(),true); 
+void GhostAI::moveToTarget(Ghost * ghost, Position targetPos, bool hasEscaped) {
+    std::vector<Position> validPositions = this->gs->getValidPositions(ghost->getPos(), ghost->getDir(),hasEscaped); 
     Position validNextPos = this->getMinEuclidianPosition(validPositions,targetPos);
     Direction moveDir = this->getNeighbourDirection(ghost->getPos(), validNextPos);
     ghost->setDir(moveDir);
 }
 
 void GhostAI::moveChaseChaser(ChaserGhost * chaser, Pacman * pacman) {
-    this->moveToTarget(chaser,pacman->getPos());
+    this->moveToTarget(chaser,pacman->getPos(),true);
 }
 
 
 void GhostAI::moveChaseAmbusher(AmbusherGhost * ambusher, Pacman * pacman) {
     // 
     Position targetPos = this->getAmbusherTarget(pacman->getPos(),pacman->getDir());
-    this->moveToTarget(ambusher,targetPos);
+    this->moveToTarget(ambusher,targetPos,true);
 }
 
 
@@ -81,27 +81,24 @@ void GhostAI::moveChaseStupid(StupidGhost * stupid, Pacman * pacman) {
     } else {
         targetPos = pacman->getPos();
     }
-    this->moveToTarget(stupid,targetPos);
+    this->moveToTarget(stupid,targetPos,true);
 }
 
 
 void GhostAI::moveChaseFickle(FickleGhost * fickle, Pacman * pacman, Position chaserPos) {
     Position targetPos = this->getFickleTarget(pacman->getPos(),pacman->getDir(), chaserPos);
-    this->moveToTarget(fickle,targetPos);
+    this->moveToTarget(fickle,targetPos,true);
 }
 
 void GhostAI::moveScatterGhost(Ghost * ghost) {
     Position targetPos = ghost->getScatterCorner();
-    this->moveToTarget(ghost,targetPos);
+    this->moveToTarget(ghost,targetPos,true);
 }
 
 const Position HomePos = {9,9};
 void GhostAI::moveEatenGhost(Ghost * ghost) {
     Position targetPos = HomePos;
-    std::vector<Position> validPositions = this->gs->getValidPositions(ghost->getPos(), ghost->getDir(), false); 
-    Position validNextPos = this->getMinEuclidianPosition(validPositions,targetPos);
-    Direction moveDir = this->getNeighbourDirection(ghost->getPos(), validNextPos);
-    ghost->setDir(moveDir);
+    this->moveToTarget(ghost,targetPos,false);
     if (ghost->getPos() == HomePos) ghost->setGhostState(ESCAPE);
 }
 
@@ -110,10 +107,7 @@ const Position EscapePos = {8,7};
 
 void GhostAI::moveEscapeGhost(Ghost * ghost) {
     Position targetPos = EscapePos;
-    std::vector<Position> validPositions = this->gs->getValidPositions(ghost->getPos(), ghost->getDir(), false); 
-    Position validNextPos = this->getMinEuclidianPosition(validPositions,targetPos);
-    Direction moveDir = this->getNeighbourDirection(ghost->getPos(), validNextPos);
-    ghost->setDir(moveDir);
+    this->moveToTarget(ghost,targetPos,false);
     if (ghost->getPos() == EscapePos) ghost->setGhostState(CHASE);
 }
 

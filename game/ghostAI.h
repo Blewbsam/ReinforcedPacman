@@ -28,7 +28,7 @@ private:
     // determine how ghosts should move.
 
     // sets ghost to correct direction in persuit of targetPos
-    void moveToTarget(Ghost * ghost,Position targetPos);
+    void moveToTarget(Ghost * ghost,Position targetPos,bool hasEscaped);
 
     void moveChaseChaser(ChaserGhost * chaser, Pacman * pacman);
     void moveChaseAmbusher(AmbusherGhost * ambusher, Pacman * pacman);
@@ -41,7 +41,6 @@ private:
      // moves ghost back to home tile, 
     // sets ghost mode to ESCAPE when ghost is home.
     void moveEatenGhost(Ghost * ghost);
-
 
     // Forces ghost to leave home
     // sets ghost mode to CHASE when ghost is out.
