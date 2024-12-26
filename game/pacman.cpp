@@ -4,7 +4,8 @@
 
 
 
-Pacman::Pacman(Position position): Agent(position,IDLE) {
+
+Pacman::Pacman(): Agent(IDLE) {
 
 }
 

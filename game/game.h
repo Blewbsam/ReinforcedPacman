@@ -10,8 +10,12 @@
 #include "ghostAI.h"
 #include "globals.h"
 
-
+#include <chrono>
 #include <vector>
+#include <unordered_map>
+
+extern const std::unordered_map<GhostState,int> globalStateDurations;
+
 
 
 
@@ -30,6 +34,8 @@ class GameState {
     Pacman * pacman_p;
     Ghosts ghosts;
     GhostAI ghostAI;
+    GhostState globalState;
+    std::chrono::steady_clock::time_point stateStartTime;
     unsigned int score;
     bool gameOver;
 
@@ -67,13 +73,10 @@ public:
     // Changes direction of pacman to given direction
     void changePacmanDir(Direction dir);
 
-    // set the directon of each ghost given the board and pacman positions.
-    void generateGhostMoves();
 
-    void generateAmbusherMove();
-    void generateChaserMove();
-    void generateStupidMove();
-    void generateFickleMove();
+
+    // set the directon of each ghost given the board and pacman positions.
+    void generateGhostMove(GhostType type);
 
     // set position of given ghost
     void updateGhostPos(Position pos,GhostType type);
@@ -95,8 +98,8 @@ public:
     // Return neighbors of position on grid which are not walls.
     std::vector<Position> getValidNeighbours(Position pos, bool hasEscaped) const;
 
-
-
+    // gameOver getter
+    bool isGameOver() const;
 
 
 private:
@@ -104,14 +107,26 @@ private:
     // Iterators over all cells to find position of specifiedagentCell being one of: 
     // {GHOST_FICKLE,GHOST_CHASER, GHOST_AMBUSER, GHOST_STUPID}
     // To be used in constructor only
-    Position getAgentPositionBrute(Cell agentCell ,const std::vector<std::vector<Cell >> grid);    
+    // Position getAgentPositionBrute(Cell agentCell ,const std::vector<std::vector<Cell >> grid);    
 
     // check if there is a pellet at pacman's position
     // and remove it if there is so
     void handlePelletCollision();
+    void handlePowerPelletCollision();
+    void handleGhostCollisions();
 
-    // return true if items are at same index
-    bool checkAgentCollison(Agent a1, Agent a2);
+    // changes globalState to newState and changes the state of all active prevStates.
+    void updateGlobalState(GhostState prevState,GhostState newState);
+
+    // sets ghost states for beginnig of the game.
+    void setInitialGhostStates();
+
+    // resets startTimer.
+    void startStateTimer();
+    // checks if it is time for new state
+    bool hasTimeElapsed() const;
+    // switches to next state and resets timer;
+    void switchToNextState();
 
 };
 

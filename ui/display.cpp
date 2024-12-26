@@ -24,20 +24,14 @@ void Display::initGameObjects() {
     sf::Color orange(254,138,24);
     this->pellet.setFillColor(orange);
 
+    this->powerPellet.setRadius(POWER_PELLET_RADIUS);
+    this->powerPellet.setFillColor(orange);
 
-    // TODO: move these handlings into game
-    this->gs->updateGhostState(CHASER,FRIGHTENED);
     this->gs->updateGhostPos(this->chaser.getIndexedPosition(),CHASER);
-
-    this->gs->updateGhostState(AMBUSHER,ESCAPE);
     this->gs->updateGhostPos(this->ambusher.getIndexedPosition(),AMBUSHER);
-
-    this->gs->updateGhostState(STUPID,ESCAPE);
     this->gs->updateGhostPos(this->stupid.getIndexedPosition(), STUPID);
-
-    this->gs->updateGhostState(FICKLE,ESCAPE);
     this->gs->updateGhostPos(this->stupid.getIndexedPosition(),FICKLE);
-    // TODO:
+
 
     gs->updatePacmanPos(this->pacman.getIndexedPosition());
     this->wall.setSize(sf::Vector2f(PIXEL_SIZE,PIXEL_SIZE));
@@ -64,28 +58,33 @@ Display::~Display() {
 
 
 void Display::update() {
-    // pollEvents
-    this->pollEvents();
-    
-    // movePacman
-    this->pacman.move();
 
-    // generateDirections ghosts should take
-    // if (this->chaser.containedInCell()) this->gs->generateGhostMoves();
-    if (this->chaser.containedInCell()) this->gs->generateChaserMove();
-    if (this->ambusher.containedInCell()) this->gs->generateAmbusherMove();
-    if (this->stupid.containedInCell()) this->gs->generateStupidMove();
-    if (this->fickle.containedInCell()) this->gs->generateFickleMove();
+    if (!gs->isGameOver()) {
+            // pollEvents
+        this->pollEvents();
+        
+        // movePacman
+        this->pacman.move();
 
-    // move ghost towards that direction
+        // generateDirections ghosts should take
+        // if (this->chaser.containedInCell()) this->gs->generateGhostMoves();
+        if (this->chaser.containedInCell()) this->gs->generateGhostMove(CHASER);
+        if (this->ambusher.containedInCell()) this->gs->generateGhostMove(AMBUSHER);
+        if (this->stupid.containedInCell()) this->gs->generateGhostMove(STUPID);
+        if (this->fickle.containedInCell()) this->gs->generateGhostMove(FICKLE);
 
-    this->chaser.move();
-    this->ambusher.move();
-    this->fickle.move();
-    this->stupid.move();
+        // move ghost towards that direction
 
-    // check if game is over.
-    gs->handleCollisions();
+        this->chaser.move();
+        this->ambusher.move();
+        this->fickle.move();
+        this->stupid.move();
+
+        // check if game is over.
+        gs->handleCollisions();
+    } else {
+        this->gameLost();
+    }  
 }
 
 
@@ -144,8 +143,15 @@ void Display::renderGhosts() {
 }
 
 
-void Display::renderMaze() {
 
+void Display::gameLost() {
+    // TODO:
+}
+
+
+
+
+void Display::renderMaze() {
     grid_t grid = gs->getGrid();
     for (size_t y = 0; y < grid.size(); ++y) {
         for (size_t x = 0; x < grid[y].size(); ++x) {
@@ -158,6 +164,10 @@ void Display::renderMaze() {
             case PELLET:
                 this->pellet.setPosition(x * PIXEL_SIZE + PELLET_OFFSET, y * PIXEL_SIZE + PELLET_OFFSET);
                 this->window->draw(this->pellet);           
+                break;
+            case POWER_PELLET:
+                this->powerPellet.setPosition(x * PIXEL_SIZE + POWER_PELLET_OFFSET, y * PIXEL_SIZE + POWER_PELLET_OFFSET);
+                this->window->draw(this->powerPellet);
                 break;
             case DOOR:
                 this->door.setPosition(x * PIXEL_SIZE, y * PIXEL_SIZE);

@@ -31,6 +31,7 @@ private:
     sf::RectangleShape door;
     sf::RectangleShape empty;
     sf::CircleShape pellet;
+    sf::CircleShape powerPellet;
 
 
     // initializaton of display
@@ -39,6 +40,9 @@ private:
 
     // initializes gameObjects to proper sizes and colors
     void initGameObjects();
+
+    // animation to run once game is over.
+    void gameLost();
 
 public:
     Display(GameState * gameState);

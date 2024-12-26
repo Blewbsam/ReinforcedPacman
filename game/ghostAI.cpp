@@ -98,7 +98,10 @@ void GhostAI::moveScatterGhost(Ghost * ghost) {
 const Position HomePos = {9,9};
 void GhostAI::moveEatenGhost(Ghost * ghost) {
     Position targetPos = HomePos;
-    this->moveToTarget(ghost,targetPos);
+    std::vector<Position> validPositions = this->gs->getValidPositions(ghost->getPos(), ghost->getDir(), false); 
+    Position validNextPos = this->getMinEuclidianPosition(validPositions,targetPos);
+    Direction moveDir = this->getNeighbourDirection(ghost->getPos(), validNextPos);
+    ghost->setDir(moveDir);
     if (ghost->getPos() == HomePos) ghost->setGhostState(ESCAPE);
 }
 

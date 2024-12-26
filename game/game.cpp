@@ -6,7 +6,7 @@
 
 std::vector<std::string>  levelLayout = {
 		"XXXXXXXXXXXXXXXXXXX",
-		"X........X........X",
+		"X..O.....X.....O..X",
 		"XXXX.XXX.X.XXX.XXXX",
 		"X.................X",
 		"X.XX.X.XXXXX.X.XX.X",
@@ -24,20 +24,27 @@ std::vector<std::string>  levelLayout = {
 		"XX.X.X.XXXXX.X.X.XX",
 		"X....X...X...X....X",
 		"X.XXXXXX.X.XXXXXX.X",
-		"X.................X",
+		"X.O.............O.X",
 		"XXXXXXXXXXXXXXXXXXX"
 };
 
+const std::unordered_map<GhostState, int> globalStateDurations = {
+    {CHASE,20},
+    {SCATTER,7},
+    {FRIGHTENED,6}
+};
+
+
+
 GameState::GameState() : ghostAI(this){
     maze_p = new Maze(levelLayout);
-    pacman_p = new Pacman(getAgentPositionBrute(PACMAN_CELL,maze_p->getGrid()));
-    ghosts.fickle_p = new FickleGhost(getAgentPositionBrute(GHOST_FICKLE,maze_p->getGrid()));
-    ghosts.chaser_p = new ChaserGhost(getAgentPositionBrute(GHOST_CHASER,maze_p->getGrid()));
-    ghosts.ambusher_p = new AmbusherGhost(getAgentPositionBrute(GHOST_AMBUSHER,maze_p->getGrid()));
-    ghosts.stupid_p = new StupidGhost(getAgentPositionBrute(GHOST_STUPID,maze_p->getGrid()));
+    pacman_p = new Pacman();
+    ghosts.fickle_p = new FickleGhost();
+    ghosts.chaser_p = new ChaserGhost();
+    ghosts.ambusher_p = new AmbusherGhost();
+    ghosts.stupid_p = new StupidGhost();
     gameOver = false;
-
-
+    this->setInitialGhostStates();
 }
 
 
@@ -56,6 +63,7 @@ GameState::~GameState() {
 Position GameState::getPacmanPos() const {return pacman_p->getPos();}
 Direction GameState::getPacmanDir() const {return pacman_p->getDir();};
 
+// Possibly remove these.
 Position GameState::getFicklePos() const {return ghosts.fickle_p->getPos();}
 Direction GameState::getFickleDir() const {return ghosts.fickle_p->getDir();}
 Position GameState::getAmbusherPos() const {return ghosts.ambusher_p->getPos();}
@@ -70,36 +78,24 @@ int GameState::getGridWidth()const {return maze_p->getGridWidth();}
 int GameState::getGridHeight() const {return maze_p->getGridHeight();}
 
 
-void GameState::generateGhostMoves(){
-    ghostAI.moveChaser(this->ghosts.chaser_p,this->pacman_p);
-    ghostAI.moveAmbusher(this->ghosts.ambusher_p,this->pacman_p);
-    ghostAI.moveStupid(this->ghosts.stupid_p,this->pacman_p);
-    ghostAI.moveFickle(this->ghosts.fickle_p, this->pacman_p, this->ghosts.chaser_p->getPos());
+void GameState::setInitialGhostStates() {
+    this->updateGhostState(CHASER,ESCAPE);
+    this->updateGhostState(AMBUSHER,ESCAPE);
+    this->updateGhostState(FICKLE,ESCAPE);
+    this->updateGhostState(STUPID,ESCAPE);
 }
 
-void GameState::generateAmbusherMove(){ghostAI.moveAmbusher(this->ghosts.ambusher_p,this->pacman_p);}
-void GameState::generateChaserMove(){ghostAI.moveChaser(this->ghosts.chaser_p,this->pacman_p);}
-void GameState::generateStupidMove(){ghostAI.moveStupid(this->ghosts.stupid_p,this->pacman_p);}
-void GameState::generateFickleMove(){ghostAI.moveFickle(this->ghosts.fickle_p,this->pacman_p,this->ghosts.chaser_p->getPos());}
-
-Position GameState::getAgentPositionBrute(Cell agentCell,const std::vector<std::vector<Cell>> grid) {
-    Position pos = {-1,-1};
-    for (unsigned int y = 0; y < grid.size(); y++) {
-        for (unsigned int x = 0; x < grid[y].size(); x++) {
-            if (grid[y][x] == agentCell) {
-                pos.x = (int) x;
-                pos.y = (int) y;
-                goto done;
-            }
-        }
+void GameState::generateGhostMove(GhostType type){
+    if (this->hasTimeElapsed()) this->switchToNextState();
+    switch (type) {
+    case CHASER: ghostAI.moveChaser(this->ghosts.chaser_p,this->pacman_p); break;
+    case AMBUSHER: ghostAI.moveAmbusher(this->ghosts.ambusher_p,this->pacman_p); break;
+    case FICKLE: ghostAI.moveFickle(this->ghosts.fickle_p, this->pacman_p, this->ghosts.chaser_p->getPos());
+    case STUPID: ghostAI.moveStupid(this->ghosts.stupid_p,this->pacman_p);
+    default:
+        break;
     }
-    done:
-    if (pos.x == -1 || pos.y == -1) std::cout << __LINE__ << ": specified cell was not found on layout" << std::endl;
-    return pos;
 }
-
-
-
 
 void GameState::updatePacmanPos(Position pos) {
     this->pacman_p->setPos(pos);
@@ -151,11 +147,10 @@ bool GameState::validPacmanMove(Direction dir) const {
     return cell != WALL;
 }
 
-
-
 void GameState::handleCollisions() {
     this->handlePelletCollision();
-    // handle ghost collisions here TODO:
+    this->handlePowerPelletCollision();
+    this->handleGhostCollisions();
 }
  
 void GameState::handlePelletCollision() {
@@ -166,6 +161,30 @@ void GameState::handlePelletCollision() {
     }
 }
 
+void GameState::handlePowerPelletCollision() {
+    Position pacPos = this->pacman_p->getPos();
+    if (maze_p->getCell(pacPos) == POWER_PELLET) {
+        maze_p->setCell(pacPos,EMPTY);
+        score += 20;
+        this->globalState = FRIGHTENED;
+        this->startStateTimer();
+    }
+}
+
+void GameState::handleGhostCollisions() {
+    Position pacmanPosition = this->pacman_p->getPos();
+    if (this->globalState != FRIGHTENED){
+        if (pacmanPosition == this->ghosts.chaser_p->getPos()) { this->gameOver = true;}
+        else if (pacmanPosition == this->ghosts.ambusher_p->getPos()) { this->gameOver = true;}
+        else if (pacmanPosition == this->ghosts.fickle_p->getPos()) { this->gameOver = true;}
+        else if (pacmanPosition == this->ghosts.stupid_p->getPos()) { this->gameOver = true;}
+    } else {
+        if (pacmanPosition == this->ghosts.chaser_p->getPos()) {this->ghosts.chaser_p->setGhostState(EATEN);}
+        else if (pacmanPosition == this->ghosts.ambusher_p->getPos()) {this->ghosts.ambusher_p->setGhostState(EATEN);}
+        else if (pacmanPosition == this->ghosts.fickle_p->getPos()) {this->ghosts.fickle_p->setGhostState(EATEN);}
+        else if (pacmanPosition == this->ghosts.stupid_p->getPos()) {this->ghosts.stupid_p->setGhostState(EATEN);}
+    }
+}
 
 bool GameState::jumpAvail(Position pos) {   
     return (pos.y == MIDLE_ROW_INDEX && pos.x == 0) || (pos.y == MIDLE_ROW_INDEX && pos.x == maze_p->getGridWidth() - 1);
@@ -183,7 +202,6 @@ void GameState::changePacmanDir(Direction dir) {
     this->pacman_p->setDir(dir);
 }
 
-
 // takes position and way agent is facing and returns Position behind agent
 Position getReversePosition(Position pos, Direction dir) {
     switch (dir) {
@@ -195,7 +213,6 @@ Position getReversePosition(Position pos, Direction dir) {
     }
     return pos;
 }
-
 
 std::vector<Position> GameState::getValidPositions(Position ghostPos, Direction ghostDir, bool hasEscaped) const {
 
@@ -210,8 +227,45 @@ std::vector<Position> GameState::getValidPositions(Position ghostPos, Direction 
     return validNeighbours;
 }
 
-
 std::vector<Position> GameState::getValidNeighbours(Position pos, bool hasEscaped) const {
     if (hasEscaped) return this->maze_p->getValidEscapedNeighbours(pos);
     return this->maze_p->getValidNeighbours(pos);
 }
+
+void GameState::updateGlobalState(GhostState prevState, GhostState newState) {
+    this->globalState =  newState;
+    if (this->ghosts.chaser_p->getGhostState() == prevState) this->ghosts.chaser_p->setGhostState(newState);
+    if (this->ghosts.ambusher_p->getGhostState() == prevState) this->ghosts.ambusher_p->setGhostState(newState);
+    if (this->ghosts.fickle_p->getGhostState() == prevState) this->ghosts.fickle_p->setGhostState(newState);
+    if (this->ghosts.stupid_p->getGhostState() == prevState) this->ghosts.stupid_p->setGhostState(newState);
+}
+
+void GameState::startStateTimer() {
+    this->stateStartTime = std::chrono::steady_clock::now(); 
+}
+
+bool GameState::hasTimeElapsed() const {
+    auto now = std::chrono::steady_clock::now();
+    std::chrono::duration<int> elapsedTime = std::chrono::duration_cast<std::chrono::seconds>(now - stateStartTime);
+    return elapsedTime.count() >= globalStateDurations.at(this->globalState);  
+}
+
+
+void GameState::switchToNextState() {
+    std::cout << "Switching States" << std::endl;
+    if (this->globalState == CHASE) {
+        this->updateGlobalState(CHASE,SCATTER);
+    } else if (this->globalState == SCATTER) {
+        this->updateGlobalState(SCATTER,CHASE);
+    } else {
+        this->updateGlobalState(FRIGHTENED,CHASE);
+    }
+    this->startStateTimer();
+}
+
+
+
+
+
+bool GameState::isGameOver() const {return this->gameOver;}
+
