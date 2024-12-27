@@ -14,8 +14,9 @@ class GhostUI : public AgentUI {
         Direction ghostDir;
         bool active;
         sf::Sprite * face;
+        sf::Color defaultColor;
     public:
-        GhostUI(GameState * gameState, sf::Vector2f pos);
+        GhostUI(GameState * gameState, sf::Vector2f pos, sf::Color defaultColor);
 
         sf::RectangleShape getGraphic();
         
@@ -32,6 +33,7 @@ class GhostUI : public AgentUI {
         void setOrientationForRendering() override;
 
         void render(GhostState state, Direction ghostDir);
+        void setBodyColorForRendering(GhostState state);
         void setFacePositionForRendering();
         void setFaceOrientationForRendering(GhostState state, Direction ghostDir);
 

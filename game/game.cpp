@@ -34,8 +34,6 @@ const std::unordered_map<GhostState, int> globalStateDurations = {
     {FRIGHTENED,6}
 };
 
-
-
 GameState::GameState() : ghostAI(this){
     maze_p = new Maze(levelLayout);
     pacman_p = new Pacman();
@@ -63,16 +61,6 @@ GameState::~GameState() {
 Position GameState::getPacmanPos() const {return pacman_p->getPos();}
 Direction GameState::getPacmanDir() const {return pacman_p->getDir();};
 
-// Possibly remove these.
-Position GameState::getFicklePos() const {return ghosts.fickle_p->getPos();}
-Direction GameState::getFickleDir() const {return ghosts.fickle_p->getDir();}
-Position GameState::getAmbusherPos() const {return ghosts.ambusher_p->getPos();}
-Direction GameState::getAmbusherDir() const {return ghosts.ambusher_p->getDir();};
-Position GameState::getChaserPos() const {return ghosts.chaser_p->getPos();}
-Direction GameState::getChaserDir() const {return ghosts.chaser_p->getDir();}
-Position GameState::getStupidPos() const {return ghosts.stupid_p->getPos();}
-Direction GameState::getStupidDir() const {return ghosts.stupid_p->getDir();}
-
 
 
 Direction GameState::getGhostDir(GhostType type) {
@@ -96,6 +84,8 @@ GhostState GameState::getGhostState(GhostType type) {
 grid_t GameState::getGrid() const {return maze_p->getGrid();}
 int GameState::getGridWidth()const {return maze_p->getGridWidth();}
 int GameState::getGridHeight() const {return maze_p->getGridHeight();}
+
+GhostState GameState::getGlobalState() const {return this->globalState;}
 
 
 void GameState::setInitialGhostStates() {
@@ -186,10 +176,10 @@ void GameState::handlePowerPelletCollision() {
     if (maze_p->getCell(pacPos) == POWER_PELLET) {
         maze_p->setCell(pacPos,EMPTY);
         score += 20;
-        this->globalState = FRIGHTENED;
-        this->startStateTimer();
+        this->updateGlobalState(this->globalState,FRIGHTENED);
     }
 }
+
 
 void GameState::handleGhostCollisions() {
     Position pacmanPosition = this->pacman_p->getPos();
@@ -254,10 +244,12 @@ std::vector<Position> GameState::getValidNeighbours(Position pos, bool hasEscape
 
 void GameState::updateGlobalState(GhostState prevState, GhostState newState) {
     this->globalState =  newState;
+    if (newState == FRIGHTENED) std::cout << "Making frightened" << std::endl;
     if (this->ghosts.chaser_p->getGhostState() == prevState) this->ghosts.chaser_p->setGhostState(newState);
     if (this->ghosts.ambusher_p->getGhostState() == prevState) this->ghosts.ambusher_p->setGhostState(newState);
     if (this->ghosts.fickle_p->getGhostState() == prevState) this->ghosts.fickle_p->setGhostState(newState);
     if (this->ghosts.stupid_p->getGhostState() == prevState) this->ghosts.stupid_p->setGhostState(newState);
+    this->startStateTimer();
 }
 
 void GameState::startStateTimer() {
@@ -280,7 +272,6 @@ void GameState::switchToNextState() {
     } else {
         this->updateGlobalState(FRIGHTENED,CHASE);
     }
-    this->startStateTimer();
 }
 
 

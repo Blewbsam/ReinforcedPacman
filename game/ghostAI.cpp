@@ -108,7 +108,7 @@ const Position EscapePos = {8,7};
 void GhostAI::moveEscapeGhost(Ghost * ghost) {
     Position targetPos = EscapePos;
     this->moveToTarget(ghost,targetPos,false);
-    if (ghost->getPos() == EscapePos) ghost->setGhostState(CHASE);
+    if (ghost->getPos() == EscapePos) ghost->setGhostState(this->gs->getGlobalState());
 }
 
 

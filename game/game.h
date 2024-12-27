@@ -46,14 +46,6 @@ public:
     // getters used to get position of agents:
     Position getPacmanPos() const;
     Direction getPacmanDir() const;
-    Position getFicklePos() const;
-    Direction getFickleDir() const;
-    Position getAmbusherPos() const;
-    Direction getAmbusherDir() const;
-    Position getStupidPos() const;
-    Direction getStupidDir() const;
-    Position getChaserPos() const;
-    Direction getChaserDir() const;
 
     Direction getGhostDir(GhostType type);
     GhostState getGhostState(GhostType type);
@@ -63,7 +55,7 @@ public:
     int getGridWidth() const;
     int getGridHeight() const;
 
-
+    GhostState getGlobalState() const;
 
 
 

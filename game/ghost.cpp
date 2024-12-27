@@ -6,6 +6,7 @@
 Ghost::Ghost(Position sc): Agent(IDLE), state(SLEEP), scatterCorner(sc){}
 
 void Ghost::setGhostState(GhostState ghostState) {
+    if (ghostState == FRIGHTENED) std::cout << "I am scared" << std::endl;
     this->state = ghostState;
 }
 

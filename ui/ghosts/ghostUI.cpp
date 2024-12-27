@@ -1,11 +1,12 @@
 #include "ghostUI.h"
 
-GhostUI::GhostUI(GameState * gameState, sf::Vector2f pos) : AgentUI(gameState,pos,new sf::RectangleShape(sf::Vector2f(PIXEL_SIZE,PIXEL_SIZE))){
+GhostUI::GhostUI(GameState * gameState, sf::Vector2f pos, sf::Color defaultColor) : AgentUI(gameState,pos,new sf::RectangleShape(sf::Vector2f(PIXEL_SIZE,PIXEL_SIZE))){
     this->ghostDir = IDLE;
     this->active = false;
     this->animationSpeed = 0.1f;
     this->frame = 0;
     this->face = new sf::Sprite();
+    this->defaultColor = defaultColor;
 
     if (!this->texture->loadFromFile("animations/GhostAnimation.png")) {
         std::cerr << "Failed to load Ghost animation texture!" << std::endl;
@@ -47,6 +48,7 @@ void GhostUI::render(GhostState state, Direction ghostDir) {
     this->setOrientationForRendering();
     this->setFacePositionForRendering();
     this->setFaceOrientationForRendering(state,ghostDir);
+    this->setBodyColorForRendering(state);
 }
 
 void GhostUI::setOrientationForRendering() {
@@ -55,6 +57,16 @@ void GhostUI::setOrientationForRendering() {
         this->scaleSprite();
         this->nextFrame();
         this->animationClock.restart();
+    }
+}
+
+void GhostUI::setBodyColorForRendering(GhostState state) {
+    sf::Color frightenedBlue(0, 0, 255); // Pure blue
+    if (state == FRIGHTENED) {
+        std::cout << "Frightened" << std::endl;
+        this->sprite->setColor(frightenedBlue);
+    } else {
+        this->sprite->setColor(this->defaultColor);
     }
 }
 
@@ -78,8 +90,10 @@ void GhostUI::setFaceOrientationForRendering(GhostState state, Direction ghostDi
     case EATEN:
         this->face->setTextureRect(sf::IntRect(FRAME_SIZE * 4, FRAME_SIZE * 1, FRAME_SIZE, FRAME_SIZE));
         break;
-    case FRIGHTENED:
+    case FRIGHTENED: {
         this->face->setTextureRect(sf::IntRect(FRAME_SIZE * this->getRowIndex(ghostDir), FRAME_SIZE * 2, FRAME_SIZE, FRAME_SIZE));
+        break;
+    }
     default:
         this->face->setTextureRect(sf::IntRect(FRAME_SIZE * this->getRowIndex(ghostDir), FRAME_SIZE * 1, FRAME_SIZE, FRAME_SIZE));
     }
