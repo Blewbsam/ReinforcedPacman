@@ -5,7 +5,6 @@
 #define FICKLE_STEP_SIZE 1
 
 FickleUI::FickleUI(GameState * gameState) : GhostUI(gameState,sf::Vector2f(FICKLE_START_X,FICKLE_START_Y),sf::Color::Cyan){
-    this->graphic->setFillColor(sf::Color::Cyan);
     this->sprite->setColor(sf::Color::Cyan);
 }
 

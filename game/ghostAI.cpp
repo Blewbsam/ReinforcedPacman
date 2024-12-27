@@ -108,10 +108,16 @@ const Position EscapePos = {8,7};
 void GhostAI::moveEscapeGhost(Ghost * ghost) {
     Position targetPos = EscapePos;
     this->moveToTarget(ghost,targetPos,false);
-    if (ghost->getPos() == EscapePos) ghost->setGhostState(this->gs->getGlobalState());
+    if (ghost->getPos() == EscapePos) {
+        if (this->gs->getGlobalState() == FRIGHTENED) {
+            // when game is in FRIGHTENED state, ghost should CHASe.
+            ghost->setGhostState(CHASE);
+        } else {
+            ghost->setGhostState(this->gs->getGlobalState());
+        }
+    }
+
 }
-
-
 void GhostAI::moveFrightenedGhost(Ghost * ghost) {
     std::vector<Position> validPositions = this->gs->getValidPositions(ghost->getPos(), ghost->getDir(), true); 
     if (validPositions.empty()) {

@@ -4,9 +4,7 @@
 
 sf::Vector2f startPos = sf::Vector2f(PACMAN_START_X * PIXEL_SIZE, PACMAN_START_Y * PIXEL_SIZE);
 
-PacmanUI::PacmanUI(GameState * gameState) : AgentUI(gameState,startPos,new sf::CircleShape(PACMAN_RADIUS)) {
-    // this->graphic.setRadius(PACMAN_RADIUS);
-    this->graphic->setFillColor(sf::Color::Yellow);
+PacmanUI::PacmanUI(GameState * gameState) : AgentUI(gameState,startPos) {
     this->pacmanDir = IDLE;
     this->nextDir = RIGHT;
     this->frame = 0;
@@ -21,10 +19,6 @@ PacmanUI::PacmanUI(GameState * gameState) : AgentUI(gameState,startPos,new sf::C
 
 }
 
-sf::CircleShape PacmanUI::getGraphic() {
-    sf::CircleShape * circle = dynamic_cast<sf::CircleShape*>(this->graphic);
-    return *circle;
-}
 
 
 void PacmanUI::setNextDir(Direction dir) {

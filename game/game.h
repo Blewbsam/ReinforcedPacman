@@ -109,6 +109,7 @@ private:
     void handlePelletCollision();
     void handlePowerPelletCollision();
     void handleGhostCollisions();
+    void handleGhostCollision(Ghost * ghost, Position pacmanPosition);
 
     // changes globalState to newState and changes the state of all active prevStates.
     void updateGlobalState(GhostState prevState,GhostState newState);

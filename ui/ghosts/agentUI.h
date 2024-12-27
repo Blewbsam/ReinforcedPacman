@@ -22,7 +22,7 @@ public:
     sf::Shape * graphic;
     sf::Sprite * sprite;
     sf::Texture * texture;
-    AgentUI(GameState * gameState, sf::Vector2f start, sf::Shape * shape);
+    AgentUI(GameState * gameState, sf::Vector2f start);
     ~AgentUI();
 
     // snap graphic position to nearest valid grid

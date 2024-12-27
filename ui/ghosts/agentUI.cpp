@@ -5,16 +5,14 @@
 
 
 
-AgentUI::AgentUI(GameState * gameState, sf::Vector2f start, sf::Shape * shape) {
+AgentUI::AgentUI(GameState * gameState, sf::Vector2f start) {
     this->gs = gameState;
     this->SFposition = start;
-    this->graphic = shape;
     this->sprite = new sf::Sprite();
     this->texture = new sf::Texture();
 }
 
 AgentUI::~AgentUI() {
-    delete this->graphic;
     delete this->sprite;
     delete this->texture;    
 }
@@ -34,7 +32,6 @@ bool AgentUI::containedInCell() {
 
 void AgentUI::setPositionForRendering() {
     if (gs->jumpAvail(this->getIndexedPosition())) this->setSFPosition(gs->jumpPortal(this->getIndexedPosition()));
-    this->graphic->setPosition(this->SFposition.x, this->SFposition.y); // remove later
     this->sprite->setPosition(this->SFposition.x, this->SFposition.y);
 }
 

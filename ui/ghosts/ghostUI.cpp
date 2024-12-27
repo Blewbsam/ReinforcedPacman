@@ -1,6 +1,6 @@
 #include "ghostUI.h"
 
-GhostUI::GhostUI(GameState * gameState, sf::Vector2f pos, sf::Color defaultColor) : AgentUI(gameState,pos,new sf::RectangleShape(sf::Vector2f(PIXEL_SIZE,PIXEL_SIZE))){
+GhostUI::GhostUI(GameState * gameState, sf::Vector2f pos, sf::Color defaultColor) : AgentUI(gameState,pos){
     this->ghostDir = IDLE;
     this->active = false;
     this->animationSpeed = 0.1f;
@@ -21,11 +21,6 @@ GhostUI::GhostUI(GameState * gameState, sf::Vector2f pos, sf::Color defaultColor
 void GhostUI::move(){
     // this->gs->
     return;
-}
-
-sf::RectangleShape GhostUI::getGraphic() {
-    sf::RectangleShape * shape = dynamic_cast<sf::RectangleShape *>(this->graphic);
-    return *shape;
 }
 
 sf::Sprite GhostUI::getFace() {
@@ -62,11 +57,12 @@ void GhostUI::setOrientationForRendering() {
 
 void GhostUI::setBodyColorForRendering(GhostState state) {
     sf::Color frightenedBlue(0, 0, 255); // Pure blue
-    if (state == FRIGHTENED) {
-        std::cout << "Frightened" << std::endl;
-        this->sprite->setColor(frightenedBlue);
-    } else {
-        this->sprite->setColor(this->defaultColor);
+    sf::Color opaqueBlack = sf::Color::Black;
+    opaqueBlack.a = 0;
+    switch (state) {
+        case FRIGHTENED: this->sprite->setColor(frightenedBlue); break;
+        case EATEN: this->sprite->setColor(opaqueBlack); break;
+        default:    this->sprite->setColor(this->defaultColor); break;
     }
 }
 
@@ -98,7 +94,7 @@ void GhostUI::setFaceOrientationForRendering(GhostState state, Direction ghostDi
         this->face->setTextureRect(sf::IntRect(FRAME_SIZE * this->getRowIndex(ghostDir), FRAME_SIZE * 1, FRAME_SIZE, FRAME_SIZE));
     }
     // scale face
-    int scale = PIXEL_SIZE / FRAME_SIZE;
+    float scale = PIXEL_SIZE / FRAME_SIZE;
     this->face->setScale(scale,scale);
 }
 

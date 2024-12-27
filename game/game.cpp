@@ -183,16 +183,22 @@ void GameState::handlePowerPelletCollision() {
 
 void GameState::handleGhostCollisions() {
     Position pacmanPosition = this->pacman_p->getPos();
-    if (this->globalState != FRIGHTENED){
-        if (pacmanPosition == this->ghosts.chaser_p->getPos()) { this->gameOver = true;}
-        else if (pacmanPosition == this->ghosts.ambusher_p->getPos()) { this->gameOver = true;}
-        else if (pacmanPosition == this->ghosts.fickle_p->getPos()) { this->gameOver = true;}
-        else if (pacmanPosition == this->ghosts.stupid_p->getPos()) { this->gameOver = true;}
-    } else {
-        if (pacmanPosition == this->ghosts.chaser_p->getPos()) {this->ghosts.chaser_p->setGhostState(EATEN);}
-        else if (pacmanPosition == this->ghosts.ambusher_p->getPos()) {this->ghosts.ambusher_p->setGhostState(EATEN);}
-        else if (pacmanPosition == this->ghosts.fickle_p->getPos()) {this->ghosts.fickle_p->setGhostState(EATEN);}
-        else if (pacmanPosition == this->ghosts.stupid_p->getPos()) {this->ghosts.stupid_p->setGhostState(EATEN);}
+    this->handleGhostCollision(this->ghosts.chaser_p,pacmanPosition);
+    this->handleGhostCollision(this->ghosts.ambusher_p,pacmanPosition);
+    this->handleGhostCollision(this->ghosts.fickle_p,pacmanPosition);
+    this->handleGhostCollision(this->ghosts.stupid_p,pacmanPosition);
+}
+
+void GameState::handleGhostCollision(Ghost * ghost,Position pacmanPosition) {
+    if (ghost->getPos() == pacmanPosition) {
+        switch (ghost->getGhostState()){
+            case SCATTER:
+            case ESCAPE:
+            case CHASE: this->gameOver = true; break;
+            case FRIGHTENED: ghost->setGhostState(EATEN);break;
+        default:
+            break;
+        }
     }
 }
 

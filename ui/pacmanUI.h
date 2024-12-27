@@ -20,8 +20,6 @@ class PacmanUI : public AgentUI {
     public:
         PacmanUI(GameState * gamestate);
 
-        sf::CircleShape getGraphic();
-
         bool validPacmanMove(Direction dir);
 
         void move() override;
