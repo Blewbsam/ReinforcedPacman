@@ -73,6 +73,26 @@ Direction GameState::getChaserDir() const {return ghosts.chaser_p->getDir();}
 Position GameState::getStupidPos() const {return ghosts.stupid_p->getPos();}
 Direction GameState::getStupidDir() const {return ghosts.stupid_p->getDir();}
 
+
+
+Direction GameState::getGhostDir(GhostType type) {
+    switch (type) {
+        case CHASER: return ghosts.chaser_p->getDir();
+        case AMBUSHER: return ghosts.ambusher_p->getDir();
+        case FICKLE: return ghosts.fickle_p->getDir();
+        default: return ghosts.stupid_p->getDir();
+    }
+}
+GhostState GameState::getGhostState(GhostType type) {
+    switch (type) {
+        case CHASER: return ghosts.chaser_p->getGhostState();
+        case AMBUSHER: return ghosts.ambusher_p->getGhostState();
+        case FICKLE: return ghosts.fickle_p->getGhostState();
+        default: return ghosts.stupid_p->getGhostState();
+    }
+}
+
+
 grid_t GameState::getGrid() const {return maze_p->getGrid();}
 int GameState::getGridWidth()const {return maze_p->getGridWidth();}
 int GameState::getGridHeight() const {return maze_p->getGridHeight();}
