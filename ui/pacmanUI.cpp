@@ -2,9 +2,6 @@
 
 #include "pacmanUI.h"
 
-#define FRAME_SIZE 16
-
-
 sf::Vector2f startPos = sf::Vector2f(PACMAN_START_X * PIXEL_SIZE, PACMAN_START_Y * PIXEL_SIZE);
 
 PacmanUI::PacmanUI(GameState * gameState) : AgentUI(gameState,startPos,new sf::CircleShape(PACMAN_RADIUS)) {
@@ -64,8 +61,7 @@ void PacmanUI::setOrientationForRendering() {
 		this->sprite->setTextureRect(sf::IntRect(FRAME_SIZE * this->frame, FRAME_SIZE * this->getRowIndex(), FRAME_SIZE, FRAME_SIZE));
 
         // must scale sprite up to CELL_SIZE
-        float scale = PIXEL_SIZE / FRAME_SIZE;
-        this->sprite->setScale(scale,scale);
+        this->scaleSprite();
 
         this->nextFrame();
         this->animationClock.restart();   
@@ -89,9 +85,5 @@ int PacmanUI::getRowIndex() {
 }
 
 void PacmanUI::nextFrame() {
-    if (this->frame == 5) {
-        this->frame = 0;
-    } else {
-        this->frame += 1;
-    }
+    this->frame = (this->frame + 1) % 5;
 }

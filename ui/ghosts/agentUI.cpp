@@ -34,9 +34,13 @@ bool AgentUI::containedInCell() {
 
 void AgentUI::setPositionForRendering() {
     if (gs->jumpAvail(this->getIndexedPosition())) this->setSFPosition(gs->jumpPortal(this->getIndexedPosition()));
-    this->graphic->setPosition(this->SFposition.x, this->SFposition.y);
+    this->graphic->setPosition(this->SFposition.x, this->SFposition.y); // remove later
+    this->sprite->setPosition(this->SFposition.x, this->SFposition.y);
 }
 
+void AgentUI::setOrientationForRendering()
+{
+}
 
 Position AgentUI::getIndexedPosition() { // this
     Position pos(std::round((this->SFposition.x)/ PIXEL_SIZE),std::round((this->SFposition.y)/ PIXEL_SIZE));
@@ -45,6 +49,11 @@ Position AgentUI::getIndexedPosition() { // this
 void AgentUI::setSFPosition(Position pos) { //  this
     this->SFposition.x = pos.x * PIXEL_SIZE;
     this->SFposition.y = pos.y * PIXEL_SIZE;
+}
+
+void AgentUI::scaleSprite() {
+    float scale = PIXEL_SIZE / FRAME_SIZE;
+    this->sprite->setScale(scale,scale);
 }
 
 

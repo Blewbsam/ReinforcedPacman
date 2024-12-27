@@ -13,10 +13,13 @@ class GhostUI : public AgentUI {
     protected:
         Direction ghostDir;
         bool active;
+        sf::Sprite * face;
     public:
         GhostUI(GameState * gameState, sf::Vector2f pos);
 
         sf::RectangleShape getGraphic();
+        
+        sf::Sprite getFace();
         
         // Specifications similar to pacmanUI
         virtual void move() override;
@@ -25,6 +28,15 @@ class GhostUI : public AgentUI {
 
         // sets active to true for game to start.
         void awake();
+
+        void setOrientationForRendering() override;
+
+        void render(GhostState state, Direction ghostDir);
+        void setFacePositionForRendering();
+        void setFaceOrientationForRendering(GhostState state, Direction ghostDir);
+
+        void nextFrame();
+        int getRowIndex(Direction ghostDir);
 };
 
 

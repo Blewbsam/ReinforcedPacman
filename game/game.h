@@ -55,6 +55,9 @@ public:
     Position getChaserPos() const;
     Direction getChaserDir() const;
 
+    Direction getGhostDir(GhostType type);
+    GhostState getGhostState(GhostType type);
+
     // maze_p accessors for communicating with GhostAI
     grid_t getGrid() const;
     int getGridWidth() const;

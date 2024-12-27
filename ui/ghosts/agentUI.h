@@ -7,11 +7,17 @@
 #include "../../game/game.h"
 #include <SFML/Graphics.hpp>
 
+#define FRAME_SIZE 16
+
 
 class AgentUI {
 protected:
     GameState * gs;
     sf::Vector2f SFposition;
+    sf::Clock animationClock;
+    int frame;
+    float animationSpeed;
+
 public:
     sf::Shape * graphic;
     sf::Sprite * sprite;
@@ -28,10 +34,13 @@ public:
     // Graphic position setter
     // also handles teleports  
     virtual void setPositionForRendering();
+    virtual void setOrientationForRendering();
     // conersts Vector2f SFPosition to Position struct
     Position getIndexedPosition();
     // setter for SFPosition
     void setSFPosition(Position pos);
+
+    void scaleSprite();
 
     // sprite dereference getter
     sf::Sprite getSprite();

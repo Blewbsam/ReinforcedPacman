@@ -130,18 +130,22 @@ void Display::renderPacman() {
 }
 
 void Display::renderGhosts() {
-    this->chaser.setPositionForRendering();
-    this->window->draw(this->chaser.getGraphic());
+    this->chaser.render(this->gs->getGhostState(CHASER),this->gs->getGhostDir(CHASER));
+    this->window->draw(this->chaser.getSprite());
+    this->window->draw(this->chaser.getFace());
 
-    this->ambusher.setPositionForRendering();
-    this->window->draw(this->ambusher.getGraphic());
+    //  TODO: change these below
+    this->ambusher.render(this->gs->getGhostState(AMBUSHER),this->gs->getGhostDir(AMBUSHER));
+    this->window->draw(this->ambusher.getSprite());
+    this->window->draw(this->ambusher.getFace());
 
-    this->fickle.setPositionForRendering();
-    this->window->draw(this->fickle.getGraphic());
+    this->fickle.render(this->gs->getGhostState(FICKLE),this->gs->getGhostDir(FICKLE));
+    this->window->draw(this->fickle.getSprite());
+    this->window->draw(this->fickle.getFace());
 
-    this->stupid.setPositionForRendering();
-    this->window->draw(this->stupid.getGraphic());
-
+    this->stupid.render(this->gs->getGhostState(STUPID),this->gs->getGhostDir(STUPID));
+    this->window->draw(this->stupid.getSprite());
+    this->window->draw(this->stupid.getFace());
 }
 
 
