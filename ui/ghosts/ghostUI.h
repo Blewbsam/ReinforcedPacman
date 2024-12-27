@@ -25,6 +25,7 @@ class GhostUI : public AgentUI {
         // Specifications similar to pacmanUI
         virtual void move() override;
 
+        // moves Ghost to dir by set_size
         void move(Direction dir,int step_size);
 
         // sets active to true for game to start.

@@ -22,12 +22,16 @@ class Maze {
         int getGridWidth() const;
         int getGridHeight() const;
         
-        // returns all neighbors that are OPEN
+        // returns all neighboring cells that are not WALL
         std::vector<Position> getValidNeighbours(Position pos) const;
+        // returns all neighbopring cells that are not WALL and DOOR
         std::vector<Position> getValidEscapedNeighbours(Position pos) const;
+        
         Cell getCell(Position pos) const; 
         void setCell(Position pos, Cell type); 
+        // terminal output of grid in current state.
         void printGrid();
+        // returns true if pos is in grid
         bool validPos(Position pos) const;
 
 };
