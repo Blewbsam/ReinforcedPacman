@@ -6,30 +6,38 @@
 #include "agent.h"
 
 class Ghost: public Agent {
+    protected:
+    // Ghosts target tile. initalized to (-1,-1)
+    Position scatterCorner;
+    GhostState state;
+
     public:
-    Ghost(Position position);
+    Ghost(Position sc);
+    Position getScatterCorner() const;
+    void setGhostState(GhostState ghostState);
+    GhostState getGhostState() const;
 };
 
 
 
 class FickleGhost: public Ghost {
     public:
-    FickleGhost(Position position);
+    FickleGhost();
 };
 
 class ChaserGhost: public Ghost {
     public: 
-    ChaserGhost(Position position);
+    ChaserGhost();
 };
 
 class AmbusherGhost: public Ghost {
     public:
-    AmbusherGhost(Position position);
+    AmbusherGhost();
 };
 
 class StupidGhost: public Ghost {
     public:
-    StupidGhost(Position position);
+    StupidGhost();
 };
 
 

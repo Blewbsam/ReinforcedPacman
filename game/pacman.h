@@ -8,7 +8,7 @@
 
 class Pacman: public Agent {
     public: 
-    Pacman(Position position);    
+    Pacman();    
 };
 
 

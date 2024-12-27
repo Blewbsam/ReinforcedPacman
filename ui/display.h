@@ -2,16 +2,14 @@
 #define DISPLAY
 
 #include <SFML/Graphics.hpp>
-#include "../game/maze.h"
+#include "pacmanUI.h"
+#include "globalsUI.h"
 #include "../game/game.h"
+#include "ghosts/chaserUI.h"
+#include "ghosts/ambusherUI.h"
+#include "ghosts/fickleUI.h"
+#include "ghosts/stupidUI.h"
 
-#define WINDOW_HEIGHT 630
-#define WINDOW_WIDTH 570
-#define PIXEL_SIZE 30.f
-#define PACMAN_RADIUS 15.f
-#define PACMAN_START_X 5
-#define PACMAN_START_Y 13
-#define PACMAN_STEP_SIZE 2
 
 
 class Display {
@@ -23,16 +21,18 @@ private:
     GameState * gs;
 
     // game objects
-    sf::CircleShape pacman;
-    sf::RectangleShape wall;
-    sf::RectangleShape empty;
+    PacmanUI pacman;
+    ChaserUI chaser;
+    AmbusherUI ambusher;
+    FickleUI fickle;
+    StupidUI stupid;
 
-    // Position of unique game objects
-    sf::Vector2f pacmanPos;
-    // Pacman's current direction
-    Direction pacmanDir;
-    // Next Direction Pacman should have. Set by events
-    Direction nextDir;
+    sf::RectangleShape wall;
+    sf::RectangleShape door;
+    sf::RectangleShape empty;
+    sf::CircleShape pellet;
+    sf::CircleShape powerPellet;
+
 
     // initializaton of display
     void initVariables(GameState * gameState);
@@ -41,17 +41,8 @@ private:
     // initializes gameObjects to proper sizes and colors
     void initGameObjects();
 
-
-    // changes direction of pacman to specified dir
-    void setNextDir(Direction dir); 
-    // snap pacman position to nearest valid grid.
-    void snapPacmanToGrid(); 
-    // returns true if pacman can move in given direciton, false otherwise
-    bool validPacmanMove(Direction dir); 
-    // Moves pacman in specified direction.
-    void pacmanMove(); 
-    // returns true if pacman is in single PIXEL sized cell
-    bool pacmanContainedInCell(); 
+    // animation to run once game is over.
+    void gameLost();
 
 public:
     Display(GameState * gameState);
@@ -64,17 +55,19 @@ public:
     void render();
     // check for and handle triggered events.
     void pollEvents();
-    // places pacman in appropriate position
+
+    // following set of functions set agent in approriat position to be displayed
     void renderPacman();
+    void renderGhosts();
+
+
+
     // use the grid_t structure to render display
     void renderMaze(); 
+
+
     // returns wether the window is open or not
     bool running() const;
-
-    // conersts Vector2f pacmanPos to Position struct
-    Position getIndexedPacmanPos();
-
-
 
 };
 
