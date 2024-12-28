@@ -19,7 +19,6 @@ protected:
     float animationSpeed;
 
 public:
-    sf::Shape * graphic;
     sf::Sprite * sprite;
     sf::Texture * texture;
     AgentUI(GameState * gameState, sf::Vector2f start);
@@ -31,15 +30,16 @@ public:
     virtual void move();
     // returns true if graphic is in single pixel sized cell
     bool containedInCell();
-    // Graphic position setter
+    // Sprite position setter
     // also handles teleports  
     virtual void setPositionForRendering();
+    // sets direction setter
     virtual void setOrientationForRendering();
-    // conersts Vector2f SFPosition to Position struct
+    // converts Vector2f SFPosition to Position struct
     Position getIndexedPosition();
     // setter for SFPosition
     void setSFPosition(Position pos);
-
+    // scales sprite to PIXEL_SIZE
     void scaleSprite();
 
     // sprite dereference getter

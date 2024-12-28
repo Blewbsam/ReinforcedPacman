@@ -134,7 +134,6 @@ void Display::renderGhosts() {
     this->window->draw(this->chaser.getSprite());
     this->window->draw(this->chaser.getFace());
 
-    //  TODO: change these below
     this->ambusher.render(this->gs->getGhostState(AMBUSHER),this->gs->getGhostDir(AMBUSHER));
     this->window->draw(this->ambusher.getSprite());
     this->window->draw(this->ambusher.getFace());

@@ -35,9 +35,7 @@ void AgentUI::setPositionForRendering() {
     this->sprite->setPosition(this->SFposition.x, this->SFposition.y);
 }
 
-void AgentUI::setOrientationForRendering()
-{
-}
+void AgentUI::setOrientationForRendering(){}
 
 Position AgentUI::getIndexedPosition() { // this
     Position pos(std::round((this->SFposition.x)/ PIXEL_SIZE),std::round((this->SFposition.y)/ PIXEL_SIZE));

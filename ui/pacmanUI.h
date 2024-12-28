@@ -20,7 +20,10 @@ class PacmanUI : public AgentUI {
     public:
         PacmanUI(GameState * gamestate);
 
+        // returns true if pacman is in proper position to
+        // move in given direction.
         bool validPacmanMove(Direction dir);
+    
 
         void move() override;
 
@@ -30,14 +33,13 @@ class PacmanUI : public AgentUI {
         // sets pacmanDir to nextDir
         void switchDirection();
 
-
-        // returns row index of image to be used for pacman. 
+        // returns row index of image to
+        // be used for pacman animations
         int getRowIndex();
 
         // increases frame by one or resets it.
         void nextFrame();
-
-
+        
         void setOrientationForRendering() override;
         void setPositionForRendering() override;
 };

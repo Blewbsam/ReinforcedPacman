@@ -12,8 +12,6 @@ PacmanUI::PacmanUI(GameState * gameState) : AgentUI(gameState,startPos) {
     if (!this->texture->loadFromFile("animations/PacmanAnimation.png")) {
         std::cerr << "Failed to load Pacman animation texture!" << std::endl;
         return;
-    } else {
-        std::cout << "Success" << std::endl;
     }
     this->sprite->setTexture(*this->texture);
 

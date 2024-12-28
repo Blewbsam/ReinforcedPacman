@@ -31,7 +31,8 @@ std::vector<std::string>  levelLayout = {
 const std::unordered_map<GhostState, int> globalStateDurations = {
     {CHASE,20},
     {SCATTER,7},
-    {FRIGHTENED,6}
+    {FRIGHTENED,4},
+    {TRANSITION,2},
 };
 
 GameState::GameState() : ghostAI(this){
@@ -41,6 +42,8 @@ GameState::GameState() : ghostAI(this){
     ghosts.chaser_p = new ChaserGhost();
     ghosts.ambusher_p = new AmbusherGhost();
     ghosts.stupid_p = new StupidGhost();
+    eatenPelletCount = 0;
+    score = 0;
     gameOver = false;
     this->setInitialGhostStates();
 }
@@ -86,7 +89,6 @@ int GameState::getGridWidth()const {return maze_p->getGridWidth();}
 int GameState::getGridHeight() const {return maze_p->getGridHeight();}
 
 GhostState GameState::getGlobalState() const {return this->globalState;}
-
 
 void GameState::setInitialGhostStates() {
     this->updateGhostState(CHASER,ESCAPE);
@@ -168,6 +170,7 @@ void GameState::handlePelletCollision() {
     if (maze_p->getCell(pacPos) == PELLET) {
         maze_p->setCell(pacPos,EMPTY);
         score += 10;
+        eatenPelletCount += 1;
     }
 }
 
@@ -176,6 +179,7 @@ void GameState::handlePowerPelletCollision() {
     if (maze_p->getCell(pacPos) == POWER_PELLET) {
         maze_p->setCell(pacPos,EMPTY);
         score += 20;
+        eatenPelletCount += 1;
         this->updateGlobalState(this->globalState,FRIGHTENED);
     }
 }
@@ -195,6 +199,7 @@ void GameState::handleGhostCollision(Ghost * ghost,Position pacmanPosition) {
             case SCATTER:
             case ESCAPE:
             case CHASE: this->gameOver = true; break;
+            case TRANSITION:
             case FRIGHTENED: ghost->setGhostState(EATEN);break;
         default:
             break;
@@ -250,7 +255,6 @@ std::vector<Position> GameState::getValidNeighbours(Position pos, bool hasEscape
 
 void GameState::updateGlobalState(GhostState prevState, GhostState newState) {
     this->globalState =  newState;
-    if (newState == FRIGHTENED) std::cout << "Making frightened" << std::endl;
     if (this->ghosts.chaser_p->getGhostState() == prevState) this->ghosts.chaser_p->setGhostState(newState);
     if (this->ghosts.ambusher_p->getGhostState() == prevState) this->ghosts.ambusher_p->setGhostState(newState);
     if (this->ghosts.fickle_p->getGhostState() == prevState) this->ghosts.fickle_p->setGhostState(newState);
@@ -270,13 +274,18 @@ bool GameState::hasTimeElapsed() const {
 
 
 void GameState::switchToNextState() {
-    std::cout << "Switching States" << std::endl;
     if (this->globalState == CHASE) {
+        std::cout << "Going into scatter" << std::endl;
         this->updateGlobalState(CHASE,SCATTER);
     } else if (this->globalState == SCATTER) {
+        std::cout << "Going into chase" << std::endl;
         this->updateGlobalState(SCATTER,CHASE);
+    } else if (this->globalState == FRIGHTENED) {
+        std::cout << "Going into transition" << std::endl;
+        this->updateGlobalState(FRIGHTENED,TRANSITION);
     } else {
-        this->updateGlobalState(FRIGHTENED,CHASE);
+        std::cout << "Going into chase" << std::endl;
+        this->updateGlobalState(TRANSITION,CHASE);
     }
 }
 
