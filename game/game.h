@@ -97,6 +97,8 @@ public:
     // gameOver getter
     bool isGameOver() const;
 
+    unsigned int getScore() const;
+
 
 private:
 
@@ -111,6 +113,12 @@ private:
     void handlePowerPelletCollision();
     void handleGhostCollisions();
     void handleGhostCollision(Ghost * ghost, Position pacmanPosition);
+
+    // used to free Ghosts in GhostHouse if at approprite count.
+    void freeGhostHouseGhosts();
+
+    // handles pacman eating specified Ghost
+    void eatGhost(Ghost * ghost);
 
     // changes globalState to newState and changes the state of all active prevStates.
     void updateGlobalState(GhostState prevState,GhostState newState);
