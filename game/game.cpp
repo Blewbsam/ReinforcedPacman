@@ -4,29 +4,7 @@
 
 
 
-std::vector<std::string>  levelLayout = {
-		" XXXXXXXXXXXXXXXXXXX ",
-		" X........X........X ",
-		" XOXX.XXX.X.XXX.XXOX ",
-		" X.................X ",
-		" X.XX.X.XXXXX.X.XX.X ",
-		" X....X...X...X....X ",
-		" XXXX.XXX X XXX.XXXX ",
-		"    X.X       X.X    ",
-		"XXXXX.X XX=XX X.XXXXX",
-		"     .  X   X  .     ",
-		"XXXXX.X XXXXX X.XXXXX",
-		"    X.X       X.X    ",
-		" XXXX.X XXXXX X.XXXX ",
-		" X........X........X ",
-		" X.XX.XXX.X.XXX.XX.X ",
-		" XO.X..... .....X.OX ",
-		" XX.X.X.XXXXX.X.X.XX ",
-		" X....X...X...X....X ",
-		" X.XXXXXX.X.XXXXXX.X ",
-		" X.................X ",
-		" XXXXXXXXXXXXXXXXXXX "
-};
+
 
 const std::unordered_map<GhostState, int> globalStateDurations = {
     {CHASE,20},
@@ -36,16 +14,15 @@ const std::unordered_map<GhostState, int> globalStateDurations = {
 };
 
 GameState::GameState() : ghostAI(this){
-    maze_p = new Maze(levelLayout);
+    maze_p = new Maze();
     pacman_p = new Pacman();
     ghosts.fickle_p = new FickleGhost();
     ghosts.chaser_p = new ChaserGhost();
     ghosts.ambusher_p = new AmbusherGhost();
     ghosts.stupid_p = new StupidGhost();
-    eatenPelletCount = 0;
     score = 0;
     gameOver = false;
-    this->setInitialGhostStates();
+    setInitialGhostStates();
 }
 
 
@@ -162,6 +139,7 @@ bool GameState::validPacmanMove(Direction dir) const {
 void GameState::handleCollisions() {
     this->handlePelletCollision();
     this->handlePowerPelletCollision();
+    this->checkPelletStatus();
     this->handleGhostCollisions();
 }
  
@@ -185,6 +163,13 @@ void GameState::handlePowerPelletCollision() {
         this->updateGlobalState(this->globalState,FRIGHTENED);
     }
 }
+
+void GameState::checkPelletStatus() {
+    if (this->eatenPelletCount == this->maze_p->getTotalPelletCount()) {
+        this->gameOver = true;
+    }
+}
+
 
 void GameState::freeGhostHouseGhosts() {
     if (eatenPelletCount == 1) {this->updateGhostState(AMBUSHER,ESCAPE);}

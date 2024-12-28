@@ -14,13 +14,17 @@ class Maze {
     private:
         // Direct Representation of game state. 
         grid_t grid;
+        // number of pellet and power pellets together
+        unsigned int totalPelletCount;
     public:
         // Constructor with grid to be used for game state
-        Maze(const std::vector<std::string>& layout);
+        Maze();
 
         grid_t getGrid() const;
         int getGridWidth() const;
         int getGridHeight() const;
+
+        unsigned int getTotalPelletCount() const;
         
         // returns all neighboring cells that are not WALL
         std::vector<Position> getValidNeighbours(Position pos) const;

@@ -52,6 +52,7 @@ double GhostUI::getGhostSpeed(GhostType type, GhostState state) {
     { FICKLE, {{ FRIGHTENED, FICKLE_FRIGHTENED_STEP_SIZE }, { CHASE, FICKLE_CHASE_STEP_SIZE }} },
     { STUPID, {{ FRIGHTENED, STUPID_FRIGHTENED_STEP_SIZE },{ CHASE, STUPID_CHASE_STEP_SIZE }} }
     };
+    return ghostSpeeds.at(type).at(state);
 }
 
 void GhostUI::render(GhostState state, Direction ghostDir) {

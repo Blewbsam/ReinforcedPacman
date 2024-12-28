@@ -114,6 +114,10 @@ private:
     void handleGhostCollisions();
     void handleGhostCollision(Ghost * ghost, Position pacmanPosition);
 
+    // handles case when all pellets have been eaten.
+    void checkPelletStatus();
+    
+
     // used to free Ghosts in GhostHouse if at approprite count.
     void freeGhostHouseGhosts();
 

@@ -8,15 +8,38 @@ using std::cout;
 using std::endl;
 
 
+const std::vector<std::string>  layout = {
+		" XXXXXXXXXXXXXXXXXXX ",
+		" X........X........X ",
+		" XOXX.XXX.X.XXX.XXOX ",
+		" X.................X ",
+		" X.XX.X.XXXXX.X.XX.X ",
+		" X....X...X...X....X ",
+		" XXXX.XXX X XXX.XXXX ",
+		"    X.X       X.X    ",
+		"XXXXX.X XX=XX X.XXXXX",
+		"     .  X   X  .     ",
+		"XXXXX.X XXXXX X.XXXXX",
+		"    X.X       X.X    ",
+		" XXXX.X XXXXX X.XXXX ",
+		" X........X........X ",
+		" X.XX.XXX.X.XXX.XX.X ",
+		" XO.X..... .....X.OX ",
+		" XX.X.X.XXXXX.X.X.XX ",
+		" X....X...X...X....X ",
+		" X.XXXXXX.X.XXXXXX.X ",
+		" X.................X ",
+		" XXXXXXXXXXXXXXXXXXX "
+};
 
-Maze::Maze(const std::vector<std::string>& layout){
+Maze::Maze(){
     grid.resize(layout.size());
     for (unsigned int row = 0; row < layout.size(); ++row) {
         for (char cell: layout[row]) {
             switch (cell) {
                 case 'X': grid[row].push_back(WALL); break;
-                case '.': grid[row].push_back(PELLET); break;
-                case 'O': grid[row].push_back(POWER_PELLET); break;
+                case '.': grid[row].push_back(PELLET); this->totalPelletCount++; break;
+                case 'O': grid[row].push_back(POWER_PELLET);  this->totalPelletCount++; break;
                 case ' ': grid[row].push_back(EMPTY); break;
                 case '=': grid[row].push_back(DOOR); break;
                 default: cout << __LINE__ << ": got invalid cell" << cell << endl;
@@ -51,6 +74,10 @@ int Maze::getGridWidth() const {
 
 int Maze::getGridHeight() const {
     return grid.size();
+}
+
+unsigned int Maze::getTotalPelletCount() const {
+    return this->totalPelletCount;
 }
 
 
