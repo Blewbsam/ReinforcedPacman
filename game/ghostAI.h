@@ -72,6 +72,12 @@ private:
     // requires ghost Position and neighPos to be neighbouring cells
     Direction getNeighbourDirection(Position ghostPos, Position neighPos) const;
 
+
+    // returns true if ghost is in scared mode.
+    bool ghostIsScared(Ghost * ghost);
+
+
+
 }; 
 
 #endif

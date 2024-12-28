@@ -36,6 +36,7 @@ class GameState {
     GhostAI ghostAI;
     GhostState globalState;
     std::chrono::steady_clock::time_point stateStartTime;
+    unsigned int eatenPelletCount;
     unsigned int score;
     bool gameOver;
 

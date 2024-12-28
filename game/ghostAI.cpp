@@ -51,6 +51,7 @@ void GhostAI::moveFickle(FickleGhost * fickle, Pacman * pacman, Position chaserP
         case SCATTER: moveScatterGhost(fickle); break;
         case ESCAPE: moveEscapeGhost(fickle); break;
         case EATEN: moveEatenGhost(fickle); break;
+        case TRANSITION:
         case FRIGHTENED: moveFrightenedGhost(fickle); break;    
         default: std::cout << "Sleeping" << std::endl;
     }
@@ -109,7 +110,7 @@ void GhostAI::moveEscapeGhost(Ghost * ghost) {
     Position targetPos = EscapePos;
     this->moveToTarget(ghost,targetPos,false);
     if (ghost->getPos() == EscapePos) {
-        if (this->gs->getGlobalState() == FRIGHTENED) {
+        if (this->gs->getGlobalState() == FRIGHTENED || this->gs->getGlobalState() == TRANSITION) { 
             // when game is in FRIGHTENED state, ghost should CHASE.
             ghost->setGhostState(CHASE);
         } else {
@@ -119,7 +120,7 @@ void GhostAI::moveEscapeGhost(Ghost * ghost) {
 
 }
 void GhostAI::moveFrightenedGhost(Ghost * ghost) {
-    if (ghost->getGhostState() != FRIGHTENED) std::runtime_error("Ghost is not in FRIGHTENED state.");
+    if (!this->ghostIsScared(ghost)) std::runtime_error("Ghost is not in FRIGHTENED state.");
     std::vector<Position> validPositions = this->gs->getValidPositions(ghost->getPos(), ghost->getDir(), true); 
     if (validPositions.empty()) {
         throw std::runtime_error("No valid positions to pick from!");
@@ -208,4 +209,8 @@ Direction GhostAI::getNeighbourDirection(Position ghostPos, Position neighPos) c
 
 bool GhostAI::stupidShouldFlee(Position stupidPos, Position pacmanPos) const {
     return this->calculateManhattanDistance(stupidPos,pacmanPos) < 8;
+}
+
+bool GhostAI::ghostIsScared(Ghost * ghost) {
+    return (ghost->getGhostState() == FRIGHTENED || ghost->getGhostState() == TRANSITION);
 }

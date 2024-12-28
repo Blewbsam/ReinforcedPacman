@@ -18,7 +18,6 @@ GhostUI::GhostUI(GameState * gameState, sf::Vector2f pos, sf::Color defaultColor
 
 // Gets which direction to move from gameState and moves in given direction.
 void GhostUI::move(){
-    // this->gs->
     return;
 }
 
@@ -59,6 +58,14 @@ void GhostUI::setBodyColorForRendering(GhostState state) {
     sf::Color opaqueBlack = sf::Color::Black;
     opaqueBlack.a = 0;
     switch (state) {
+        case TRANSITION: {
+            if (this->sprite->getColor() == frightenedBlue) {
+                this->sprite->setColor(sf::Color::White);
+            } else {
+                this->sprite->setColor(frightenedBlue);
+            }
+            break;
+        }
         case FRIGHTENED: this->sprite->setColor(frightenedBlue); break;
         case EATEN: this->sprite->setColor(opaqueBlack); break;
         default:    this->sprite->setColor(this->defaultColor); break;
@@ -80,19 +87,13 @@ void GhostUI::setFacePositionForRendering() {
 }
 
 void GhostUI::setFaceOrientationForRendering(GhostState state, Direction ghostDir) {
-    switch (state)
-    {
-    case EATEN:
-        this->face->setTextureRect(sf::IntRect(FRAME_SIZE * 4, FRAME_SIZE * 1, FRAME_SIZE, FRAME_SIZE));
-        break;
-    case FRIGHTENED: {
-        this->face->setTextureRect(sf::IntRect(FRAME_SIZE * this->getRowIndex(ghostDir), FRAME_SIZE * 2, FRAME_SIZE, FRAME_SIZE));
-        break;
-    }
+    switch (state){
+    case EATEN:this->face->setTextureRect(sf::IntRect(FRAME_SIZE * 4, FRAME_SIZE * 1, FRAME_SIZE, FRAME_SIZE));break;
+    case TRANSITION:
+    case FRIGHTENED: this->face->setTextureRect(sf::IntRect(FRAME_SIZE * this->getRowIndex(ghostDir), FRAME_SIZE * 2, FRAME_SIZE, FRAME_SIZE));break;
     default:
         this->face->setTextureRect(sf::IntRect(FRAME_SIZE * this->getRowIndex(ghostDir), FRAME_SIZE * 1, FRAME_SIZE, FRAME_SIZE));
     }
-    // scale face
     float scale = PIXEL_SIZE / FRAME_SIZE;
     this->face->setScale(scale,scale);
 }
