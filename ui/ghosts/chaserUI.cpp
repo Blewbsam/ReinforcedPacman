@@ -6,10 +6,7 @@
 
 #define CHASER_STEP_SIZE 1
 
-ChaserUI::ChaserUI(GameState * gameState) : GhostUI(gameState,sf::Vector2f(CHASER_START_X,CHASER_START_Y),sf::Color::Red){
-    this->awake();
-}
-
+ChaserUI::ChaserUI(GameState * gameState) : GhostUI(gameState,sf::Vector2f(CHASER_START_X,CHASER_START_Y),sf::Color::Red){}
 
 void ChaserUI::move() {
     Direction ghostDir = this->gs->getGhostDir(CHASER);

@@ -12,7 +12,7 @@ GhostAI::GhostAI(GameState * gameState) {
 void GhostAI::moveChaser(ChaserGhost * chaser, Pacman * pacman) {
     switch(chaser->getGhostState()) {
         case CHASE: moveChaseChaser(chaser,pacman); break;
-        case SCATTER: moveScatterGhost(chaser);
+        case SCATTER: moveScatterGhost(chaser); break;
         case ESCAPE: moveEscapeGhost(chaser); break;
         case EATEN: moveEatenGhost(chaser); break;
         case FRIGHTENED: moveFrightenedGhost(chaser); break;
@@ -106,13 +106,15 @@ void GhostAI::moveEatenGhost(Ghost * ghost) {
 const Position EscapePos = {8,7};
 
 void GhostAI::moveEscapeGhost(Ghost * ghost) {
+    if (ghost->getGhostState() != ESCAPE) std::cout << "Ghost is not in Escape";
     Position targetPos = EscapePos;
     this->moveToTarget(ghost,targetPos,false);
     if (ghost->getPos() == EscapePos) {
         if (this->gs->getGlobalState() == FRIGHTENED) {
-            // when game is in FRIGHTENED state, ghost should CHASe.
+            // when game is in FRIGHTENED state, ghost should CHASE.
             ghost->setGhostState(CHASE);
         } else {
+            std::cout << "Escaped is Chase" << std::endl;
             ghost->setGhostState(this->gs->getGlobalState());
         }
     }
@@ -196,7 +198,6 @@ double GhostAI::calculateEuclidianDistance(Position pos1, Position pos2) const {
 
 Direction GhostAI::getNeighbourDirection(Position ghostPos, Position neighPos) const {
     if (ghostPos.x != neighPos.x && ghostPos.y != neighPos.y) std::runtime_error("Invalid Neigbour recieved.");
-
     if (ghostPos.x == neighPos.x) {
         if (ghostPos.y > neighPos.y) return UP;
         return DOWN;

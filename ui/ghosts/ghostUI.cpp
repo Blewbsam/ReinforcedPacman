@@ -2,7 +2,6 @@
 
 GhostUI::GhostUI(GameState * gameState, sf::Vector2f pos, sf::Color defaultColor) : AgentUI(gameState,pos){
     this->ghostDir = IDLE;
-    this->active = false;
     this->animationSpeed = 0.1f;
     this->frame = 0;
     this->face = new sf::Sprite();
@@ -99,9 +98,6 @@ void GhostUI::setFaceOrientationForRendering(GhostState state, Direction ghostDi
 }
 
 
-void GhostUI::awake() {
-    this->active = true;
-}
 
 void GhostUI::nextFrame() {
     this->frame = (this->frame + 1) % 6;

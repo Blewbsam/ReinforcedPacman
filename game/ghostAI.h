@@ -39,6 +39,7 @@ private:
 
     // moves ghost back to home tile, 
     // sets ghost mode to ESCAPE when ghost is home.
+    // REQUIRES: ghost should be in EAten state
     void moveEatenGhost(Ghost * ghost);
 
     // Forces ghost to leave home

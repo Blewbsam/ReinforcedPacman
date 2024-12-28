@@ -237,6 +237,7 @@ std::vector<Position> GameState::getValidPositions(Position ghostPos, Direction 
     // remove the one behind the ghost
     Position pos = getReversePosition(ghostPos, ghostDir);
     auto index = std::find(validNeighbours.begin(), validNeighbours.end(), pos);
+    if (validNeighbours.size() == 1) {std::cout << "One Position only" << std::endl;}
     if (index != validNeighbours.end() && validNeighbours.size() > 1) {
         validNeighbours.erase(index); 
     }
@@ -270,12 +271,14 @@ bool GameState::hasTimeElapsed() const {
 
 
 void GameState::switchToNextState() {
-    std::cout << "Switching States" << std::endl;
     if (this->globalState == CHASE) {
+        std::cout << "Going into scatter" << std::endl;
         this->updateGlobalState(CHASE,SCATTER);
     } else if (this->globalState == SCATTER) {
+        std::cout << "Going into chase" << std::endl;
         this->updateGlobalState(SCATTER,CHASE);
     } else {
+        std::cout << "Going into chase" << std::endl;
         this->updateGlobalState(FRIGHTENED,CHASE);
     }
 }

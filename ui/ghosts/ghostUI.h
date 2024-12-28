@@ -12,7 +12,6 @@
 class GhostUI : public AgentUI {
     protected:
         Direction ghostDir;
-        bool active;
         sf::Sprite * face;
         sf::Color defaultColor;
     public:
@@ -27,9 +26,6 @@ class GhostUI : public AgentUI {
 
         // moves Ghost to dir by set_size
         void move(Direction dir,int step_size);
-
-        // sets active to true for game to start.
-        void awake();
 
         void setOrientationForRendering() override;
 
