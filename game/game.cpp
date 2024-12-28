@@ -251,7 +251,6 @@ std::vector<Position> GameState::getValidNeighbours(Position pos, bool hasEscape
 
 void GameState::updateGlobalState(GhostState prevState, GhostState newState) {
     this->globalState =  newState;
-    if (newState == FRIGHTENED) std::cout << "Making frightened" << std::endl;
     if (this->ghosts.chaser_p->getGhostState() == prevState) this->ghosts.chaser_p->setGhostState(newState);
     if (this->ghosts.ambusher_p->getGhostState() == prevState) this->ghosts.ambusher_p->setGhostState(newState);
     if (this->ghosts.fickle_p->getGhostState() == prevState) this->ghosts.fickle_p->setGhostState(newState);
