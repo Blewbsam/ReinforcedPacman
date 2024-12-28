@@ -41,6 +41,7 @@ enum GhostState {
     SCATTER,
     EATEN,
     FRIGHTENED,
+    TRANSITION, // for turning from FRIGHTENED to CHASE
     ESCAPE,
     SLEEP
 };

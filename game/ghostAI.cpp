@@ -15,6 +15,7 @@ void GhostAI::moveChaser(ChaserGhost * chaser, Pacman * pacman) {
         case SCATTER: moveScatterGhost(chaser); break;
         case ESCAPE: moveEscapeGhost(chaser); break;
         case EATEN: moveEatenGhost(chaser); break;
+        case TRANSITION:
         case FRIGHTENED: moveFrightenedGhost(chaser); break;
         default: break;
     }
@@ -26,6 +27,7 @@ void GhostAI::moveAmbusher(AmbusherGhost * ambusher, Pacman * pacman) {
         case SCATTER: moveScatterGhost(ambusher);break;
         case ESCAPE: moveEscapeGhost(ambusher); break;
         case EATEN: moveEatenGhost(ambusher); break;
+        case TRANSITION:
         case FRIGHTENED: moveFrightenedGhost(ambusher); break;
         default: std::cout << "Sleeping" << std::endl;
     }
@@ -37,6 +39,7 @@ void GhostAI::moveStupid(StupidGhost * stupid, Pacman * pacman) {
         case SCATTER: moveScatterGhost(stupid); break;
         case ESCAPE: moveEscapeGhost(stupid); break;
         case EATEN: moveEatenGhost(stupid); break;
+        case TRANSITION:
         case FRIGHTENED: moveFrightenedGhost(stupid); break;
         default: std::cout << "Sleeping" << std::endl;
     }
@@ -53,8 +56,6 @@ void GhostAI::moveFickle(FickleGhost * fickle, Pacman * pacman, Position chaserP
     }
 }
 
-
-
 void GhostAI::moveToTarget(Ghost * ghost, Position targetPos, bool hasEscaped) {
     std::vector<Position> validPositions = this->gs->getValidPositions(ghost->getPos(), ghost->getDir(),hasEscaped); 
     Position validNextPos = this->getMinEuclidianPosition(validPositions,targetPos);
@@ -66,13 +67,11 @@ void GhostAI::moveChaseChaser(ChaserGhost * chaser, Pacman * pacman) {
     this->moveToTarget(chaser,pacman->getPos(),true);
 }
 
-
 void GhostAI::moveChaseAmbusher(AmbusherGhost * ambusher, Pacman * pacman) {
     // 
     Position targetPos = this->getAmbusherTarget(pacman->getPos(),pacman->getDir());
     this->moveToTarget(ambusher,targetPos,true);
 }
-
 
 void GhostAI::moveChaseStupid(StupidGhost * stupid, Pacman * pacman) {
     Position targetPos;
@@ -83,7 +82,6 @@ void GhostAI::moveChaseStupid(StupidGhost * stupid, Pacman * pacman) {
     }
     this->moveToTarget(stupid,targetPos,true);
 }
-
 
 void GhostAI::moveChaseFickle(FickleGhost * fickle, Pacman * pacman, Position chaserPos) {
     Position targetPos = this->getFickleTarget(pacman->getPos(),pacman->getDir(), chaserPos);
@@ -97,6 +95,7 @@ void GhostAI::moveScatterGhost(Ghost * ghost) {
 
 const Position HomePos = {9,9};
 void GhostAI::moveEatenGhost(Ghost * ghost) {
+    if (ghost->getGhostState() != EATEN) std::runtime_error("Ghost is not in EATEN state.");
     Position targetPos = HomePos;
     this->moveToTarget(ghost,targetPos,false);
     if (ghost->getPos() == HomePos) ghost->setGhostState(ESCAPE);
@@ -106,7 +105,7 @@ void GhostAI::moveEatenGhost(Ghost * ghost) {
 const Position EscapePos = {8,7};
 
 void GhostAI::moveEscapeGhost(Ghost * ghost) {
-    if (ghost->getGhostState() != ESCAPE) std::cout << "Ghost is not in Escape";
+    if (ghost->getGhostState() != ESCAPE) std::runtime_error("Ghost is not in ESCAPE state.");
     Position targetPos = EscapePos;
     this->moveToTarget(ghost,targetPos,false);
     if (ghost->getPos() == EscapePos) {
@@ -114,13 +113,13 @@ void GhostAI::moveEscapeGhost(Ghost * ghost) {
             // when game is in FRIGHTENED state, ghost should CHASE.
             ghost->setGhostState(CHASE);
         } else {
-            std::cout << "Escaped is Chase" << std::endl;
             ghost->setGhostState(this->gs->getGlobalState());
         }
     }
 
 }
 void GhostAI::moveFrightenedGhost(Ghost * ghost) {
+    if (ghost->getGhostState() != FRIGHTENED) std::runtime_error("Ghost is not in FRIGHTENED state.");
     std::vector<Position> validPositions = this->gs->getValidPositions(ghost->getPos(), ghost->getDir(), true); 
     if (validPositions.empty()) {
         throw std::runtime_error("No valid positions to pick from!");
