@@ -1,7 +1,10 @@
 #include "ghostUI.h"
+#include "speeds.h"
 
-GhostUI::GhostUI(GameState * gameState, sf::Vector2f pos, sf::Color defaultColor) : AgentUI(gameState,pos){
+
+GhostUI::GhostUI(GameState * gameState, sf::Vector2f pos, sf::Color defaultColor, GhostType type) : AgentUI(gameState,pos){
     this->ghostDir = IDLE;
+    this->ghostType = type;
     this->animationSpeed = 0.1f;
     this->frame = 0;
     this->face = new sf::Sprite();
@@ -16,16 +19,21 @@ GhostUI::GhostUI(GameState * gameState, sf::Vector2f pos, sf::Color defaultColor
 
 }
 
-// Gets which direction to move from gameState and moves in given direction.
-void GhostUI::move(){
-    return;
-}
-
 sf::Sprite GhostUI::getFace() {
     return *this->face;
 }
 
-void GhostUI::move(Direction dir,int step_size) {
+
+
+void GhostUI::move(){
+    Direction ghostDir = this->gs->getGhostDir(this->ghostType);
+    double stepSize = this->getGhostSpeed(this->ghostType,this->gs->getGhostState(this->ghostType));
+    this->move(ghostDir,stepSize);
+    if (this->containedInCell()) gs->updateGhostPos(this->getIndexedPosition(),this->ghostType);
+}
+
+void GhostUI::move(Direction dir,double step_size) {
+
     switch (dir) {
         case UP:    SFposition.y -= step_size; break;
         case DOWN:  SFposition.y += step_size; break;
@@ -33,6 +41,17 @@ void GhostUI::move(Direction dir,int step_size) {
         case RIGHT: SFposition.x += step_size; break;
         default: break;
     }
+}
+
+double GhostUI::getGhostSpeed(GhostType type, GhostState state) {
+    if (state == TRANSITION || state == FRIGHTENED) {state = FRIGHTENED;}
+    else {state = CHASE;}
+    static const std::unordered_map<GhostType, std::unordered_map<GhostState, double>> ghostSpeeds = {
+    { CHASER, {{ FRIGHTENED, CHASER_FRIGHTENED_STEP_SIZE },  { CHASE, CHASER_CHASE_STEP_SIZE }} },
+    { AMBUSHER, {{ FRIGHTENED, AMBUSHER_FRIGHTENED_STEP_SIZE }, { TRANSITION, AMBUSHER_FRIGHTENED_STEP_SIZE }, { CHASE, AMBUSHER_CHASE_STEP_SIZE }} },
+    { FICKLE, {{ FRIGHTENED, FICKLE_FRIGHTENED_STEP_SIZE }, { CHASE, FICKLE_CHASE_STEP_SIZE }} },
+    { STUPID, {{ FRIGHTENED, STUPID_FRIGHTENED_STEP_SIZE },{ CHASE, STUPID_CHASE_STEP_SIZE }} }
+    };
 }
 
 void GhostUI::render(GhostState state, Direction ghostDir) {
@@ -84,7 +103,6 @@ int GhostUI::getRowIndex(Direction ghostDir) {
 void GhostUI::setFacePositionForRendering() {
     this->face->setPosition(this->SFposition.x - PIXEL_SIZE,this->SFposition.y);
 }
-
 void GhostUI::setFaceOrientationForRendering(GhostState state, Direction ghostDir) {
     switch (state){
     case EATEN:this->face->setTextureRect(sf::IntRect(FRAME_SIZE * 4, FRAME_SIZE * 1, FRAME_SIZE, FRAME_SIZE));break;

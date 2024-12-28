@@ -11,7 +11,6 @@
 class StupidUI : public GhostUI{    
     public:
     StupidUI(GameState * gameState);
-    void move() override;
 };
 
 

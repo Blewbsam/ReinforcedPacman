@@ -17,7 +17,6 @@ AgentUI::~AgentUI() {
     delete this->texture;    
 }
 
-
 void AgentUI::snapToGrid() {
     this->SFposition.x = std::round(SFposition.x / PIXEL_SIZE) * PIXEL_SIZE;
     this->SFposition.y = std::round(SFposition.y / PIXEL_SIZE) * PIXEL_SIZE;
@@ -32,7 +31,7 @@ bool AgentUI::containedInCell() {
 
 void AgentUI::setPositionForRendering() {
     if (gs->jumpAvail(this->getIndexedPosition())) this->setSFPosition(gs->jumpPortal(this->getIndexedPosition()));
-    
+
     this->sprite->setPosition(this->SFposition.x-PIXEL_SIZE, this->SFposition.y);
 }
 

@@ -11,6 +11,5 @@
 class ChaserUI : public GhostUI{    
 public:
     ChaserUI(GameState * gameState);
-    void move() override;
 };
 #endif
