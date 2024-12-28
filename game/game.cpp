@@ -92,9 +92,9 @@ GhostState GameState::getGlobalState() const {return this->globalState;}
 
 void GameState::setInitialGhostStates() {
     this->updateGhostState(CHASER,ESCAPE);
-    this->updateGhostState(AMBUSHER,ESCAPE);
-    this->updateGhostState(FICKLE,ESCAPE);
-    this->updateGhostState(STUPID,ESCAPE);
+    this->updateGhostState(AMBUSHER,CHASE);
+    this->updateGhostState(FICKLE,CHASE);
+    this->updateGhostState(STUPID,CHASE);
 }
 
 void GameState::generateGhostMove(GhostType type){
@@ -171,6 +171,7 @@ void GameState::handlePelletCollision() {
         maze_p->setCell(pacPos,EMPTY);
         score += 10;
         eatenPelletCount += 1;
+        this->freeGhostHouseGhosts();
     }
 }
 
@@ -180,8 +181,15 @@ void GameState::handlePowerPelletCollision() {
         maze_p->setCell(pacPos,EMPTY);
         score += 20;
         eatenPelletCount += 1;
+        this->freeGhostHouseGhosts();
         this->updateGlobalState(this->globalState,FRIGHTENED);
     }
+}
+
+void GameState::freeGhostHouseGhosts() {
+    if (eatenPelletCount == 1) {this->updateGhostState(AMBUSHER,ESCAPE);}
+    else if (eatenPelletCount == 30){this->updateGhostState(FICKLE,ESCAPE);}
+    else if (eatenPelletCount == 60){this->updateGhostState(STUPID,ESCAPE);}
 }
 
 
@@ -200,11 +208,17 @@ void GameState::handleGhostCollision(Ghost * ghost,Position pacmanPosition) {
             case ESCAPE:
             case CHASE: this->gameOver = true; break;
             case TRANSITION:
-            case FRIGHTENED: ghost->setGhostState(EATEN);break;
+            case FRIGHTENED: this->eatGhost(ghost);break;
         default:
             break;
         }
     }
+}
+
+
+void GameState::eatGhost(Ghost * ghost) {
+    ghost->setGhostState(EATEN);
+    this->score += 200;
 }
 
 bool GameState::jumpAvail(Position pos) {   
@@ -272,7 +286,6 @@ bool GameState::hasTimeElapsed() const {
     return elapsedTime.count() >= globalStateDurations.at(this->globalState);  
 }
 
-
 void GameState::switchToNextState() {
     if (this->globalState == CHASE) {
         std::cout << "Going into scatter" << std::endl;
@@ -289,9 +302,6 @@ void GameState::switchToNextState() {
     }
 }
 
-
-
-
-
 bool GameState::isGameOver() const {return this->gameOver;}
+unsigned int GameState::getScore() const {return this->score;}
 
