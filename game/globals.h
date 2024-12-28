@@ -50,8 +50,8 @@ enum GhostState {
 // used for handling teleportation
 #define MIDLE_ROW_INDEX 9
 
-#define GRID_WIDTH 20
-#define GRID_HEIGHT 22
+#define MAZE_HEIGHT 21
+#define MAZE_WIDTH 21
 
 
 

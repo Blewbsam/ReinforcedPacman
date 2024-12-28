@@ -1,9 +1,12 @@
 #ifndef GLOBALSUI
 #define GLOBALSUI
 
-#define WINDOW_HEIGHT 630
-#define WINDOW_WIDTH 570
+#include "../game/globals.h"
+
+
 #define PIXEL_SIZE 30.f
+#define WINDOW_HEIGHT PIXEL_SIZE * MAZE_HEIGHT
+#define WINDOW_WIDTH PIXEL_SIZE * MAZE_WIDTH
 #define PACMAN_RADIUS 15.f
 #define PELLET_RADIUS 3.f
 #define PELLET_OFFSET 12.f

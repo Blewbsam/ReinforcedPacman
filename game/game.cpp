@@ -5,27 +5,27 @@
 
 
 std::vector<std::string>  levelLayout = {
-		"XXXXXXXXXXXXXXXXXXX",
-		"X..O.....X.....O..X",
-		"XXXX.XXX.X.XXX.XXXX",
-		"X.................X",
-		"X.XX.X.XXXXX.X.XX.X",
-		"X....X...X...X....X",
-		"XXXX.XXX.X.XXX.XXXX",
-		"   X.X.......X.X   ",
-		"XXXX.X XX=XX X.XXXX",
-		".......X   X.......",
-		"XXXX.X XXXXX X.XXXX",
-		"   X.X.......X.X   ",
-		"XXXX.X.XXXXX.X.XXXX",
-		"X........X........X",
-		"X.XX.XXX.X.XXX.XX.X",
-		"X..X...........X..X",
-		"XX.X.X.XXXXX.X.X.XX",
-		"X....X...X...X....X",
-		"X.XXXXXX.X.XXXXXX.X",
-		"X.O.............O.X",
-		"XXXXXXXXXXXXXXXXXXX"
+		" XXXXXXXXXXXXXXXXXXX ",
+		" X........X........X ",
+		" XOXX.XXX.X.XXX.XXOX ",
+		" X.................X ",
+		" X.XX.X.XXXXX.X.XX.X ",
+		" X....X...X...X....X ",
+		" XXXX.XXX X XXX.XXXX ",
+		"    X.X       X.X    ",
+		"XXXXX.X XX=XX X.XXXXX",
+		"     .  X   X  .     ",
+		"XXXXX.X XXXXX X.XXXXX",
+		"    X.X       X.X    ",
+		" XXXX.X XXXXX X.XXXX ",
+		" X........X........X ",
+		" X.XX.XXX.X.XXX.XX.X ",
+		" XO.X..... .....X.OX ",
+		" XX.X.X.XXXXX.X.X.XX ",
+		" X....X...X...X....X ",
+		" X.XXXXXX.X.XXXXXX.X ",
+		" X.................X ",
+		" XXXXXXXXXXXXXXXXXXX "
 };
 
 const std::unordered_map<GhostState, int> globalStateDurations = {
