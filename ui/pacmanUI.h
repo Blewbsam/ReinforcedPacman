@@ -41,7 +41,6 @@ class PacmanUI : public AgentUI {
         void nextFrame();
         
         void setOrientationForRendering() override;
-        void setPositionForRendering() override;
 };
 
 

@@ -61,12 +61,6 @@ void PacmanUI::setOrientationForRendering() {
 }
 
 
-void PacmanUI::setPositionForRendering() {
-    if (gs->jumpAvail(this->getIndexedPosition())) this->setSFPosition(gs->jumpPortal(this->getIndexedPosition()));
-    this->sprite->setPosition(this->SFposition.x, this->SFposition.y);
-}
-
-
 int PacmanUI::getRowIndex() {
     switch (this->pacmanDir) {
         case RIGHT: return 0;

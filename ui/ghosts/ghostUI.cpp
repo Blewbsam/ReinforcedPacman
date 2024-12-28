@@ -35,7 +35,6 @@ void GhostUI::move(Direction dir,int step_size) {
     }
 }
 
-
 void GhostUI::render(GhostState state, Direction ghostDir) {
     this->setPositionForRendering();
     this->setOrientationForRendering();
@@ -83,7 +82,7 @@ int GhostUI::getRowIndex(Direction ghostDir) {
 
 // must be called after rendering Sprite body
 void GhostUI::setFacePositionForRendering() {
-    this->face->setPosition(this->SFposition.x,this->SFposition.y);
+    this->face->setPosition(this->SFposition.x - PIXEL_SIZE,this->SFposition.y);
 }
 
 void GhostUI::setFaceOrientationForRendering(GhostState state, Direction ghostDir) {
@@ -97,8 +96,6 @@ void GhostUI::setFaceOrientationForRendering(GhostState state, Direction ghostDi
     float scale = PIXEL_SIZE / FRAME_SIZE;
     this->face->setScale(scale,scale);
 }
-
-
 
 void GhostUI::nextFrame() {
     this->frame = (this->frame + 1) % 6;

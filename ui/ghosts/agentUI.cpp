@@ -32,7 +32,8 @@ bool AgentUI::containedInCell() {
 
 void AgentUI::setPositionForRendering() {
     if (gs->jumpAvail(this->getIndexedPosition())) this->setSFPosition(gs->jumpPortal(this->getIndexedPosition()));
-    this->sprite->setPosition(this->SFposition.x, this->SFposition.y);
+    
+    this->sprite->setPosition(this->SFposition.x-PIXEL_SIZE, this->SFposition.y);
 }
 
 void AgentUI::setOrientationForRendering(){}

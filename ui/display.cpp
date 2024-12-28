@@ -60,27 +60,21 @@ Display::~Display() {
 void Display::update() {
 
     if (!gs->isGameOver()) {
-            // pollEvents
         this->pollEvents();
-        
-        // movePacman
+    
         this->pacman.move();
 
-        // generateDirections ghosts should take
-        // if (this->chaser.containedInCell()) this->gs->generateGhostMoves();
+        // generate Directions ghosts should take
         if (this->chaser.containedInCell()) this->gs->generateGhostMove(CHASER);
         if (this->ambusher.containedInCell()) this->gs->generateGhostMove(AMBUSHER);
         if (this->stupid.containedInCell()) this->gs->generateGhostMove(STUPID);
         if (this->fickle.containedInCell()) this->gs->generateGhostMove(FICKLE);
-
-        // move ghost towards that direction
 
         this->chaser.move();
         this->ambusher.move();
         this->fickle.move();
         this->stupid.move();
 
-        // check if game is over.
         gs->handleCollisions();
     } else {
         this->gameLost();
@@ -150,7 +144,7 @@ void Display::renderGhosts() {
 
 
 void Display::gameLost() {
-    // TODO:
+    this->window->close();
 }
 
 
@@ -159,27 +153,27 @@ void Display::gameLost() {
 void Display::renderMaze() {
     grid_t grid = gs->getGrid();
     for (size_t y = 0; y < grid.size(); ++y) {
-        for (size_t x = 0; x < grid[y].size(); ++x) {
+        for (size_t x = 1; x < grid[y].size() - 1; ++x) {
             switch (grid[y][x])
             {
             case WALL:
-                this->wall.setPosition(x * PIXEL_SIZE, y * PIXEL_SIZE);
+                this->wall.setPosition((x-1) * PIXEL_SIZE, y * PIXEL_SIZE);
                 this->window->draw(this->wall);
                 break; 
             case PELLET:
-                this->pellet.setPosition(x * PIXEL_SIZE + PELLET_OFFSET, y * PIXEL_SIZE + PELLET_OFFSET);
+                this->pellet.setPosition((x-1) * PIXEL_SIZE + PELLET_OFFSET, y * PIXEL_SIZE + PELLET_OFFSET);
                 this->window->draw(this->pellet);           
                 break;
             case POWER_PELLET:
-                this->powerPellet.setPosition(x * PIXEL_SIZE + POWER_PELLET_OFFSET, y * PIXEL_SIZE + POWER_PELLET_OFFSET);
+                this->powerPellet.setPosition((x-1) * PIXEL_SIZE + POWER_PELLET_OFFSET, y * PIXEL_SIZE + POWER_PELLET_OFFSET);
                 this->window->draw(this->powerPellet);
                 break;
             case DOOR:
-                this->door.setPosition(x * PIXEL_SIZE, y * PIXEL_SIZE);
+                this->door.setPosition((x-1) * PIXEL_SIZE, y * PIXEL_SIZE);
                 this->window->draw(this->door);  
                 break;
             default:
-                this->empty.setPosition(x * PIXEL_SIZE, y * PIXEL_SIZE);
+                this->empty.setPosition((x-1) * PIXEL_SIZE, y * PIXEL_SIZE);
                 this->window->draw(this->empty);
                 break;
             }
