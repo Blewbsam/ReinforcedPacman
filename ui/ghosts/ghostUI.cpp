@@ -31,7 +31,7 @@ void GhostUI::move(){
 }
 
 void GhostUI::move(Direction dir,double step_size) {
-
+    // TODO: if direction is new, snap ghost to grid and then move.
     switch (dir) {
         case UP:    SFposition.y -= step_size; break;
         case DOWN:  SFposition.y += step_size; break;
@@ -46,7 +46,7 @@ double GhostUI::getGhostSpeed(GhostType type, GhostState state) {
     else {state = CHASE;}
     static const std::unordered_map<GhostType, std::unordered_map<GhostState, double>> ghostSpeeds = {
     { CHASER, {{ FRIGHTENED, CHASER_FRIGHTENED_STEP_SIZE },  { CHASE, CHASER_CHASE_STEP_SIZE }} },
-    { AMBUSHER, {{ FRIGHTENED, AMBUSHER_FRIGHTENED_STEP_SIZE }, { TRANSITION, AMBUSHER_FRIGHTENED_STEP_SIZE }, { CHASE, AMBUSHER_CHASE_STEP_SIZE }} },
+    { AMBUSHER, {{ FRIGHTENED, AMBUSHER_FRIGHTENED_STEP_SIZE }, { CHASE, AMBUSHER_CHASE_STEP_SIZE }} },
     { FICKLE, {{ FRIGHTENED, FICKLE_FRIGHTENED_STEP_SIZE }, { CHASE, FICKLE_CHASE_STEP_SIZE }} },
     { STUPID, {{ FRIGHTENED, STUPID_FRIGHTENED_STEP_SIZE },{ CHASE, STUPID_CHASE_STEP_SIZE }} }
     };
@@ -54,6 +54,7 @@ double GhostUI::getGhostSpeed(GhostType type, GhostState state) {
 }
 
 void GhostUI::render(GhostState state, Direction ghostDir) {
+    // if direction is new, clip position?
     this->setPositionForRendering();
     this->setOrientationForRendering();
     this->setFacePositionForRendering();

@@ -30,7 +30,7 @@ void Display::initGameObjects() {
     this->gs->updateGhostPos(this->chaser.getIndexedPosition(),CHASER);
     this->gs->updateGhostPos(this->ambusher.getIndexedPosition(),AMBUSHER);
     this->gs->updateGhostPos(this->stupid.getIndexedPosition(), STUPID);
-    this->gs->updateGhostPos(this->stupid.getIndexedPosition(),FICKLE);
+    this->gs->updateGhostPos(this->fickle.getIndexedPosition(),FICKLE);
 
     gs->updatePacmanPos(this->pacman.getIndexedPosition());
 
@@ -69,8 +69,8 @@ void Display::update() {
 
         this->chaser.move();
         this->ambusher.move();
-        this->fickle.move();
         this->stupid.move();
+        this->fickle.move();
 
         gs->handleCollisions();
     } else {

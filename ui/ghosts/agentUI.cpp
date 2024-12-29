@@ -17,7 +17,7 @@ AgentUI::~AgentUI() {
     delete this->texture;    
 }
 
-void AgentUI::snapToGrid() {
+void AgentUI::snapToGrid() { //remove:
     this->SFposition.x = std::round(SFposition.x / PIXEL_SIZE) * PIXEL_SIZE;
     this->SFposition.y = std::round(SFposition.y / PIXEL_SIZE) * PIXEL_SIZE;
 }

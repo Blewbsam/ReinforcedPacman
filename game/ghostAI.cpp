@@ -12,8 +12,6 @@ GhostAI::GhostAI(GameState * gameState) {
     this->gs = gameState;
 }
 void GhostAI::moveChaser(ChaserGhost * chaser, Pacman * pacman) {
-    printGhostState(chaser);
-
     switch(chaser->getGhostState()) {
         case CHASE: moveChaseChaser(chaser,pacman); break;
         case SCATTER: moveScatterGhost(chaser); break;
@@ -38,6 +36,7 @@ void GhostAI::moveAmbusher(AmbusherGhost * ambusher, Pacman * pacman) {
 }
 
 void GhostAI::moveStupid(StupidGhost * stupid, Pacman * pacman) {
+    printGhostState(stupid);
     switch (stupid->getGhostState()) {
         case CHASE: moveChaseStupid(stupid,pacman); break;
         case SCATTER: moveScatterGhost(stupid); break;
@@ -107,7 +106,7 @@ void GhostAI::moveEatenGhost(Ghost * ghost) {
     if (ghost->getPos() == HomePos) ghost->setGhostState(ESCAPE);
 }
 
-const Position EscapePos = {8,7};
+const Position EscapePos = {10,7};
 
 void GhostAI::moveEscapeGhost(Ghost * ghost) {
     if (ghost->getGhostState() != ESCAPE) std::runtime_error("Ghost is not in ESCAPE state.");
