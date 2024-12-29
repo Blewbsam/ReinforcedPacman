@@ -55,9 +55,10 @@ void Display::update() {
         // generate Directions ghosts should take
         if (this->chaser.containedInCell()) this->gs->generateGhostMove(CHASER);
         if (this->ambusher.containedInCell()) this->gs->generateGhostMove(AMBUSHER);
-        if (this->stupid.containedInCell()) std::cout << "Stupid is contained" << std::endl;
         if (this->stupid.containedInCell()) this->gs->generateGhostMove(STUPID);
         if (this->fickle.containedInCell()) this->gs->generateGhostMove(FICKLE);
+
+
         this->chaser.move();
         this->ambusher.move();
         this->stupid.move();

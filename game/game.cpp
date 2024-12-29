@@ -133,7 +133,6 @@ bool GameState::validPacmanMove(Direction dir) const {
     Cell cell = maze_p->getCell(pos);
     return cell != WALL;
 }
-
 void GameState::handleCollisions() {
     this->handlePelletCollision();
     this->handlePowerPelletCollision();
@@ -306,7 +305,6 @@ void GameState::switchToNextState() {
         this->updateGlobalState(CHASE);
     }
 }
-
 bool GameState::isGameOver() const {return this->gameOver;}
 unsigned int GameState::getScore() const {return this->score;}
 
