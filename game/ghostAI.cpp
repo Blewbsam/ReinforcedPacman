@@ -4,18 +4,22 @@
 #include <vector>
 #include "ghostAI.h"
 #include "game.h"
+#include "helpers.h"
+
 
 
 GhostAI::GhostAI(GameState * gameState) {
     this->gs = gameState;
 }
 void GhostAI::moveChaser(ChaserGhost * chaser, Pacman * pacman) {
+    printGhostState(chaser);
+
     switch(chaser->getGhostState()) {
         case CHASE: moveChaseChaser(chaser,pacman); break;
         case SCATTER: moveScatterGhost(chaser); break;
         case ESCAPE: moveEscapeGhost(chaser); break;
         case EATEN: moveEatenGhost(chaser); break;
-        case TRANSITION:
+        case TRANSITION: // should fall through to FRIGHTENED behaviour
         case FRIGHTENED: moveFrightenedGhost(chaser); break;
         default: break;
     }
@@ -29,7 +33,7 @@ void GhostAI::moveAmbusher(AmbusherGhost * ambusher, Pacman * pacman) {
         case EATEN: moveEatenGhost(ambusher); break;
         case TRANSITION:
         case FRIGHTENED: moveFrightenedGhost(ambusher); break;
-        default: std::cout << "Sleeping" << std::endl;
+        default: break;
     }
 }
 
@@ -41,7 +45,7 @@ void GhostAI::moveStupid(StupidGhost * stupid, Pacman * pacman) {
         case EATEN: moveEatenGhost(stupid); break;
         case TRANSITION:
         case FRIGHTENED: moveFrightenedGhost(stupid); break;
-        default: std::cout << "Sleeping" << std::endl;
+        default: break; 
     }
 }
 
@@ -51,9 +55,9 @@ void GhostAI::moveFickle(FickleGhost * fickle, Pacman * pacman, Position chaserP
         case SCATTER: moveScatterGhost(fickle); break;
         case ESCAPE: moveEscapeGhost(fickle); break;
         case EATEN: moveEatenGhost(fickle); break;
-        case TRANSITION:
+        case TRANSITION:  
         case FRIGHTENED: moveFrightenedGhost(fickle); break;    
-        default: std::cout << "Sleeping" << std::endl;
+        default: break; 
     }
 }
 
@@ -97,17 +101,17 @@ void GhostAI::moveScatterGhost(Ghost * ghost) {
 const Position HomePos = {9,9};
 void GhostAI::moveEatenGhost(Ghost * ghost) {
     if (ghost->getGhostState() != EATEN) std::runtime_error("Ghost is not in EATEN state.");
-    Position targetPos = HomePos;
+    static const Position targetPos = HomePos;
+    std::cout << "Moving eaten Ghost" << std::endl;
     this->moveToTarget(ghost,targetPos,false);
     if (ghost->getPos() == HomePos) ghost->setGhostState(ESCAPE);
 }
-
 
 const Position EscapePos = {8,7};
 
 void GhostAI::moveEscapeGhost(Ghost * ghost) {
     if (ghost->getGhostState() != ESCAPE) std::runtime_error("Ghost is not in ESCAPE state.");
-    Position targetPos = EscapePos;
+    static const Position targetPos = EscapePos;
     this->moveToTarget(ghost,targetPos,false);
     if (ghost->getPos() == EscapePos) {
         if (this->gs->getGlobalState() == FRIGHTENED || this->gs->getGlobalState() == TRANSITION) { 
@@ -117,7 +121,6 @@ void GhostAI::moveEscapeGhost(Ghost * ghost) {
             ghost->setGhostState(this->gs->getGlobalState());
         }
     }
-
 }
 void GhostAI::moveFrightenedGhost(Ghost * ghost) {
     if (!this->ghostIsScared(ghost)) std::runtime_error("Ghost is not in FRIGHTENED state.");

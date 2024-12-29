@@ -32,8 +32,8 @@ void Display::initGameObjects() {
     this->gs->updateGhostPos(this->stupid.getIndexedPosition(), STUPID);
     this->gs->updateGhostPos(this->stupid.getIndexedPosition(),FICKLE);
 
-
     gs->updatePacmanPos(this->pacman.getIndexedPosition());
+
     this->wall.setSize(sf::Vector2f(PIXEL_SIZE,PIXEL_SIZE));
     this->wall.setFillColor(sf::Color::Blue);
     this->door.setSize(sf::Vector2f(PIXEL_SIZE,PIXEL_SIZE));
@@ -41,8 +41,6 @@ void Display::initGameObjects() {
     this->empty.setSize(sf::Vector2f(PIXEL_SIZE,PIXEL_SIZE));
     this->empty.setFillColor(sf::Color::Black);
 }
-
-
 
 Display::Display(GameState * gameState) :pacman(gameState), chaser(gameState), ambusher(gameState), fickle(gameState), stupid(gameState), gs(gameState) {
     this->initVariables(gameState);
@@ -58,7 +56,6 @@ Display::~Display() {
 
 
 void Display::update() {
-
     if (!gs->isGameOver()) {
         this->pollEvents();
     
@@ -81,7 +78,6 @@ void Display::update() {
     }  
 }
 
-
 void Display::render() {
     this->window->clear();
     this->renderMaze();
@@ -89,7 +85,6 @@ void Display::render() {
     this->renderPacman();
     this->window->display();
 }
-
 
 void Display::pollEvents() {
     while (this->window->pollEvent(this->ev)) {
@@ -141,14 +136,9 @@ void Display::renderGhosts() {
     this->window->draw(this->stupid.getFace());
 }
 
-
-
 void Display::gameLost() {
     this->window->close();
 }
-
-
-
 
 void Display::renderMaze() {
     grid_t grid = gs->getGrid();

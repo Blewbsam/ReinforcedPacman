@@ -6,12 +6,6 @@
 
 
 
-const std::unordered_map<GhostState, int> globalStateDurations = {
-    {CHASE,20},
-    {SCATTER,7},
-    {FRIGHTENED,4},
-    {TRANSITION,2},
-};
 
 GameState::GameState() : ghostAI(this){
     maze_p = new Maze();
@@ -20,6 +14,10 @@ GameState::GameState() : ghostAI(this){
     ghosts.chaser_p = new ChaserGhost();
     ghosts.ambusher_p = new AmbusherGhost();
     ghosts.stupid_p = new StupidGhost();
+    ghostArray[0] = ghosts.fickle_p;
+    ghostArray[1] = ghosts.chaser_p;
+    ghostArray[2] = ghosts.ambusher_p;
+    ghostArray[3] = ghosts.stupid_p;
     score = 0;
     gameOver = false;
     setInitialGhostStates();
@@ -69,9 +67,9 @@ GhostState GameState::getGlobalState() const {return this->globalState;}
 
 void GameState::setInitialGhostStates() {
     this->updateGhostState(CHASER,ESCAPE);
-    this->updateGhostState(AMBUSHER,CHASE);
-    this->updateGhostState(FICKLE,CHASE);
-    this->updateGhostState(STUPID,CHASE);
+    this->updateGhostState(AMBUSHER,SLEEP);
+    this->updateGhostState(FICKLE,SLEEP);
+    this->updateGhostState(STUPID,SLEEP);
 }
 
 void GameState::generateGhostMove(GhostType type){
@@ -160,7 +158,7 @@ void GameState::handlePowerPelletCollision() {
         score += 20;
         eatenPelletCount += 1;
         this->freeGhostHouseGhosts();
-        this->updateGlobalState(this->globalState,FRIGHTENED);
+        this->updateGlobalState(FRIGHTENED);
     }
 }
 
@@ -194,7 +192,7 @@ void GameState::handleGhostCollision(Ghost * ghost,Position pacmanPosition) {
             case CHASE: this->gameOver = true; break;
             case TRANSITION:
             case FRIGHTENED: this->eatGhost(ghost);break;
-        default:
+        default: // eaten or asleep
             break;
         }
     }
@@ -203,7 +201,8 @@ void GameState::handleGhostCollision(Ghost * ghost,Position pacmanPosition) {
 
 void GameState::eatGhost(Ghost * ghost) {
     ghost->setGhostState(EATEN);
-    this->score += 200;
+    std::cout << "Eating ghost" << std::endl;
+    this->score += 200; 
 }
 
 bool GameState::jumpAvail(Position pos) {   
@@ -252,13 +251,27 @@ std::vector<Position> GameState::getValidNeighbours(Position pos, bool hasEscape
     return this->maze_p->getValidNeighbours(pos);
 }
 
-void GameState::updateGlobalState(GhostState prevState, GhostState newState) {
+void GameState::updateGlobalState(GhostState newState) {
+
+    static const std::unordered_map<GhostState, std::array<GhostState,2>> canSwitch = {
+        {CHASE, {SCATTER,TRANSITION}},
+        {SCATTER, {CHASE}},
+        {TRANSITION, {FRIGHTENED}},
+        {FRIGHTENED,{SCATTER,CHASE}}
+    };
+    std::array<GhostState,2> plausibleStates = canSwitch.at(newState);
+    for (Ghost * ghost: this->ghostArray) {
+        if (std::find(plausibleStates.begin(), plausibleStates.end(), ghost->getGhostState()) != plausibleStates.end()){
+            ghost->setGhostState(newState);
+        }
+    }
     this->globalState =  newState;
-    if (this->ghosts.chaser_p->getGhostState() == prevState) this->ghosts.chaser_p->setGhostState(newState);
-    if (this->ghosts.ambusher_p->getGhostState() == prevState) this->ghosts.ambusher_p->setGhostState(newState);
-    if (this->ghosts.fickle_p->getGhostState() == prevState) this->ghosts.fickle_p->setGhostState(newState);
-    if (this->ghosts.stupid_p->getGhostState() == prevState) this->ghosts.stupid_p->setGhostState(newState);
     this->startStateTimer();
+}
+
+bool GameState::isActive(Ghost * ghost) const {
+    GhostState state =  ghost->getGhostState();
+    return (state != SLEEP && state != ESCAPE && state != EATEN);
 }
 
 void GameState::startStateTimer() {
@@ -266,6 +279,13 @@ void GameState::startStateTimer() {
 }
 
 bool GameState::hasTimeElapsed() const {
+    static const std::unordered_map<GhostState, int> globalStateDurations = {
+    {CHASE,20},
+    {SCATTER,7},
+    {FRIGHTENED,4},
+    {TRANSITION,2},
+};
+
     auto now = std::chrono::steady_clock::now();
     std::chrono::duration<int> elapsedTime = std::chrono::duration_cast<std::chrono::seconds>(now - stateStartTime);
     return elapsedTime.count() >= globalStateDurations.at(this->globalState);  
@@ -274,16 +294,16 @@ bool GameState::hasTimeElapsed() const {
 void GameState::switchToNextState() {
     if (this->globalState == CHASE) {
         std::cout << "Going into scatter" << std::endl;
-        this->updateGlobalState(CHASE,SCATTER);
+        this->updateGlobalState(SCATTER);
     } else if (this->globalState == SCATTER) {
         std::cout << "Going into chase" << std::endl;
-        this->updateGlobalState(SCATTER,CHASE);
+        this->updateGlobalState(CHASE);
     } else if (this->globalState == FRIGHTENED) {
         std::cout << "Going into transition" << std::endl;
-        this->updateGlobalState(FRIGHTENED,TRANSITION);
+        this->updateGlobalState(TRANSITION);
     } else {
         std::cout << "Going into chase" << std::endl;
-        this->updateGlobalState(TRANSITION,CHASE);
+        this->updateGlobalState(CHASE);
     }
 }
 

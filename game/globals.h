@@ -37,12 +37,12 @@ enum GhostType {
 };
 
 enum GhostState {
-    CHASE,
-    SCATTER,
+    CHASE, //
+    SCATTER, //
     EATEN,
     FRIGHTENED,
     TRANSITION, // for turning from FRIGHTENED to CHASE
-    ESCAPE,
+    ESCAPE,//
     SLEEP
 };
 

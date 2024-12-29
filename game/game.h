@@ -33,6 +33,7 @@ class GameState {
     Maze * maze_p;
     Pacman * pacman_p;
     Ghosts ghosts;
+    std::array<Ghost *,4> ghostArray;
     GhostAI ghostAI;
     GhostState globalState;
     std::chrono::steady_clock::time_point stateStartTime;
@@ -55,6 +56,9 @@ public:
     grid_t getGrid() const;
     int getGridWidth() const;
     int getGridHeight() const;
+
+    // returns true if ghost is active in game
+    bool isActive(Ghost * ghost) const;
 
     GhostState getGlobalState() const;
 
@@ -125,7 +129,14 @@ private:
     void eatGhost(Ghost * ghost);
 
     // changes globalState to newState and changes the state of all active prevStates.
-    void updateGlobalState(GhostState prevState,GhostState newState);
+    void updateGlobalState(GhostState newState);
+
+    // void updateGlobalGameState(GhostState newState);
+
+    // void updateGlobalStateToChase();
+    // void updateGlobalStateToScatter();
+    // void updateGlobalStateToFrightened();/
+    // void updateGlobalStateToTransition();
 
     // sets ghost states for beginnig of the game.
     void setInitialGhostStates();

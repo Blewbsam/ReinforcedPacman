@@ -23,8 +23,6 @@ sf::Sprite GhostUI::getFace() {
     return *this->face;
 }
 
-
-
 void GhostUI::move(){
     Direction ghostDir = this->gs->getGhostDir(this->ghostType);
     double stepSize = this->getGhostSpeed(this->ghostType,this->gs->getGhostState(this->ghostType));
