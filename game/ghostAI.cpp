@@ -37,6 +37,8 @@ void GhostAI::moveAmbusher(AmbusherGhost * ambusher, Pacman * pacman) {
 
 void GhostAI::moveStupid(StupidGhost * stupid, Pacman * pacman) {
     printGhostState(stupid);
+    printGhostDir(stupid);
+    printPos(stupid->getPos());
     switch (stupid->getGhostState()) {
         case CHASE: moveChaseStupid(stupid,pacman); break;
         case SCATTER: moveScatterGhost(stupid); break;
@@ -85,6 +87,9 @@ void GhostAI::moveChaseStupid(StupidGhost * stupid, Pacman * pacman) {
         targetPos = pacman->getPos();
     }
     this->moveToTarget(stupid,targetPos,true);
+    std::cout << "Updated direction" << std::endl;
+    printGhostDir(stupid);
+
 }
 
 void GhostAI::moveChaseFickle(FickleGhost * fickle, Pacman * pacman, Position chaserPos) {
@@ -100,18 +105,14 @@ void GhostAI::moveScatterGhost(Ghost * ghost) {
 const Position HomePos = {9,9};
 void GhostAI::moveEatenGhost(Ghost * ghost) {
     if (ghost->getGhostState() != EATEN) std::runtime_error("Ghost is not in EATEN state.");
-    static const Position targetPos = HomePos;
-    std::cout << "Moving eaten Ghost" << std::endl;
-    this->moveToTarget(ghost,targetPos,false);
+    this->moveToTarget(ghost,HomePos,false);
     if (ghost->getPos() == HomePos) ghost->setGhostState(ESCAPE);
 }
 
 const Position EscapePos = {10,7};
-
 void GhostAI::moveEscapeGhost(Ghost * ghost) {
     if (ghost->getGhostState() != ESCAPE) std::runtime_error("Ghost is not in ESCAPE state.");
-    static const Position targetPos = EscapePos;
-    this->moveToTarget(ghost,targetPos,false);
+    this->moveToTarget(ghost,EscapePos,false);
     if (ghost->getPos() == EscapePos) {
         if (this->gs->getGlobalState() == FRIGHTENED || this->gs->getGlobalState() == TRANSITION) { 
             // when game is in FRIGHTENED state, ghost should CHASE.

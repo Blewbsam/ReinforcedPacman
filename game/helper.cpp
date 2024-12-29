@@ -30,3 +30,18 @@ void printGhostState(Ghost * ghost) {
             break;
     }
 }
+
+
+void printGhostDir(Ghost * ghost) {
+    switch (ghost->getDir()){
+    case UP: std::cout << "Direction is UP" << std::endl; break;
+    case DOWN: std::cout << "Direction is DOWN" << std::endl; break;
+    case RIGHT: std::cout << "Direct is RIGHT" << std::endl; break;
+    case LEFT: std::cout << "Directon is LEFT" << std::endl; break; 
+    default: std::cout << "Direction is IDLE" << std::endl; break;  
+    }
+}
+
+void printPos(Position pos) {
+    std::cout << "(" << pos.x << "," << pos.y << ")" << std::endl;
+}   

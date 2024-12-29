@@ -77,8 +77,8 @@ void GameState::generateGhostMove(GhostType type){
     switch (type) {
     case CHASER: ghostAI.moveChaser(this->ghosts.chaser_p,this->pacman_p); break;
     case AMBUSHER: ghostAI.moveAmbusher(this->ghosts.ambusher_p,this->pacman_p); break;
-    case FICKLE: ghostAI.moveFickle(this->ghosts.fickle_p, this->pacman_p, this->ghosts.chaser_p->getPos());
-    case STUPID: ghostAI.moveStupid(this->ghosts.stupid_p,this->pacman_p);
+    case FICKLE: ghostAI.moveFickle(this->ghosts.fickle_p, this->pacman_p, this->ghosts.chaser_p->getPos());break;
+    case STUPID: ghostAI.moveStupid(this->ghosts.stupid_p,this->pacman_p);break;    
     default:
         break;
     }
@@ -265,7 +265,7 @@ void GameState::updateGlobalState(GhostState newState) {
             ghost->setGhostState(newState);
         }
     }
-    this->globalState =  newState;
+    this->globalState = newState;
     this->startStateTimer();
 }
 

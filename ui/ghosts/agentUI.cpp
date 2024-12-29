@@ -17,7 +17,7 @@ AgentUI::~AgentUI() {
     delete this->texture;    
 }
 
-void AgentUI::snapToGrid() { //remove:
+void AgentUI::snapToGrid() { // not being used anywhere
     this->SFposition.x = std::round(SFposition.x / PIXEL_SIZE) * PIXEL_SIZE;
     this->SFposition.y = std::round(SFposition.y / PIXEL_SIZE) * PIXEL_SIZE;
 }
@@ -25,27 +25,28 @@ void AgentUI::snapToGrid() { //remove:
 void AgentUI::move(){
 }
 
-bool AgentUI::containedInCell() { 
-    return (std::fmod(this->SFposition.x,PIXEL_SIZE) == 0 && std::fmod(this->SFposition.y,PIXEL_SIZE) == 0);
+bool AgentUI::containedInCell() {
+    const float tolerance = 1e-5;  // A small tolerance to account for floating-point precision issues
+    return (std::abs(std::fmod(this->SFposition.x, PIXEL_SIZE)) < tolerance) &&
+           (std::abs(std::fmod(this->SFposition.y, PIXEL_SIZE)) < tolerance);
 }
+
 
 void AgentUI::setPositionForRendering() {
     if (gs->jumpAvail(this->getIndexedPosition())) this->setSFPosition(gs->jumpPortal(this->getIndexedPosition()));
-
     this->sprite->setPosition(this->SFposition.x-PIXEL_SIZE, this->SFposition.y);
 }
 
 void AgentUI::setOrientationForRendering(){}
 
-Position AgentUI::getIndexedPosition() { // this
+Position AgentUI::getIndexedPosition() { // 
     Position pos(std::round((this->SFposition.x)/ PIXEL_SIZE),std::round((this->SFposition.y)/ PIXEL_SIZE));
     return pos;
 }
-void AgentUI::setSFPosition(Position pos) { //  this
+void AgentUI::setSFPosition(Position pos) { 
     this->SFposition.x = pos.x * PIXEL_SIZE;
     this->SFposition.y = pos.y * PIXEL_SIZE;
 }
-
 void AgentUI::scaleSprite() {
     float scale = PIXEL_SIZE / FRAME_SIZE;
     this->sprite->setScale(scale,scale);

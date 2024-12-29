@@ -8,10 +8,6 @@ using std::cout;
 using std::endl;
 
 
-void Display::initVariables(GameState * gamestate) {
-    this->window = nullptr;
-}
-
 void Display::initWindow() {
     this->videoMode.height = WINDOW_HEIGHT;
     this->videoMode.width = WINDOW_WIDTH;
@@ -43,7 +39,6 @@ void Display::initGameObjects() {
 }
 
 Display::Display(GameState * gameState) :pacman(gameState), chaser(gameState), ambusher(gameState), fickle(gameState), stupid(gameState), gs(gameState) {
-    this->initVariables(gameState);
     this->initGameObjects();
     this->initWindow();
 }
@@ -53,25 +48,20 @@ Display::~Display() {
     delete this->gs;
 }
 
-
-
 void Display::update() {
     if (!gs->isGameOver()) {
         this->pollEvents();
-    
         this->pacman.move();
-
         // generate Directions ghosts should take
         if (this->chaser.containedInCell()) this->gs->generateGhostMove(CHASER);
         if (this->ambusher.containedInCell()) this->gs->generateGhostMove(AMBUSHER);
+        if (this->stupid.containedInCell()) std::cout << "Stupid is contained" << std::endl;
         if (this->stupid.containedInCell()) this->gs->generateGhostMove(STUPID);
         if (this->fickle.containedInCell()) this->gs->generateGhostMove(FICKLE);
-
         this->chaser.move();
         this->ambusher.move();
         this->stupid.move();
         this->fickle.move();
-
         gs->handleCollisions();
     } else {
         this->gameLost();

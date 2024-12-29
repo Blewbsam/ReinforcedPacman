@@ -35,7 +35,6 @@ private:
 
 
     // initializaton of display
-    void initVariables(GameState * gameState);
     void initWindow();
 
     // initializes gameObjects to proper sizes and colors
@@ -68,6 +67,9 @@ public:
 
     // returns wether the window is open or not
     bool running() const;
+
+
+
 
 };
 

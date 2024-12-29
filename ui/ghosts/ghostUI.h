@@ -11,7 +11,6 @@
 
 class GhostUI : public AgentUI {
     protected:
-        Direction ghostDir;
         GhostType ghostType;
         sf::Sprite * face;
         sf::Color defaultColor;

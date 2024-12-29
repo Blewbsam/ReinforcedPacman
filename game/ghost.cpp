@@ -15,13 +15,11 @@ GhostState Ghost::getGhostState() const {return this->state;}
 
 
 
-
-const Position topLeft = {1,1};
-const Position topRight = {16,1};
-const Position bottomLeft = {1,19};
-const Position bottomRight = {16,19};
-
-
+// Positions for ghosts to persuit in SCATTER state.
+const Position topLeft = {2,1};
+const Position topRight = {17,1};
+const Position bottomLeft = {2,19};
+const Position bottomRight = {17,19};
 
 FickleGhost::FickleGhost() : Ghost(bottomRight){}
 ChaserGhost::ChaserGhost() : Ghost(topRight){}

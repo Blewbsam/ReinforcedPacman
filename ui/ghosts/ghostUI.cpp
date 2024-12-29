@@ -1,9 +1,10 @@
+
+#include <typeinfo>
 #include "ghostUI.h"
 #include "speeds.h"
 
 
 GhostUI::GhostUI(GameState * gameState, sf::Vector2f pos, sf::Color defaultColor, GhostType type) : AgentUI(gameState,pos){
-    this->ghostDir = IDLE;
     this->ghostType = type;
     this->animationSpeed = 0.1f;
     this->frame = 0;
@@ -24,14 +25,13 @@ sf::Sprite GhostUI::getFace() {
 }
 
 void GhostUI::move(){
-    Direction ghostDir = this->gs->getGhostDir(this->ghostType);
+    Direction dir = this->gs->getGhostDir(this->ghostType);
     double stepSize = this->getGhostSpeed(this->ghostType,this->gs->getGhostState(this->ghostType));
-    this->move(ghostDir,stepSize);
+    this->move(dir,stepSize);
     if (this->containedInCell()) gs->updateGhostPos(this->getIndexedPosition(),this->ghostType);
 }
 
 void GhostUI::move(Direction dir,double step_size) {
-    // TODO: if direction is new, snap ghost to grid and then move.
     switch (dir) {
         case UP:    SFposition.y -= step_size; break;
         case DOWN:  SFposition.y += step_size; break;
