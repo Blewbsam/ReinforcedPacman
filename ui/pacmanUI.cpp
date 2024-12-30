@@ -9,7 +9,7 @@ PacmanUI::PacmanUI(GameState * gameState) : AgentUI(gameState,startPos) {
     this->nextDir = RIGHT;
     this->frame = 0;
     this->animationSpeed = 0.1f;
-    if (!this->texture->loadFromFile("animations/PacmanAnimation.png")) {
+    if (!this->texture->loadFromFile("../UI/animations/PacmanAnimation.png")) {
         std::cerr << "Failed to load Pacman animation texture!" << std::endl;
         return;
     }

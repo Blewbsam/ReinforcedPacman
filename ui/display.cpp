@@ -86,16 +86,20 @@ void Display::pollEvents() {
         } 
         if (this->ev.type == sf::Event::KeyPressed) {
             if (this->ev.key.code == sf::Keyboard::Up) {
-                this->pacman.setNextDir(UP);
+                this->setPacmanDir(UP);
             } else if (this->ev.key.code == sf::Keyboard::Down) {
-                this->pacman.setNextDir(DOWN);
+                this->setPacmanDir(DOWN);
             } else if (this->ev.key.code == sf::Keyboard::Right) {
-                this->pacman.setNextDir(RIGHT);
+                this->setPacmanDir(RIGHT);
             } else if (this->ev.key.code == sf::Keyboard::Left) {
-                this->pacman.setNextDir(LEFT);
+                this->setPacmanDir(LEFT);
             }
         }
     }
+}
+
+void Display::setPacmanDir(Direction dir) {
+    this->pacman.setNextDir(dir);
 }
 
 bool Display::running() const {
@@ -160,4 +164,9 @@ void Display::renderMaze() {
             }
         }
     }
+}
+
+
+sf::Image Display::getScreenshot() {
+    return this->window->capture();
 }

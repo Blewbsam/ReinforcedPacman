@@ -59,7 +59,7 @@ public:
     void renderPacman();
     void renderGhosts();
 
-
+    void setPacmanDir(Direction dir);
 
     // use the grid_t structure to render display
     void renderMaze(); 
@@ -68,8 +68,7 @@ public:
     // returns wether the window is open or not
     bool running() const;
 
-
-
+    sf::Image getScreenshot();
 
 };
 

@@ -1,0 +1,3 @@
+/Users/samsalehi/Desktop/PersonalProjects/PacMan/build/CMakeFiles/pacman.dir
+/Users/samsalehi/Desktop/PersonalProjects/PacMan/build/CMakeFiles/edit_cache.dir
+/Users/samsalehi/Desktop/PersonalProjects/PacMan/build/CMakeFiles/rebuild_cache.dir

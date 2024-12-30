@@ -1,5 +1,6 @@
 
 #include <typeinfo>
+#include <filesystem>
 #include "ghostUI.h"
 #include "speeds.h"
 
@@ -11,8 +12,9 @@ GhostUI::GhostUI(GameState * gameState, sf::Vector2f pos, sf::Color defaultColor
     this->face = new sf::Sprite();
     this->defaultColor = defaultColor;
 
-    if (!this->texture->loadFromFile("animations/GhostAnimation.png")) {
+    if (!this->texture->loadFromFile("../ui/animations/GhostAnimation.png")) {
         std::cerr << "Failed to load Ghost animation texture!" << std::endl;
+        std::cout << "Current working directory: " << std::__fs::filesystem::current_path() << std::endl;
         return;
     }
     this->sprite->setTexture(*this->texture);
