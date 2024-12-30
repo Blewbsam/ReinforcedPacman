@@ -1,6 +1,5 @@
 
-#ifndef AGENT
-#define AGENT
+#pragma once
 #include <utility> 
 #include <vector>
 #include "globals.hpp"
@@ -22,5 +21,3 @@ public:
 
 
 
-
-#endif

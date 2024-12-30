@@ -1,7 +1,5 @@
 
-
-#ifndef GHOST
-#define GHOST
+#pragma once
 
 #include "agent.hpp"
 
@@ -40,8 +38,3 @@ class StupidGhost: public Ghost {
     StupidGhost();
 };
 
-
-
-
-
-#endif

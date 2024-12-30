@@ -1,7 +1,6 @@
 
 
-#ifndef AGENTUI
-#define AGENTUI
+#pragma once
 
 #include "../../game/globals.hpp"
 #include "../../game/game.hpp"
@@ -49,5 +48,3 @@ public:
 
 
 
-
-#endif

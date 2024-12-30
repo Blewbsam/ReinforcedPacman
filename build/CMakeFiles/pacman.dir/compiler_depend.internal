@@ -9300,17 +9300,17 @@ CMakeFiles/pacman.dir/ui/ghosts/ghostUI.cpp.o
  /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/15.0.0/include/stdarg.h
  /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/15.0.0/include/stddef.h
  /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/15.0.0/include/stdint.h
- /Users/samsalehi/Desktop/PersonalProjects/PacMan/game/agent.h++
- /Users/samsalehi/Desktop/PersonalProjects/PacMan/game/game.h
- /Users/samsalehi/Desktop/PersonalProjects/PacMan/game/ghost.h
- /Users/samsalehi/Desktop/PersonalProjects/PacMan/game/ghostAI.h
- /Users/samsalehi/Desktop/PersonalProjects/PacMan/game/globals.h
- /Users/samsalehi/Desktop/PersonalProjects/PacMan/game/maze.h
- /Users/samsalehi/Desktop/PersonalProjects/PacMan/game/pacman.h
- /Users/samsalehi/Desktop/PersonalProjects/PacMan/ui/globalsUI.h
- /Users/samsalehi/Desktop/PersonalProjects/PacMan/ui/ghosts/agentUI.h
- /Users/samsalehi/Desktop/PersonalProjects/PacMan/ui/ghosts/ghostUI.h
- /Users/samsalehi/Desktop/PersonalProjects/PacMan/ui/ghosts/speeds.h
+ /Users/samsalehi/Desktop/PersonalProjects/PacMan/game/agent.hpp
+ /Users/samsalehi/Desktop/PersonalProjects/PacMan/game/game.hpp
+ /Users/samsalehi/Desktop/PersonalProjects/PacMan/game/ghost.hpp
+ /Users/samsalehi/Desktop/PersonalProjects/PacMan/game/ghostAI.hpp
+ /Users/samsalehi/Desktop/PersonalProjects/PacMan/game/globals.hpp
+ /Users/samsalehi/Desktop/PersonalProjects/PacMan/game/maze.hpp
+ /Users/samsalehi/Desktop/PersonalProjects/PacMan/game/pacman.hpp
+ /Users/samsalehi/Desktop/PersonalProjects/PacMan/ui/globalsUI.hpp
+ /Users/samsalehi/Desktop/PersonalProjects/PacMan/ui/ghosts/agentUI.hpp
+ /Users/samsalehi/Desktop/PersonalProjects/PacMan/ui/ghosts/ghostUI.hpp
+ /Users/samsalehi/Desktop/PersonalProjects/PacMan/ui/ghosts/speeds.hpp
  /opt/homebrew/Cellar/sfml/2.6.2/include/SFML/Config.hpp
  /opt/homebrew/Cellar/sfml/2.6.2/include/SFML/Graphics.hpp
  /opt/homebrew/Cellar/sfml/2.6.2/include/SFML/Graphics/BlendMode.hpp
@@ -10184,25 +10184,21 @@ CMakeFiles/pacman.dir/ui/main.cpp.o
  /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/15.0.0/include/stdarg.h
  /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/15.0.0/include/stddef.h
  /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/15.0.0/include/stdint.h
- /Users/samsalehi/Desktop/PersonalProjects/PacMan/game/agent.h++
- /Users/samsalehi/Desktop/PersonalProjects/PacMan/game/game.h
- /Users/samsalehi/Desktop/PersonalProjects/PacMan/game/ghost.h
- /Users/samsalehi/Desktop/PersonalProjects/PacMan/game/ghostAI.h
- /Users/samsalehi/Desktop/PersonalProjects/PacMan/game/globals.h
- /Users/samsalehi/Desktop/PersonalProjects/PacMan/game/maze.h
- /Users/samsalehi/Desktop/PersonalProjects/PacMan/game/pacman.h
- /Users/samsalehi/Desktop/PersonalProjects/PacMan/ui/display.h
- /Users/samsalehi/Desktop/PersonalProjects/PacMan/game/game.h
- /Users/samsalehi/Desktop/PersonalProjects/PacMan/game/globals.h
- /Users/samsalehi/Desktop/PersonalProjects/PacMan/ui/globalsUI.h
- /Users/samsalehi/Desktop/PersonalProjects/PacMan/ui/ghosts/agentUI.h
- /Users/samsalehi/Desktop/PersonalProjects/PacMan/ui/ghosts/ambusherUI.h
- /Users/samsalehi/Desktop/PersonalProjects/PacMan/ui/ghosts/chaserUI.h
- /Users/samsalehi/Desktop/PersonalProjects/PacMan/ui/ghosts/fickleUI.h
- /Users/samsalehi/Desktop/PersonalProjects/PacMan/ui/ghosts/ghostUI.h
- /Users/samsalehi/Desktop/PersonalProjects/PacMan/ui/ghosts/stupidUI.h
- /Users/samsalehi/Desktop/PersonalProjects/PacMan/ui/globalsUI.h
- /Users/samsalehi/Desktop/PersonalProjects/PacMan/ui/pacmanUI.h
+ /Users/samsalehi/Desktop/PersonalProjects/PacMan/game/agent.hpp
+ /Users/samsalehi/Desktop/PersonalProjects/PacMan/game/game.hpp
+ /Users/samsalehi/Desktop/PersonalProjects/PacMan/game/ghost.hpp
+ /Users/samsalehi/Desktop/PersonalProjects/PacMan/game/ghostAI.hpp
+ /Users/samsalehi/Desktop/PersonalProjects/PacMan/game/globals.hpp
+ /Users/samsalehi/Desktop/PersonalProjects/PacMan/game/maze.hpp
+ /Users/samsalehi/Desktop/PersonalProjects/PacMan/game/pacman.hpp
+ /Users/samsalehi/Desktop/PersonalProjects/PacMan/ui/display.hpp
+ /Users/samsalehi/Desktop/PersonalProjects/PacMan/game/game.hpp
+ /Users/samsalehi/Desktop/PersonalProjects/PacMan/game/globals.hpp
+ /Users/samsalehi/Desktop/PersonalProjects/PacMan/ui/globalsUI.hpp
+ /Users/samsalehi/Desktop/PersonalProjects/PacMan/ui/ghosts/agentUI.hpp
+ /Users/samsalehi/Desktop/PersonalProjects/PacMan/ui/ghosts/ghostUI.hpp
+ /Users/samsalehi/Desktop/PersonalProjects/PacMan/ui/globalsUI.hpp
+ /Users/samsalehi/Desktop/PersonalProjects/PacMan/ui/pacmanUI.hpp
  /opt/homebrew/Cellar/sfml/2.6.2/include/SFML/Config.hpp
  /opt/homebrew/Cellar/sfml/2.6.2/include/SFML/Graphics.hpp
  /opt/homebrew/Cellar/sfml/2.6.2/include/SFML/Graphics/BlendMode.hpp
@@ -11076,18 +11072,18 @@ CMakeFiles/pacman.dir/ui/pacmanUI.cpp.o
  /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/15.0.0/include/stdarg.h
  /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/15.0.0/include/stddef.h
  /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/15.0.0/include/stdint.h
- /Users/samsalehi/Desktop/PersonalProjects/PacMan/game/agent.h++
- /Users/samsalehi/Desktop/PersonalProjects/PacMan/game/game.h
- /Users/samsalehi/Desktop/PersonalProjects/PacMan/game/ghost.h
- /Users/samsalehi/Desktop/PersonalProjects/PacMan/game/ghostAI.h
- /Users/samsalehi/Desktop/PersonalProjects/PacMan/game/globals.h
- /Users/samsalehi/Desktop/PersonalProjects/PacMan/game/maze.h
- /Users/samsalehi/Desktop/PersonalProjects/PacMan/game/pacman.h
- /Users/samsalehi/Desktop/PersonalProjects/PacMan/game/game.h
- /Users/samsalehi/Desktop/PersonalProjects/PacMan/game/globals.h
- /Users/samsalehi/Desktop/PersonalProjects/PacMan/ui/ghosts/agentUI.h
- /Users/samsalehi/Desktop/PersonalProjects/PacMan/ui/globalsUI.h
- /Users/samsalehi/Desktop/PersonalProjects/PacMan/ui/pacmanUI.h
+ /Users/samsalehi/Desktop/PersonalProjects/PacMan/game/agent.hpp
+ /Users/samsalehi/Desktop/PersonalProjects/PacMan/game/game.hpp
+ /Users/samsalehi/Desktop/PersonalProjects/PacMan/game/ghost.hpp
+ /Users/samsalehi/Desktop/PersonalProjects/PacMan/game/ghostAI.hpp
+ /Users/samsalehi/Desktop/PersonalProjects/PacMan/game/globals.hpp
+ /Users/samsalehi/Desktop/PersonalProjects/PacMan/game/maze.hpp
+ /Users/samsalehi/Desktop/PersonalProjects/PacMan/game/pacman.hpp
+ /Users/samsalehi/Desktop/PersonalProjects/PacMan/game/game.hpp
+ /Users/samsalehi/Desktop/PersonalProjects/PacMan/game/globals.hpp
+ /Users/samsalehi/Desktop/PersonalProjects/PacMan/ui/ghosts/agentUI.hpp
+ /Users/samsalehi/Desktop/PersonalProjects/PacMan/ui/globalsUI.hpp
+ /Users/samsalehi/Desktop/PersonalProjects/PacMan/ui/pacmanUI.hpp
  /opt/homebrew/Cellar/sfml/2.6.2/include/SFML/Config.hpp
  /opt/homebrew/Cellar/sfml/2.6.2/include/SFML/Graphics.hpp
  /opt/homebrew/Cellar/sfml/2.6.2/include/SFML/Graphics/BlendMode.hpp

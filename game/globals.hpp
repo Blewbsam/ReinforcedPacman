@@ -1,6 +1,5 @@
 
-#ifndef GLOBALS
-#define GLOBALS
+#pragma once
 
 #include <iostream>
 
@@ -52,7 +51,3 @@ enum GhostState {
 
 #define MAZE_HEIGHT 21
 #define MAZE_WIDTH 21
-
-
-
-#endif

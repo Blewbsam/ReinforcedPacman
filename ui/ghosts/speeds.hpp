@@ -1,6 +1,4 @@
-
-#ifndef SPEEDS
-#define SPEEDS
+#pragma once
 
 #define PACMAN_STEP_SIZE 2 
 
@@ -14,4 +12,3 @@
 #define FICKLE_FRIGHTENED_STEP_SIZE  1
 #define STUPID_FRIGHTENED_STEP_SIZE  1
 
-#endif

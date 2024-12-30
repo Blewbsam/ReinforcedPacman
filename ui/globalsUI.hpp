@@ -1,5 +1,4 @@
-#ifndef GLOBALSUI
-#define GLOBALSUI
+#pragma once
 
 #include "../game/globals.hpp"
 
@@ -18,5 +17,3 @@
 #define PACMAN_STEP_SIZE 2
 
 
-
-#endif

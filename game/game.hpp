@@ -1,7 +1,6 @@
 
 
-#ifndef GAME
-#define GAME    
+#pragma once
 
 #include "globals.hpp"
 #include "ghost.hpp"
@@ -153,4 +152,3 @@ private:
 
 
 
-#endif 

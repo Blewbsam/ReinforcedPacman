@@ -1,7 +1,5 @@
 
-#ifndef GHOSTUI
-#define GHOSTUI
-
+#pragma once
 
 #include "../../game/game.hpp"
 #include <SFML/Graphics.hpp>
@@ -12,7 +10,7 @@
 class GhostUI : public AgentUI {
     protected:
         GhostType ghostType;
-        sf::Sprite * face;s
+        sf::Sprite * face;
         sf::Color defaultColor;
     public:
         GhostUI(GameState * gameState, sf::Vector2f pos, sf::Color defaultColor, GhostType type);
@@ -79,5 +77,3 @@ class StupidUI : public GhostUI{
 
 
 
-
-#endif

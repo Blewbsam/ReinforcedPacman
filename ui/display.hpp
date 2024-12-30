@@ -1,5 +1,4 @@
-#ifndef DISPLAY
-#define DISPLAY
+#pragma once
 
 #include <SFML/Graphics.hpp>
 #include "pacmanUI.hpp"
@@ -69,5 +68,3 @@ public:
 
 };
 
-
-#endif  

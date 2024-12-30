@@ -1,6 +1,4 @@
-
-#ifndef PACMANUI
-#define PACMANUI
+#pragma once
 
 #include <SFML/Graphics.hpp>
 #include "../game/globals.hpp"
@@ -43,6 +41,3 @@ class PacmanUI : public AgentUI {
         void setOrientationForRendering() override;
 };
 
-
-
-#endif

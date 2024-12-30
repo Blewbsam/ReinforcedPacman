@@ -1,5 +1,4 @@
-#ifndef MAZE_H
-#define MAZE_H
+#pragma once
 
 #include <vector>
 #include <map>
@@ -40,4 +39,3 @@ class Maze {
 
 };
 
-#endif

@@ -1,6 +1,5 @@
 
-#ifndef PACMAN
-#define PACMAN
+#pragma once
 
 #include "agent.hpp"
 
@@ -14,5 +13,3 @@ class Pacman: public Agent {
 
 
 
-
-#endif

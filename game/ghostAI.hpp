@@ -1,6 +1,6 @@
 
-#ifndef GHOSTAI
-#define GHOSTAI
+
+#pragma once
 
 #include "globals.hpp"
 #include "ghost.hpp"
@@ -79,5 +79,3 @@ private:
 
 
 }; 
-
-#endif
