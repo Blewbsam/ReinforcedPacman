@@ -1,0 +1,3 @@
+decouple GameState
+allow for change in speeds without bugs arising.
+

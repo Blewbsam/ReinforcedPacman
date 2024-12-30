@@ -200,7 +200,6 @@ void GameState::handleGhostCollision(Ghost * ghost,Position pacmanPosition) {
 
 void GameState::eatGhost(Ghost * ghost) {
     ghost->setGhostState(EATEN);
-    std::cout << "Eating ghost" << std::endl;
     this->score += 200; 
 }
 
@@ -292,19 +291,17 @@ bool GameState::hasTimeElapsed() const {
 
 void GameState::switchToNextState() {
     if (this->globalState == CHASE) {
-        std::cout << "Going into scatter" << std::endl;
         this->updateGlobalState(SCATTER);
     } else if (this->globalState == SCATTER) {
-        std::cout << "Going into chase" << std::endl;
         this->updateGlobalState(CHASE);
     } else if (this->globalState == FRIGHTENED) {
-        std::cout << "Going into transition" << std::endl;
         this->updateGlobalState(TRANSITION);
     } else {
-        std::cout << "Going into chase" << std::endl;
         this->updateGlobalState(CHASE);
     }
 }
+
+
 bool GameState::isGameOver() const {return this->gameOver;}
 unsigned int GameState::getScore() const {return this->score;}
 

@@ -3,11 +3,6 @@
 #include "pacmanUI.hpp"
 
 
-
-using std::cout;
-using std::endl;
-
-
 void Display::initWindow() {
     this->videoMode.height = WINDOW_HEIGHT;
     this->videoMode.width = WINDOW_WIDTH;
@@ -45,7 +40,6 @@ Display::Display(GameState * gameState) :pacman(gameState), chaser(gameState), a
 
 Display::~Display() {
     delete this->window;
-    delete this->gs;
 }
 
 void Display::update() {
