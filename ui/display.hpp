@@ -2,13 +2,10 @@
 #define DISPLAY
 
 #include <SFML/Graphics.hpp>
-#include "pacmanUI.h"
-#include "globalsUI.h"
-#include "../game/game.h"
-#include "ghosts/chaserUI.h"
-#include "ghosts/ambusherUI.h"
-#include "ghosts/fickleUI.h"
-#include "ghosts/stupidUI.h"
+#include "pacmanUI.hpp"
+#include "globalsUI.hpp"
+#include "../game/game.hpp"
+#include "ghosts/ghostUI.hpp"
 
 
 

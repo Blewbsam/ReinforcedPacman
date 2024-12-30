@@ -2,9 +2,9 @@
 #include <iostream>
 #include <random>
 #include <vector>
-#include "ghostAI.h"
-#include "game.h"
-#include "helpers.h"
+#include "ghostAI.hpp"
+#include "game.hpp"
+#include "helpers.hpp"
 
 
 
@@ -87,7 +87,6 @@ void GhostAI::moveChaseStupid(StupidGhost * stupid, Pacman * pacman) {
         targetPos = pacman->getPos();
     }
     this->moveToTarget(stupid,targetPos,true);
-    std::cout << "Updated direction" << std::endl;
     printGhostDir(stupid);
 
 }

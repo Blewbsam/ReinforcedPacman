@@ -1,6 +1,6 @@
 #include <iostream>
 
-#include "pacmanUI.h"
+#include "pacmanUI.hpp"
 
 sf::Vector2f startPos = sf::Vector2f(PACMAN_START_X * PIXEL_SIZE, PACMAN_START_Y * PIXEL_SIZE);
 
@@ -9,7 +9,7 @@ PacmanUI::PacmanUI(GameState * gameState) : AgentUI(gameState,startPos) {
     this->nextDir = RIGHT;
     this->frame = 0;
     this->animationSpeed = 0.1f;
-    if (!this->texture->loadFromFile("../UI/animations/PacmanAnimation.png")) {
+    if (!this->texture->loadFromFile("../UI/animations/PacmanAnimation.png")) { // set for compiled library
         std::cerr << "Failed to load Pacman animation texture!" << std::endl;
         return;
     }

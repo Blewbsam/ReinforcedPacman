@@ -1,6 +1,6 @@
 
-#include "display.h"
-#include "../game/game.h"
+#include "display.hpp"
+#include "../game/game.hpp"
 
 
 int main() {    

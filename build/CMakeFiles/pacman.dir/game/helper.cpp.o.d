@@ -791,7 +791,7 @@ CMakeFiles/pacman.dir/game/helper.cpp.o: \
   /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX14.2.sdk/usr/include/_types/_nl_item.h \
   /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX14.2.sdk/usr/include/c++/v1/__bsd_locale_defaults.h \
   /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX14.2.sdk/usr/include/c++/v1/cstdarg \
-  /Users/samsalehi/Desktop/PersonalProjects/PacMan/game/helpers.h \
-  /Users/samsalehi/Desktop/PersonalProjects/PacMan/game/ghost.h \
-  /Users/samsalehi/Desktop/PersonalProjects/PacMan/game/agent.h \
-  /Users/samsalehi/Desktop/PersonalProjects/PacMan/game/globals.h
+  /Users/samsalehi/Desktop/PersonalProjects/PacMan/game/helpers.hpp \
+  /Users/samsalehi/Desktop/PersonalProjects/PacMan/game/ghost.hpp \
+  /Users/samsalehi/Desktop/PersonalProjects/PacMan/game/agent.hpp \
+  /Users/samsalehi/Desktop/PersonalProjects/PacMan/game/globals.hpp

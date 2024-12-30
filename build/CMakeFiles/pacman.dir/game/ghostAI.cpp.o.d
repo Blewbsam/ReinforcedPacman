@@ -839,13 +839,13 @@ CMakeFiles/pacman.dir/game/ghostAI.cpp.o: \
   /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX14.2.sdk/usr/include/c++/v1/__random/seed_seq.h \
   /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX14.2.sdk/usr/include/c++/v1/__random/student_t_distribution.h \
   /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX14.2.sdk/usr/include/c++/v1/__random/weibull_distribution.h \
-  /Users/samsalehi/Desktop/PersonalProjects/PacMan/game/ghostAI.h \
-  /Users/samsalehi/Desktop/PersonalProjects/PacMan/game/globals.h \
-  /Users/samsalehi/Desktop/PersonalProjects/PacMan/game/ghost.h \
-  /Users/samsalehi/Desktop/PersonalProjects/PacMan/game/agent.h \
-  /Users/samsalehi/Desktop/PersonalProjects/PacMan/game/pacman.h \
-  /Users/samsalehi/Desktop/PersonalProjects/PacMan/game/game.h \
-  /Users/samsalehi/Desktop/PersonalProjects/PacMan/game/maze.h \
+  /Users/samsalehi/Desktop/PersonalProjects/PacMan/game/ghostAI.hpp \
+  /Users/samsalehi/Desktop/PersonalProjects/PacMan/game/globals.hpp \
+  /Users/samsalehi/Desktop/PersonalProjects/PacMan/game/ghost.hpp \
+  /Users/samsalehi/Desktop/PersonalProjects/PacMan/game/agent.hpp \
+  /Users/samsalehi/Desktop/PersonalProjects/PacMan/game/pacman.hpp \
+  /Users/samsalehi/Desktop/PersonalProjects/PacMan/game/game.hpp \
+  /Users/samsalehi/Desktop/PersonalProjects/PacMan/game/maze.hpp \
   /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX14.2.sdk/usr/include/c++/v1/map \
   /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX14.2.sdk/usr/include/c++/v1/__tree \
-  /Users/samsalehi/Desktop/PersonalProjects/PacMan/game/helpers.h
+  /Users/samsalehi/Desktop/PersonalProjects/PacMan/game/helpers.hpp

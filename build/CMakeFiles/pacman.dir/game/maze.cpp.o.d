@@ -791,8 +791,8 @@ CMakeFiles/pacman.dir/game/maze.cpp.o: \
   /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX14.2.sdk/usr/include/_types/_nl_item.h \
   /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX14.2.sdk/usr/include/c++/v1/__bsd_locale_defaults.h \
   /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX14.2.sdk/usr/include/c++/v1/cstdarg \
-  /Users/samsalehi/Desktop/PersonalProjects/PacMan/game/maze.h \
+  /Users/samsalehi/Desktop/PersonalProjects/PacMan/game/maze.hpp \
   /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX14.2.sdk/usr/include/c++/v1/map \
   /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX14.2.sdk/usr/include/c++/v1/__tree \
-  /Users/samsalehi/Desktop/PersonalProjects/PacMan/game/globals.h \
-  /Users/samsalehi/Desktop/PersonalProjects/PacMan/game/agent.h
+  /Users/samsalehi/Desktop/PersonalProjects/PacMan/game/globals.hpp \
+  /Users/samsalehi/Desktop/PersonalProjects/PacMan/game/agent.hpp

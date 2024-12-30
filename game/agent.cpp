@@ -1,5 +1,5 @@
 
-#include "agent.h"
+#include "agent.hpp"
 
 
 Position agentStartPosition = {-1,-1};

@@ -3,12 +3,12 @@
 #ifndef GAME
 #define GAME    
 
-#include "globals.h"
-#include "ghost.h"
-#include "pacman.h"
-#include "maze.h"
-#include "ghostAI.h"
-#include "globals.h"
+#include "globals.hpp"
+#include "ghost.hpp"
+#include "pacman.hpp"
+#include "maze.hpp"
+#include "ghostAI.hpp"
+#include "globals.hpp"
 
 #include <chrono>
 #include <vector>

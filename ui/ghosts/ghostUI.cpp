@@ -1,8 +1,9 @@
 
 #include <typeinfo>
 #include <filesystem>
-#include "ghostUI.h"
-#include "speeds.h"
+#include <SFML/Graphics.hpp>
+#include "ghostUI.hpp"
+#include "speeds.hpp"
 
 
 GhostUI::GhostUI(GameState * gameState, sf::Vector2f pos, sf::Color defaultColor, GhostType type) : AgentUI(gameState,pos){
@@ -120,3 +121,21 @@ void GhostUI::setFaceOrientationForRendering(GhostState state, Direction ghostDi
 void GhostUI::nextFrame() {
     this->frame = (this->frame + 1) % 6;
 }
+
+
+
+// Ghost Subclasses constructors
+
+ChaserUI::ChaserUI(GameState * gameState) : GhostUI(gameState,sf::Vector2f(CHASER_START_X,CHASER_START_Y),sf::Color::Red,CHASER){}
+
+
+FickleUI::FickleUI(GameState * gameState) : GhostUI(gameState,sf::Vector2f(FICKLE_START_X,FICKLE_START_Y),sf::Color::Cyan,FICKLE){
+    this->sprite->setColor(sf::Color::Cyan);
+}
+
+
+sf::Color clydeColor(255, 165, 0);
+
+StupidUI::StupidUI(GameState * gameState) : GhostUI(gameState,sf::Vector2f(STUPID_START_X,STUPID_START_Y),clydeColor,STUPID){}
+
+AmbusherUI::AmbusherUI(GameState * gameState) : GhostUI(gameState,sf::Vector2f(AMBUSHER_START_X,AMBUSHER_START_Y),sf::Color::Magenta,AMBUSHER){    }

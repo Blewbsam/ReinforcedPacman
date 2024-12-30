@@ -2,7 +2,7 @@
 #ifndef PACMAN
 #define PACMAN
 
-#include "agent.h"
+#include "agent.hpp"
 
 
 

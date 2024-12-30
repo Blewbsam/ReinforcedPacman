@@ -1,8 +1,8 @@
 #include <pybind11/pybind11.h>
 #include <pybind11/stl.h>
 #include <pybind11/numpy.h>
-#include "display.h"
-#include "../game/game.h"
+#include "display.hpp"
+#include "../game/game.hpp"
 
 namespace py = pybind11;
 

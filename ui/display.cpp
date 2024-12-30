@@ -1,6 +1,6 @@
 #include <iostream>
-#include "display.h"
-#include "pacmanUI.h"
+#include "display.hpp"
+#include "pacmanUI.hpp"
 
 
 

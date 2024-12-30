@@ -3,10 +3,10 @@
 #define PACMANUI
 
 #include <SFML/Graphics.hpp>
-#include "../game/globals.h"
-#include "../game/game.h"
-#include "globalsUI.h"
-#include "ghosts/agentUI.h"
+#include "../game/globals.hpp"
+#include "../game/game.hpp"
+#include "globalsUI.hpp"
+#include "ghosts/agentUI.hpp"
 
 
 

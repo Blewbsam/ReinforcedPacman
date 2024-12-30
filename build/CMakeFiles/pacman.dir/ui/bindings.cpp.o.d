@@ -977,7 +977,7 @@ CMakeFiles/pacman.dir/ui/bindings.cpp.o: \
   /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX14.2.sdk/usr/include/c++/v1/__numeric/transform_exclusive_scan.h \
   /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX14.2.sdk/usr/include/c++/v1/__numeric/transform_inclusive_scan.h \
   /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX14.2.sdk/usr/include/c++/v1/__numeric/transform_reduce.h \
-  /Users/samsalehi/Desktop/PersonalProjects/PacMan/ui/display.h \
+  /Users/samsalehi/Desktop/PersonalProjects/PacMan/ui/display.hpp \
   /opt/homebrew/Cellar/sfml/2.6.2/include/SFML/Graphics.hpp \
   /opt/homebrew/Cellar/sfml/2.6.2/include/SFML/Window.hpp \
   /opt/homebrew/Cellar/sfml/2.6.2/include/SFML/System.hpp \
@@ -1055,22 +1055,18 @@ CMakeFiles/pacman.dir/ui/bindings.cpp.o: \
   /opt/homebrew/Cellar/sfml/2.6.2/include/SFML/Graphics/Sprite.hpp \
   /opt/homebrew/Cellar/sfml/2.6.2/include/SFML/Graphics/Text.hpp \
   /opt/homebrew/Cellar/sfml/2.6.2/include/SFML/Graphics/VertexBuffer.hpp \
-  /Users/samsalehi/Desktop/PersonalProjects/PacMan/ui/pacmanUI.h \
-  /Users/samsalehi/Desktop/PersonalProjects/PacMan/ui/../game/globals.h \
+  /Users/samsalehi/Desktop/PersonalProjects/PacMan/ui/pacmanUI.hpp \
+  /Users/samsalehi/Desktop/PersonalProjects/PacMan/ui/../game/globals.hpp \
   /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX14.2.sdk/usr/include/c++/v1/iostream \
-  /Users/samsalehi/Desktop/PersonalProjects/PacMan/ui/../game/game.h \
-  /Users/samsalehi/Desktop/PersonalProjects/PacMan/ui/../game/ghost.h \
-  /Users/samsalehi/Desktop/PersonalProjects/PacMan/ui/../game/agent.h \
-  /Users/samsalehi/Desktop/PersonalProjects/PacMan/ui/../game/pacman.h \
-  /Users/samsalehi/Desktop/PersonalProjects/PacMan/ui/../game/maze.h \
-  /Users/samsalehi/Desktop/PersonalProjects/PacMan/ui/../game/ghostAI.h \
-  /Users/samsalehi/Desktop/PersonalProjects/PacMan/ui/globalsUI.h \
-  /Users/samsalehi/Desktop/PersonalProjects/PacMan/ui/ghosts/agentUI.h \
-  /Users/samsalehi/Desktop/PersonalProjects/PacMan/ui/ghosts/../../game/globals.h \
-  /Users/samsalehi/Desktop/PersonalProjects/PacMan/ui/ghosts/../../game/game.h \
-  /Users/samsalehi/Desktop/PersonalProjects/PacMan/ui/ghosts/chaserUI.h \
-  /Users/samsalehi/Desktop/PersonalProjects/PacMan/ui/ghosts/ghostUI.h \
-  /Users/samsalehi/Desktop/PersonalProjects/PacMan/ui/ghosts/../globalsUI.h \
-  /Users/samsalehi/Desktop/PersonalProjects/PacMan/ui/ghosts/ambusherUI.h \
-  /Users/samsalehi/Desktop/PersonalProjects/PacMan/ui/ghosts/fickleUI.h \
-  /Users/samsalehi/Desktop/PersonalProjects/PacMan/ui/ghosts/stupidUI.h
+  /Users/samsalehi/Desktop/PersonalProjects/PacMan/ui/../game/game.hpp \
+  /Users/samsalehi/Desktop/PersonalProjects/PacMan/ui/../game/ghost.hpp \
+  /Users/samsalehi/Desktop/PersonalProjects/PacMan/ui/../game/agent.hpp \
+  /Users/samsalehi/Desktop/PersonalProjects/PacMan/ui/../game/pacman.hpp \
+  /Users/samsalehi/Desktop/PersonalProjects/PacMan/ui/../game/maze.hpp \
+  /Users/samsalehi/Desktop/PersonalProjects/PacMan/ui/../game/ghostAI.hpp \
+  /Users/samsalehi/Desktop/PersonalProjects/PacMan/ui/globalsUI.hpp \
+  /Users/samsalehi/Desktop/PersonalProjects/PacMan/ui/ghosts/agentUI.hpp \
+  /Users/samsalehi/Desktop/PersonalProjects/PacMan/ui/ghosts/../../game/globals.hpp \
+  /Users/samsalehi/Desktop/PersonalProjects/PacMan/ui/ghosts/../../game/game.hpp \
+  /Users/samsalehi/Desktop/PersonalProjects/PacMan/ui/ghosts/ghostUI.hpp \
+  /Users/samsalehi/Desktop/PersonalProjects/PacMan/ui/ghosts/../globalsUI.hpp

@@ -3,7 +3,7 @@
 
 #include <vector>
 #include <map>
-#include "globals.h"
+#include "globals.hpp"
 
 // Define or include CellType
 

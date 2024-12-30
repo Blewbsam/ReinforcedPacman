@@ -1,7 +1,7 @@
 #ifndef GLOBALSUI
 #define GLOBALSUI
 
-#include "../game/globals.h"
+#include "../game/globals.hpp"
 
 
 #define PIXEL_SIZE 30.f

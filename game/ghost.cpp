@@ -1,6 +1,6 @@
 
 
-#include "ghost.h"
+#include "ghost.hpp"
 
 
 Ghost::Ghost(Position sc): Agent(IDLE), state(SLEEP), scatterCorner(sc){}

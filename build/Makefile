@@ -249,30 +249,6 @@ game/helper.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/pacman.dir/build.make CMakeFiles/pacman.dir/game/helper.cpp.s
 .PHONY : game/helper.cpp.s
 
-game/main.o: game/main.cpp.o
-.PHONY : game/main.o
-
-# target to build an object file
-game/main.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/pacman.dir/build.make CMakeFiles/pacman.dir/game/main.cpp.o
-.PHONY : game/main.cpp.o
-
-game/main.i: game/main.cpp.i
-.PHONY : game/main.i
-
-# target to preprocess a source file
-game/main.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/pacman.dir/build.make CMakeFiles/pacman.dir/game/main.cpp.i
-.PHONY : game/main.cpp.i
-
-game/main.s: game/main.cpp.s
-.PHONY : game/main.s
-
-# target to generate assembly for a file
-game/main.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/pacman.dir/build.make CMakeFiles/pacman.dir/game/main.cpp.s
-.PHONY : game/main.cpp.s
-
 game/maze.o: game/maze.cpp.o
 .PHONY : game/maze.o
 
@@ -393,78 +369,6 @@ ui/ghosts/agentUI.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/pacman.dir/build.make CMakeFiles/pacman.dir/ui/ghosts/agentUI.cpp.s
 .PHONY : ui/ghosts/agentUI.cpp.s
 
-ui/ghosts/ambusherUI.o: ui/ghosts/ambusherUI.cpp.o
-.PHONY : ui/ghosts/ambusherUI.o
-
-# target to build an object file
-ui/ghosts/ambusherUI.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/pacman.dir/build.make CMakeFiles/pacman.dir/ui/ghosts/ambusherUI.cpp.o
-.PHONY : ui/ghosts/ambusherUI.cpp.o
-
-ui/ghosts/ambusherUI.i: ui/ghosts/ambusherUI.cpp.i
-.PHONY : ui/ghosts/ambusherUI.i
-
-# target to preprocess a source file
-ui/ghosts/ambusherUI.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/pacman.dir/build.make CMakeFiles/pacman.dir/ui/ghosts/ambusherUI.cpp.i
-.PHONY : ui/ghosts/ambusherUI.cpp.i
-
-ui/ghosts/ambusherUI.s: ui/ghosts/ambusherUI.cpp.s
-.PHONY : ui/ghosts/ambusherUI.s
-
-# target to generate assembly for a file
-ui/ghosts/ambusherUI.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/pacman.dir/build.make CMakeFiles/pacman.dir/ui/ghosts/ambusherUI.cpp.s
-.PHONY : ui/ghosts/ambusherUI.cpp.s
-
-ui/ghosts/chaserUI.o: ui/ghosts/chaserUI.cpp.o
-.PHONY : ui/ghosts/chaserUI.o
-
-# target to build an object file
-ui/ghosts/chaserUI.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/pacman.dir/build.make CMakeFiles/pacman.dir/ui/ghosts/chaserUI.cpp.o
-.PHONY : ui/ghosts/chaserUI.cpp.o
-
-ui/ghosts/chaserUI.i: ui/ghosts/chaserUI.cpp.i
-.PHONY : ui/ghosts/chaserUI.i
-
-# target to preprocess a source file
-ui/ghosts/chaserUI.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/pacman.dir/build.make CMakeFiles/pacman.dir/ui/ghosts/chaserUI.cpp.i
-.PHONY : ui/ghosts/chaserUI.cpp.i
-
-ui/ghosts/chaserUI.s: ui/ghosts/chaserUI.cpp.s
-.PHONY : ui/ghosts/chaserUI.s
-
-# target to generate assembly for a file
-ui/ghosts/chaserUI.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/pacman.dir/build.make CMakeFiles/pacman.dir/ui/ghosts/chaserUI.cpp.s
-.PHONY : ui/ghosts/chaserUI.cpp.s
-
-ui/ghosts/fickleUI.o: ui/ghosts/fickleUI.cpp.o
-.PHONY : ui/ghosts/fickleUI.o
-
-# target to build an object file
-ui/ghosts/fickleUI.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/pacman.dir/build.make CMakeFiles/pacman.dir/ui/ghosts/fickleUI.cpp.o
-.PHONY : ui/ghosts/fickleUI.cpp.o
-
-ui/ghosts/fickleUI.i: ui/ghosts/fickleUI.cpp.i
-.PHONY : ui/ghosts/fickleUI.i
-
-# target to preprocess a source file
-ui/ghosts/fickleUI.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/pacman.dir/build.make CMakeFiles/pacman.dir/ui/ghosts/fickleUI.cpp.i
-.PHONY : ui/ghosts/fickleUI.cpp.i
-
-ui/ghosts/fickleUI.s: ui/ghosts/fickleUI.cpp.s
-.PHONY : ui/ghosts/fickleUI.s
-
-# target to generate assembly for a file
-ui/ghosts/fickleUI.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/pacman.dir/build.make CMakeFiles/pacman.dir/ui/ghosts/fickleUI.cpp.s
-.PHONY : ui/ghosts/fickleUI.cpp.s
-
 ui/ghosts/ghostUI.o: ui/ghosts/ghostUI.cpp.o
 .PHONY : ui/ghosts/ghostUI.o
 
@@ -488,30 +392,6 @@ ui/ghosts/ghostUI.s: ui/ghosts/ghostUI.cpp.s
 ui/ghosts/ghostUI.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/pacman.dir/build.make CMakeFiles/pacman.dir/ui/ghosts/ghostUI.cpp.s
 .PHONY : ui/ghosts/ghostUI.cpp.s
-
-ui/ghosts/stupidUI.o: ui/ghosts/stupidUI.cpp.o
-.PHONY : ui/ghosts/stupidUI.o
-
-# target to build an object file
-ui/ghosts/stupidUI.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/pacman.dir/build.make CMakeFiles/pacman.dir/ui/ghosts/stupidUI.cpp.o
-.PHONY : ui/ghosts/stupidUI.cpp.o
-
-ui/ghosts/stupidUI.i: ui/ghosts/stupidUI.cpp.i
-.PHONY : ui/ghosts/stupidUI.i
-
-# target to preprocess a source file
-ui/ghosts/stupidUI.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/pacman.dir/build.make CMakeFiles/pacman.dir/ui/ghosts/stupidUI.cpp.i
-.PHONY : ui/ghosts/stupidUI.cpp.i
-
-ui/ghosts/stupidUI.s: ui/ghosts/stupidUI.cpp.s
-.PHONY : ui/ghosts/stupidUI.s
-
-# target to generate assembly for a file
-ui/ghosts/stupidUI.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/pacman.dir/build.make CMakeFiles/pacman.dir/ui/ghosts/stupidUI.cpp.s
-.PHONY : ui/ghosts/stupidUI.cpp.s
 
 ui/main.o: ui/main.cpp.o
 .PHONY : ui/main.o
@@ -585,9 +465,6 @@ help:
 	@echo "... game/helper.o"
 	@echo "... game/helper.i"
 	@echo "... game/helper.s"
-	@echo "... game/main.o"
-	@echo "... game/main.i"
-	@echo "... game/main.s"
 	@echo "... game/maze.o"
 	@echo "... game/maze.i"
 	@echo "... game/maze.s"
@@ -603,21 +480,9 @@ help:
 	@echo "... ui/ghosts/agentUI.o"
 	@echo "... ui/ghosts/agentUI.i"
 	@echo "... ui/ghosts/agentUI.s"
-	@echo "... ui/ghosts/ambusherUI.o"
-	@echo "... ui/ghosts/ambusherUI.i"
-	@echo "... ui/ghosts/ambusherUI.s"
-	@echo "... ui/ghosts/chaserUI.o"
-	@echo "... ui/ghosts/chaserUI.i"
-	@echo "... ui/ghosts/chaserUI.s"
-	@echo "... ui/ghosts/fickleUI.o"
-	@echo "... ui/ghosts/fickleUI.i"
-	@echo "... ui/ghosts/fickleUI.s"
 	@echo "... ui/ghosts/ghostUI.o"
 	@echo "... ui/ghosts/ghostUI.i"
 	@echo "... ui/ghosts/ghostUI.s"
-	@echo "... ui/ghosts/stupidUI.o"
-	@echo "... ui/ghosts/stupidUI.i"
-	@echo "... ui/ghosts/stupidUI.s"
 	@echo "... ui/main.o"
 	@echo "... ui/main.i"
 	@echo "... ui/main.s"

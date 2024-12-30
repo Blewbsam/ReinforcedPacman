@@ -1,6 +1,6 @@
 #include <iostream>
-#include "agentUI.h"
-#include "../globalsUI.h"
+#include "agentUI.hpp"
+#include "../globalsUI.hpp"
 
 
 

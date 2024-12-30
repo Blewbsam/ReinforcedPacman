@@ -2,9 +2,9 @@
 #ifndef GHOSTAI
 #define GHOSTAI
 
-#include "globals.h"
-#include "ghost.h"
-#include "pacman.h"
+#include "globals.hpp"
+#include "ghost.hpp"
+#include "pacman.hpp"
 
 class GameState; // forward decleration
 

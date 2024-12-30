@@ -1,7 +1,7 @@
 
 #include <iostream>
-#include "maze.h"
-#include "agent.h"
+#include "maze.hpp"
+#include "agent.hpp"
 #include <vector>
 
 using std::cout;

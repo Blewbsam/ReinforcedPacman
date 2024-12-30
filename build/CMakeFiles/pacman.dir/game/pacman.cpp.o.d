@@ -1,7 +1,7 @@
 CMakeFiles/pacman.dir/game/pacman.cpp.o: \
   /Users/samsalehi/Desktop/PersonalProjects/PacMan/game/pacman.cpp \
-  /Users/samsalehi/Desktop/PersonalProjects/PacMan/game/pacman.h \
-  /Users/samsalehi/Desktop/PersonalProjects/PacMan/game/agent.h \
+  /Users/samsalehi/Desktop/PersonalProjects/PacMan/game/pacman.hpp \
+  /Users/samsalehi/Desktop/PersonalProjects/PacMan/game/agent.hpp \
   /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX14.2.sdk/usr/include/c++/v1/utility \
   /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX14.2.sdk/usr/include/c++/v1/__assert \
   /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX14.2.sdk/usr/include/c++/v1/__config \
@@ -735,7 +735,7 @@ CMakeFiles/pacman.dir/game/pacman.cpp.o: \
   /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX14.2.sdk/usr/include/c++/v1/__chrono/year_month_weekday.h \
   /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX14.2.sdk/usr/include/c++/v1/__chrono/file_clock.h \
   /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX14.2.sdk/usr/include/c++/v1/__chrono/literals.h \
-  /Users/samsalehi/Desktop/PersonalProjects/PacMan/game/globals.h \
+  /Users/samsalehi/Desktop/PersonalProjects/PacMan/game/globals.hpp \
   /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX14.2.sdk/usr/include/c++/v1/iostream \
   /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX14.2.sdk/usr/include/c++/v1/ios \
   /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX14.2.sdk/usr/include/c++/v1/__ios/fpos.h \

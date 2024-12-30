@@ -3,7 +3,7 @@
 #define AGENT
 #include <utility> 
 #include <vector>
-#include "globals.h"
+#include "globals.hpp"
 
 
 extern std::vector<Direction> directions;

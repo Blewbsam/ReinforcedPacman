@@ -2,8 +2,8 @@
 #ifndef UTILS
 #define UTILS
 
-#include "ghost.h"
-#include "globals.h"
+#include "ghost.hpp"
+#include "globals.hpp"
 
 
 void printGhostState(Ghost * ghost);

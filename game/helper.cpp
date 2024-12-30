@@ -1,6 +1,6 @@
 
 #include <iostream>
-#include "helpers.h"
+#include "helpers.hpp"
 
 void printGhostState(Ghost * ghost) {
     switch (ghost->getGhostState()) {

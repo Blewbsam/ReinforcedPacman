@@ -58,7 +58,8 @@
         "__availability": "cpp",
         "iterator": "cpp",
         "memory_resource": "cpp",
-        "utility": "cpp"
+        "utility": "cpp",
+        "*.h++": "cpp"
     },
     "C_Cpp.errorSquiggles": "disabled"
 }

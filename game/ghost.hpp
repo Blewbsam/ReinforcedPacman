@@ -3,7 +3,7 @@
 #ifndef GHOST
 #define GHOST
 
-#include "agent.h"
+#include "agent.hpp"
 
 class Ghost: public Agent {
     protected:

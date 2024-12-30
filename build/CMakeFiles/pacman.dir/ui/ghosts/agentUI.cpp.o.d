@@ -791,16 +791,16 @@ CMakeFiles/pacman.dir/ui/ghosts/agentUI.cpp.o: \
   /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX14.2.sdk/usr/include/_types/_nl_item.h \
   /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX14.2.sdk/usr/include/c++/v1/__bsd_locale_defaults.h \
   /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX14.2.sdk/usr/include/c++/v1/cstdarg \
-  /Users/samsalehi/Desktop/PersonalProjects/PacMan/ui/ghosts/agentUI.h \
-  /Users/samsalehi/Desktop/PersonalProjects/PacMan/ui/ghosts/../../game/globals.h \
-  /Users/samsalehi/Desktop/PersonalProjects/PacMan/ui/ghosts/../../game/game.h \
-  /Users/samsalehi/Desktop/PersonalProjects/PacMan/ui/ghosts/../../game/ghost.h \
-  /Users/samsalehi/Desktop/PersonalProjects/PacMan/ui/ghosts/../../game/agent.h \
-  /Users/samsalehi/Desktop/PersonalProjects/PacMan/ui/ghosts/../../game/pacman.h \
-  /Users/samsalehi/Desktop/PersonalProjects/PacMan/ui/ghosts/../../game/maze.h \
+  /Users/samsalehi/Desktop/PersonalProjects/PacMan/ui/ghosts/agentUI.hpp \
+  /Users/samsalehi/Desktop/PersonalProjects/PacMan/ui/ghosts/../../game/globals.hpp \
+  /Users/samsalehi/Desktop/PersonalProjects/PacMan/ui/ghosts/../../game/game.hpp \
+  /Users/samsalehi/Desktop/PersonalProjects/PacMan/ui/ghosts/../../game/ghost.hpp \
+  /Users/samsalehi/Desktop/PersonalProjects/PacMan/ui/ghosts/../../game/agent.hpp \
+  /Users/samsalehi/Desktop/PersonalProjects/PacMan/ui/ghosts/../../game/pacman.hpp \
+  /Users/samsalehi/Desktop/PersonalProjects/PacMan/ui/ghosts/../../game/maze.hpp \
   /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX14.2.sdk/usr/include/c++/v1/map \
   /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX14.2.sdk/usr/include/c++/v1/__tree \
-  /Users/samsalehi/Desktop/PersonalProjects/PacMan/ui/ghosts/../../game/ghostAI.h \
+  /Users/samsalehi/Desktop/PersonalProjects/PacMan/ui/ghosts/../../game/ghostAI.hpp \
   /opt/homebrew/Cellar/sfml/2.6.2/include/SFML/Graphics.hpp \
   /opt/homebrew/Cellar/sfml/2.6.2/include/SFML/Window.hpp \
   /opt/homebrew/Cellar/sfml/2.6.2/include/SFML/System.hpp \
@@ -878,4 +878,4 @@ CMakeFiles/pacman.dir/ui/ghosts/agentUI.cpp.o: \
   /opt/homebrew/Cellar/sfml/2.6.2/include/SFML/Graphics/Sprite.hpp \
   /opt/homebrew/Cellar/sfml/2.6.2/include/SFML/Graphics/Text.hpp \
   /opt/homebrew/Cellar/sfml/2.6.2/include/SFML/Graphics/VertexBuffer.hpp \
-  /Users/samsalehi/Desktop/PersonalProjects/PacMan/ui/ghosts/../globalsUI.h
+  /Users/samsalehi/Desktop/PersonalProjects/PacMan/ui/ghosts/../globalsUI.hpp

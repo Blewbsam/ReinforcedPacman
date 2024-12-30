@@ -796,7 +796,7 @@ CMakeFiles/pacman.dir/ui/ghosts/chaserUI.cpp.o: \
   /Users/samsalehi/Desktop/PersonalProjects/PacMan/ui/ghosts/../../game/game.h \
   /Users/samsalehi/Desktop/PersonalProjects/PacMan/ui/ghosts/../../game/globals.h \
   /Users/samsalehi/Desktop/PersonalProjects/PacMan/ui/ghosts/../../game/ghost.h \
-  /Users/samsalehi/Desktop/PersonalProjects/PacMan/ui/ghosts/../../game/agent.h \
+  /Users/samsalehi/Desktop/PersonalProjects/PacMan/ui/ghosts/../../game/agent.h++ \
   /Users/samsalehi/Desktop/PersonalProjects/PacMan/ui/ghosts/../../game/pacman.h \
   /Users/samsalehi/Desktop/PersonalProjects/PacMan/ui/ghosts/../../game/maze.h \
   /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX14.2.sdk/usr/include/c++/v1/map \

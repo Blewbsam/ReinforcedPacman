@@ -3,8 +3,8 @@
 #ifndef AGENTUI
 #define AGENTUI
 
-#include "../../game/globals.h"
-#include "../../game/game.h"
+#include "../../game/globals.hpp"
+#include "../../game/game.hpp"
 #include <SFML/Graphics.hpp>
 
 #define FRAME_SIZE 16

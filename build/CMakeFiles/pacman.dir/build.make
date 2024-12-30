@@ -142,24 +142,10 @@ CMakeFiles/pacman.dir/game/helper.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/pacman.dir/game/helper.cpp.s"
 	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/samsalehi/Desktop/PersonalProjects/PacMan/game/helper.cpp -o CMakeFiles/pacman.dir/game/helper.cpp.s
 
-CMakeFiles/pacman.dir/game/main.cpp.o: CMakeFiles/pacman.dir/flags.make
-CMakeFiles/pacman.dir/game/main.cpp.o: /Users/samsalehi/Desktop/PersonalProjects/PacMan/game/main.cpp
-CMakeFiles/pacman.dir/game/main.cpp.o: CMakeFiles/pacman.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/samsalehi/Desktop/PersonalProjects/PacMan/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object CMakeFiles/pacman.dir/game/main.cpp.o"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/pacman.dir/game/main.cpp.o -MF CMakeFiles/pacman.dir/game/main.cpp.o.d -o CMakeFiles/pacman.dir/game/main.cpp.o -c /Users/samsalehi/Desktop/PersonalProjects/PacMan/game/main.cpp
-
-CMakeFiles/pacman.dir/game/main.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/pacman.dir/game/main.cpp.i"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/samsalehi/Desktop/PersonalProjects/PacMan/game/main.cpp > CMakeFiles/pacman.dir/game/main.cpp.i
-
-CMakeFiles/pacman.dir/game/main.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/pacman.dir/game/main.cpp.s"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/samsalehi/Desktop/PersonalProjects/PacMan/game/main.cpp -o CMakeFiles/pacman.dir/game/main.cpp.s
-
 CMakeFiles/pacman.dir/game/maze.cpp.o: CMakeFiles/pacman.dir/flags.make
 CMakeFiles/pacman.dir/game/maze.cpp.o: /Users/samsalehi/Desktop/PersonalProjects/PacMan/game/maze.cpp
 CMakeFiles/pacman.dir/game/maze.cpp.o: CMakeFiles/pacman.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/samsalehi/Desktop/PersonalProjects/PacMan/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building CXX object CMakeFiles/pacman.dir/game/maze.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/samsalehi/Desktop/PersonalProjects/PacMan/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object CMakeFiles/pacman.dir/game/maze.cpp.o"
 	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/pacman.dir/game/maze.cpp.o -MF CMakeFiles/pacman.dir/game/maze.cpp.o.d -o CMakeFiles/pacman.dir/game/maze.cpp.o -c /Users/samsalehi/Desktop/PersonalProjects/PacMan/game/maze.cpp
 
 CMakeFiles/pacman.dir/game/maze.cpp.i: cmake_force
@@ -173,7 +159,7 @@ CMakeFiles/pacman.dir/game/maze.cpp.s: cmake_force
 CMakeFiles/pacman.dir/game/pacman.cpp.o: CMakeFiles/pacman.dir/flags.make
 CMakeFiles/pacman.dir/game/pacman.cpp.o: /Users/samsalehi/Desktop/PersonalProjects/PacMan/game/pacman.cpp
 CMakeFiles/pacman.dir/game/pacman.cpp.o: CMakeFiles/pacman.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/samsalehi/Desktop/PersonalProjects/PacMan/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Building CXX object CMakeFiles/pacman.dir/game/pacman.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/samsalehi/Desktop/PersonalProjects/PacMan/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building CXX object CMakeFiles/pacman.dir/game/pacman.cpp.o"
 	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/pacman.dir/game/pacman.cpp.o -MF CMakeFiles/pacman.dir/game/pacman.cpp.o.d -o CMakeFiles/pacman.dir/game/pacman.cpp.o -c /Users/samsalehi/Desktop/PersonalProjects/PacMan/game/pacman.cpp
 
 CMakeFiles/pacman.dir/game/pacman.cpp.i: cmake_force
@@ -187,7 +173,7 @@ CMakeFiles/pacman.dir/game/pacman.cpp.s: cmake_force
 CMakeFiles/pacman.dir/ui/bindings.cpp.o: CMakeFiles/pacman.dir/flags.make
 CMakeFiles/pacman.dir/ui/bindings.cpp.o: /Users/samsalehi/Desktop/PersonalProjects/PacMan/ui/bindings.cpp
 CMakeFiles/pacman.dir/ui/bindings.cpp.o: CMakeFiles/pacman.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/samsalehi/Desktop/PersonalProjects/PacMan/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Building CXX object CMakeFiles/pacman.dir/ui/bindings.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/samsalehi/Desktop/PersonalProjects/PacMan/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Building CXX object CMakeFiles/pacman.dir/ui/bindings.cpp.o"
 	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/pacman.dir/ui/bindings.cpp.o -MF CMakeFiles/pacman.dir/ui/bindings.cpp.o.d -o CMakeFiles/pacman.dir/ui/bindings.cpp.o -c /Users/samsalehi/Desktop/PersonalProjects/PacMan/ui/bindings.cpp
 
 CMakeFiles/pacman.dir/ui/bindings.cpp.i: cmake_force
@@ -201,7 +187,7 @@ CMakeFiles/pacman.dir/ui/bindings.cpp.s: cmake_force
 CMakeFiles/pacman.dir/ui/display.cpp.o: CMakeFiles/pacman.dir/flags.make
 CMakeFiles/pacman.dir/ui/display.cpp.o: /Users/samsalehi/Desktop/PersonalProjects/PacMan/ui/display.cpp
 CMakeFiles/pacman.dir/ui/display.cpp.o: CMakeFiles/pacman.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/samsalehi/Desktop/PersonalProjects/PacMan/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_10) "Building CXX object CMakeFiles/pacman.dir/ui/display.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/samsalehi/Desktop/PersonalProjects/PacMan/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Building CXX object CMakeFiles/pacman.dir/ui/display.cpp.o"
 	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/pacman.dir/ui/display.cpp.o -MF CMakeFiles/pacman.dir/ui/display.cpp.o.d -o CMakeFiles/pacman.dir/ui/display.cpp.o -c /Users/samsalehi/Desktop/PersonalProjects/PacMan/ui/display.cpp
 
 CMakeFiles/pacman.dir/ui/display.cpp.i: cmake_force
@@ -215,7 +201,7 @@ CMakeFiles/pacman.dir/ui/display.cpp.s: cmake_force
 CMakeFiles/pacman.dir/ui/ghosts/agentUI.cpp.o: CMakeFiles/pacman.dir/flags.make
 CMakeFiles/pacman.dir/ui/ghosts/agentUI.cpp.o: /Users/samsalehi/Desktop/PersonalProjects/PacMan/ui/ghosts/agentUI.cpp
 CMakeFiles/pacman.dir/ui/ghosts/agentUI.cpp.o: CMakeFiles/pacman.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/samsalehi/Desktop/PersonalProjects/PacMan/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_11) "Building CXX object CMakeFiles/pacman.dir/ui/ghosts/agentUI.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/samsalehi/Desktop/PersonalProjects/PacMan/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_10) "Building CXX object CMakeFiles/pacman.dir/ui/ghosts/agentUI.cpp.o"
 	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/pacman.dir/ui/ghosts/agentUI.cpp.o -MF CMakeFiles/pacman.dir/ui/ghosts/agentUI.cpp.o.d -o CMakeFiles/pacman.dir/ui/ghosts/agentUI.cpp.o -c /Users/samsalehi/Desktop/PersonalProjects/PacMan/ui/ghosts/agentUI.cpp
 
 CMakeFiles/pacman.dir/ui/ghosts/agentUI.cpp.i: cmake_force
@@ -226,52 +212,10 @@ CMakeFiles/pacman.dir/ui/ghosts/agentUI.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/pacman.dir/ui/ghosts/agentUI.cpp.s"
 	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/samsalehi/Desktop/PersonalProjects/PacMan/ui/ghosts/agentUI.cpp -o CMakeFiles/pacman.dir/ui/ghosts/agentUI.cpp.s
 
-CMakeFiles/pacman.dir/ui/ghosts/ambusherUI.cpp.o: CMakeFiles/pacman.dir/flags.make
-CMakeFiles/pacman.dir/ui/ghosts/ambusherUI.cpp.o: /Users/samsalehi/Desktop/PersonalProjects/PacMan/ui/ghosts/ambusherUI.cpp
-CMakeFiles/pacman.dir/ui/ghosts/ambusherUI.cpp.o: CMakeFiles/pacman.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/samsalehi/Desktop/PersonalProjects/PacMan/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_12) "Building CXX object CMakeFiles/pacman.dir/ui/ghosts/ambusherUI.cpp.o"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/pacman.dir/ui/ghosts/ambusherUI.cpp.o -MF CMakeFiles/pacman.dir/ui/ghosts/ambusherUI.cpp.o.d -o CMakeFiles/pacman.dir/ui/ghosts/ambusherUI.cpp.o -c /Users/samsalehi/Desktop/PersonalProjects/PacMan/ui/ghosts/ambusherUI.cpp
-
-CMakeFiles/pacman.dir/ui/ghosts/ambusherUI.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/pacman.dir/ui/ghosts/ambusherUI.cpp.i"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/samsalehi/Desktop/PersonalProjects/PacMan/ui/ghosts/ambusherUI.cpp > CMakeFiles/pacman.dir/ui/ghosts/ambusherUI.cpp.i
-
-CMakeFiles/pacman.dir/ui/ghosts/ambusherUI.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/pacman.dir/ui/ghosts/ambusherUI.cpp.s"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/samsalehi/Desktop/PersonalProjects/PacMan/ui/ghosts/ambusherUI.cpp -o CMakeFiles/pacman.dir/ui/ghosts/ambusherUI.cpp.s
-
-CMakeFiles/pacman.dir/ui/ghosts/chaserUI.cpp.o: CMakeFiles/pacman.dir/flags.make
-CMakeFiles/pacman.dir/ui/ghosts/chaserUI.cpp.o: /Users/samsalehi/Desktop/PersonalProjects/PacMan/ui/ghosts/chaserUI.cpp
-CMakeFiles/pacman.dir/ui/ghosts/chaserUI.cpp.o: CMakeFiles/pacman.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/samsalehi/Desktop/PersonalProjects/PacMan/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_13) "Building CXX object CMakeFiles/pacman.dir/ui/ghosts/chaserUI.cpp.o"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/pacman.dir/ui/ghosts/chaserUI.cpp.o -MF CMakeFiles/pacman.dir/ui/ghosts/chaserUI.cpp.o.d -o CMakeFiles/pacman.dir/ui/ghosts/chaserUI.cpp.o -c /Users/samsalehi/Desktop/PersonalProjects/PacMan/ui/ghosts/chaserUI.cpp
-
-CMakeFiles/pacman.dir/ui/ghosts/chaserUI.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/pacman.dir/ui/ghosts/chaserUI.cpp.i"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/samsalehi/Desktop/PersonalProjects/PacMan/ui/ghosts/chaserUI.cpp > CMakeFiles/pacman.dir/ui/ghosts/chaserUI.cpp.i
-
-CMakeFiles/pacman.dir/ui/ghosts/chaserUI.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/pacman.dir/ui/ghosts/chaserUI.cpp.s"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/samsalehi/Desktop/PersonalProjects/PacMan/ui/ghosts/chaserUI.cpp -o CMakeFiles/pacman.dir/ui/ghosts/chaserUI.cpp.s
-
-CMakeFiles/pacman.dir/ui/ghosts/fickleUI.cpp.o: CMakeFiles/pacman.dir/flags.make
-CMakeFiles/pacman.dir/ui/ghosts/fickleUI.cpp.o: /Users/samsalehi/Desktop/PersonalProjects/PacMan/ui/ghosts/fickleUI.cpp
-CMakeFiles/pacman.dir/ui/ghosts/fickleUI.cpp.o: CMakeFiles/pacman.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/samsalehi/Desktop/PersonalProjects/PacMan/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_14) "Building CXX object CMakeFiles/pacman.dir/ui/ghosts/fickleUI.cpp.o"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/pacman.dir/ui/ghosts/fickleUI.cpp.o -MF CMakeFiles/pacman.dir/ui/ghosts/fickleUI.cpp.o.d -o CMakeFiles/pacman.dir/ui/ghosts/fickleUI.cpp.o -c /Users/samsalehi/Desktop/PersonalProjects/PacMan/ui/ghosts/fickleUI.cpp
-
-CMakeFiles/pacman.dir/ui/ghosts/fickleUI.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/pacman.dir/ui/ghosts/fickleUI.cpp.i"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/samsalehi/Desktop/PersonalProjects/PacMan/ui/ghosts/fickleUI.cpp > CMakeFiles/pacman.dir/ui/ghosts/fickleUI.cpp.i
-
-CMakeFiles/pacman.dir/ui/ghosts/fickleUI.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/pacman.dir/ui/ghosts/fickleUI.cpp.s"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/samsalehi/Desktop/PersonalProjects/PacMan/ui/ghosts/fickleUI.cpp -o CMakeFiles/pacman.dir/ui/ghosts/fickleUI.cpp.s
-
 CMakeFiles/pacman.dir/ui/ghosts/ghostUI.cpp.o: CMakeFiles/pacman.dir/flags.make
 CMakeFiles/pacman.dir/ui/ghosts/ghostUI.cpp.o: /Users/samsalehi/Desktop/PersonalProjects/PacMan/ui/ghosts/ghostUI.cpp
 CMakeFiles/pacman.dir/ui/ghosts/ghostUI.cpp.o: CMakeFiles/pacman.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/samsalehi/Desktop/PersonalProjects/PacMan/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_15) "Building CXX object CMakeFiles/pacman.dir/ui/ghosts/ghostUI.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/samsalehi/Desktop/PersonalProjects/PacMan/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_11) "Building CXX object CMakeFiles/pacman.dir/ui/ghosts/ghostUI.cpp.o"
 	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/pacman.dir/ui/ghosts/ghostUI.cpp.o -MF CMakeFiles/pacman.dir/ui/ghosts/ghostUI.cpp.o.d -o CMakeFiles/pacman.dir/ui/ghosts/ghostUI.cpp.o -c /Users/samsalehi/Desktop/PersonalProjects/PacMan/ui/ghosts/ghostUI.cpp
 
 CMakeFiles/pacman.dir/ui/ghosts/ghostUI.cpp.i: cmake_force
@@ -282,24 +226,10 @@ CMakeFiles/pacman.dir/ui/ghosts/ghostUI.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/pacman.dir/ui/ghosts/ghostUI.cpp.s"
 	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/samsalehi/Desktop/PersonalProjects/PacMan/ui/ghosts/ghostUI.cpp -o CMakeFiles/pacman.dir/ui/ghosts/ghostUI.cpp.s
 
-CMakeFiles/pacman.dir/ui/ghosts/stupidUI.cpp.o: CMakeFiles/pacman.dir/flags.make
-CMakeFiles/pacman.dir/ui/ghosts/stupidUI.cpp.o: /Users/samsalehi/Desktop/PersonalProjects/PacMan/ui/ghosts/stupidUI.cpp
-CMakeFiles/pacman.dir/ui/ghosts/stupidUI.cpp.o: CMakeFiles/pacman.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/samsalehi/Desktop/PersonalProjects/PacMan/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_16) "Building CXX object CMakeFiles/pacman.dir/ui/ghosts/stupidUI.cpp.o"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/pacman.dir/ui/ghosts/stupidUI.cpp.o -MF CMakeFiles/pacman.dir/ui/ghosts/stupidUI.cpp.o.d -o CMakeFiles/pacman.dir/ui/ghosts/stupidUI.cpp.o -c /Users/samsalehi/Desktop/PersonalProjects/PacMan/ui/ghosts/stupidUI.cpp
-
-CMakeFiles/pacman.dir/ui/ghosts/stupidUI.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/pacman.dir/ui/ghosts/stupidUI.cpp.i"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/samsalehi/Desktop/PersonalProjects/PacMan/ui/ghosts/stupidUI.cpp > CMakeFiles/pacman.dir/ui/ghosts/stupidUI.cpp.i
-
-CMakeFiles/pacman.dir/ui/ghosts/stupidUI.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/pacman.dir/ui/ghosts/stupidUI.cpp.s"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/samsalehi/Desktop/PersonalProjects/PacMan/ui/ghosts/stupidUI.cpp -o CMakeFiles/pacman.dir/ui/ghosts/stupidUI.cpp.s
-
 CMakeFiles/pacman.dir/ui/main.cpp.o: CMakeFiles/pacman.dir/flags.make
 CMakeFiles/pacman.dir/ui/main.cpp.o: /Users/samsalehi/Desktop/PersonalProjects/PacMan/ui/main.cpp
 CMakeFiles/pacman.dir/ui/main.cpp.o: CMakeFiles/pacman.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/samsalehi/Desktop/PersonalProjects/PacMan/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_17) "Building CXX object CMakeFiles/pacman.dir/ui/main.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/samsalehi/Desktop/PersonalProjects/PacMan/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_12) "Building CXX object CMakeFiles/pacman.dir/ui/main.cpp.o"
 	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/pacman.dir/ui/main.cpp.o -MF CMakeFiles/pacman.dir/ui/main.cpp.o.d -o CMakeFiles/pacman.dir/ui/main.cpp.o -c /Users/samsalehi/Desktop/PersonalProjects/PacMan/ui/main.cpp
 
 CMakeFiles/pacman.dir/ui/main.cpp.i: cmake_force
@@ -313,7 +243,7 @@ CMakeFiles/pacman.dir/ui/main.cpp.s: cmake_force
 CMakeFiles/pacman.dir/ui/pacmanUI.cpp.o: CMakeFiles/pacman.dir/flags.make
 CMakeFiles/pacman.dir/ui/pacmanUI.cpp.o: /Users/samsalehi/Desktop/PersonalProjects/PacMan/ui/pacmanUI.cpp
 CMakeFiles/pacman.dir/ui/pacmanUI.cpp.o: CMakeFiles/pacman.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/samsalehi/Desktop/PersonalProjects/PacMan/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_18) "Building CXX object CMakeFiles/pacman.dir/ui/pacmanUI.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/samsalehi/Desktop/PersonalProjects/PacMan/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_13) "Building CXX object CMakeFiles/pacman.dir/ui/pacmanUI.cpp.o"
 	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/pacman.dir/ui/pacmanUI.cpp.o -MF CMakeFiles/pacman.dir/ui/pacmanUI.cpp.o.d -o CMakeFiles/pacman.dir/ui/pacmanUI.cpp.o -c /Users/samsalehi/Desktop/PersonalProjects/PacMan/ui/pacmanUI.cpp
 
 CMakeFiles/pacman.dir/ui/pacmanUI.cpp.i: cmake_force
@@ -331,17 +261,12 @@ pacman_OBJECTS = \
 "CMakeFiles/pacman.dir/game/ghost.cpp.o" \
 "CMakeFiles/pacman.dir/game/ghostAI.cpp.o" \
 "CMakeFiles/pacman.dir/game/helper.cpp.o" \
-"CMakeFiles/pacman.dir/game/main.cpp.o" \
 "CMakeFiles/pacman.dir/game/maze.cpp.o" \
 "CMakeFiles/pacman.dir/game/pacman.cpp.o" \
 "CMakeFiles/pacman.dir/ui/bindings.cpp.o" \
 "CMakeFiles/pacman.dir/ui/display.cpp.o" \
 "CMakeFiles/pacman.dir/ui/ghosts/agentUI.cpp.o" \
-"CMakeFiles/pacman.dir/ui/ghosts/ambusherUI.cpp.o" \
-"CMakeFiles/pacman.dir/ui/ghosts/chaserUI.cpp.o" \
-"CMakeFiles/pacman.dir/ui/ghosts/fickleUI.cpp.o" \
 "CMakeFiles/pacman.dir/ui/ghosts/ghostUI.cpp.o" \
-"CMakeFiles/pacman.dir/ui/ghosts/stupidUI.cpp.o" \
 "CMakeFiles/pacman.dir/ui/main.cpp.o" \
 "CMakeFiles/pacman.dir/ui/pacmanUI.cpp.o"
 
@@ -353,17 +278,12 @@ pacman.cpython-313-darwin.so: CMakeFiles/pacman.dir/game/game.cpp.o
 pacman.cpython-313-darwin.so: CMakeFiles/pacman.dir/game/ghost.cpp.o
 pacman.cpython-313-darwin.so: CMakeFiles/pacman.dir/game/ghostAI.cpp.o
 pacman.cpython-313-darwin.so: CMakeFiles/pacman.dir/game/helper.cpp.o
-pacman.cpython-313-darwin.so: CMakeFiles/pacman.dir/game/main.cpp.o
 pacman.cpython-313-darwin.so: CMakeFiles/pacman.dir/game/maze.cpp.o
 pacman.cpython-313-darwin.so: CMakeFiles/pacman.dir/game/pacman.cpp.o
 pacman.cpython-313-darwin.so: CMakeFiles/pacman.dir/ui/bindings.cpp.o
 pacman.cpython-313-darwin.so: CMakeFiles/pacman.dir/ui/display.cpp.o
 pacman.cpython-313-darwin.so: CMakeFiles/pacman.dir/ui/ghosts/agentUI.cpp.o
-pacman.cpython-313-darwin.so: CMakeFiles/pacman.dir/ui/ghosts/ambusherUI.cpp.o
-pacman.cpython-313-darwin.so: CMakeFiles/pacman.dir/ui/ghosts/chaserUI.cpp.o
-pacman.cpython-313-darwin.so: CMakeFiles/pacman.dir/ui/ghosts/fickleUI.cpp.o
 pacman.cpython-313-darwin.so: CMakeFiles/pacman.dir/ui/ghosts/ghostUI.cpp.o
-pacman.cpython-313-darwin.so: CMakeFiles/pacman.dir/ui/ghosts/stupidUI.cpp.o
 pacman.cpython-313-darwin.so: CMakeFiles/pacman.dir/ui/main.cpp.o
 pacman.cpython-313-darwin.so: CMakeFiles/pacman.dir/ui/pacmanUI.cpp.o
 pacman.cpython-313-darwin.so: CMakeFiles/pacman.dir/build.make
@@ -371,7 +291,7 @@ pacman.cpython-313-darwin.so: /opt/homebrew/Cellar/sfml/2.6.2/lib/libsfml-graphi
 pacman.cpython-313-darwin.so: /opt/homebrew/Cellar/sfml/2.6.2/lib/libsfml-window.dylib
 pacman.cpython-313-darwin.so: /opt/homebrew/Cellar/sfml/2.6.2/lib/libsfml-system.dylib
 pacman.cpython-313-darwin.so: CMakeFiles/pacman.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/Users/samsalehi/Desktop/PersonalProjects/PacMan/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_19) "Linking CXX shared module pacman.cpython-313-darwin.so"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/Users/samsalehi/Desktop/PersonalProjects/PacMan/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_14) "Linking CXX shared module pacman.cpython-313-darwin.so"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/pacman.dir/link.txt --verbose=$(VERBOSE)
 	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/strip -x /Users/samsalehi/Desktop/PersonalProjects/PacMan/build/pacman.cpython-313-darwin.so
 	/opt/homebrew/bin/cmake -E copy_directory /Users/samsalehi/Desktop/PersonalProjects/PacMan/ui/animations /Users/samsalehi/Desktop/PersonalProjects/PacMan/build/ui/animations
