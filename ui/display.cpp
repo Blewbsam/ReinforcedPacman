@@ -68,11 +68,14 @@ void Display::update() {
             this->fickle.setDir(this->gs->getGhostDir(FICKLE));
             this->fickle.setState(this->gs->getGhostState(FICKLE));
         }
-
         this->chaser.move();
+        if (this->chaser.containedInCell()) this->gs->updateGhostPos(this->chaser.getIndexedPosition(),CHASER);
         this->ambusher.move();
+        if (this->ambusher.containedInCell()) this->gs->updateGhostPos(this->ambusher.getIndexedPosition(),AMBUSHER);
         this->stupid.move();
+        if (this->stupid.containedInCell()) this->gs->updateGhostPos(this->stupid.getIndexedPosition(),STUPID);
         this->fickle.move();
+        if (this->fickle.containedInCell()) this->gs->updateGhostPos(this->fickle.getIndexedPosition(),FICKLE);
         gs->handleCollisions();
     } else {
         this->gameLost();

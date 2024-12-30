@@ -19,14 +19,11 @@ class GhostUI : public AgentUI {
         
         sf::Sprite getFace();
         
-        // Specifications similar to pacmanUI
+        // moves Ghost to dir by set_size
         virtual void move() override;
 
-        // moves Ghost to dir by set_size
-        void move(Direction dir,double step_size);
-
         // gets stepsize of ghost
-        int getGhostStepSize(GhostType type, GhostState state);
+        int getGhostStepSize();
 
         void setOrientationForRendering() override;
 

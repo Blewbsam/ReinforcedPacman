@@ -6,7 +6,6 @@
 
 
 AgentUI::AgentUI(GameState * gameState, sf::Vector2f start) {
-    this->gs = gameState;
     this->SFposition = start;
     this->sprite = new sf::Sprite();
     this->texture = new sf::Texture();

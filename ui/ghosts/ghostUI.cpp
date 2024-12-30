@@ -29,14 +29,15 @@ sf::Sprite GhostUI::getFace() {
     return *this->face;
 }
 
-void GhostUI::move(){
-    int stepSize = this->getGhostStepSize(this->ghostType,this->state);
-    this->move(this->dir,stepSize);
-    if (this->containedInCell()) gs->updateGhostPos(this->getIndexedPosition(),this->ghostType);
-}
+// void GhostUI::move(){
+//     int stepSize = this->getGhostStepSize();
+//     this->move(this->dir,stepSize);
+//     // if (this->containedInCell()) gs->updateGhostPos(this->getIndexedPosition(),this->ghostType); move to front
+// }
 
-void GhostUI::move(Direction dir,double step_size) {
-    switch (dir) {
+void GhostUI::move() {
+    int step_size = this->getGhostStepSize();
+    switch (this->dir) {
         case UP:    SFposition.y -= step_size; break;
         case DOWN:  SFposition.y += step_size; break;
         case LEFT:  SFposition.x -= step_size; break;
@@ -45,7 +46,9 @@ void GhostUI::move(Direction dir,double step_size) {
     }
 }
 
-int GhostUI::getGhostStepSize(GhostType type, GhostState state) {
+int GhostUI::getGhostStepSize() {
+    GhostType type = this->ghostType;
+    GhostState state = this->state;
     if (state == TRANSITION || state == FRIGHTENED) {state = FRIGHTENED;}
     else if (state != EATEN) {state = CHASE;}
     static const std::unordered_map<GhostType, std::unordered_map<GhostState, double>> ghostSpeeds = {
