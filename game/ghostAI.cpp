@@ -152,12 +152,10 @@ Position getNTilesAhead(Position pacmanPos, Direction pacmanDir, int n) {
     return pacmanPos;
 }
 
-
 // return position which is four tiles ahead of pacman to be target.
 Position GhostAI::getAmbusherTarget(Position pacmanPos, Direction pacmanDir) const {
     return getNTilesAhead(pacmanPos,pacmanDir,4);
 }
-
 
 Position GhostAI::getFickleTarget(Position pacmanPos, Direction pacmanDir, Position chaserPos) const {
     Position targetTile = getNTilesAhead(pacmanPos, pacmanDir,2); 
@@ -171,7 +169,6 @@ Position GhostAI::getFickleTarget(Position pacmanPos, Direction pacmanDir, Posit
     fickleTarget.y = std::max(0, std::min(fickleTarget.y, this->gs->getGridHeight() - 1));
 
     return fickleTarget;
-
 }
 
 Position GhostAI::getMinEuclidianPosition(std::vector<Position>& possiblePositions,Position srcPos) const {

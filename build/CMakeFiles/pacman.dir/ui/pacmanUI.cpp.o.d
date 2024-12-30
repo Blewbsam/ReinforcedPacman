@@ -791,6 +791,7 @@ CMakeFiles/pacman.dir/ui/pacmanUI.cpp.o: \
   /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX14.2.sdk/usr/include/_types/_nl_item.h \
   /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX14.2.sdk/usr/include/c++/v1/__bsd_locale_defaults.h \
   /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX14.2.sdk/usr/include/c++/v1/cstdarg \
+  /Users/samsalehi/Desktop/PersonalProjects/PacMan/ui/ghosts/speeds.hpp \
   /Users/samsalehi/Desktop/PersonalProjects/PacMan/ui/pacmanUI.hpp \
   /opt/homebrew/Cellar/sfml/2.6.2/include/SFML/Graphics.hpp \
   /opt/homebrew/Cellar/sfml/2.6.2/include/SFML/Window.hpp \

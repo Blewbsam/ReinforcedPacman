@@ -12,6 +12,8 @@ GhostUI::GhostUI(GameState * gameState, sf::Vector2f pos, sf::Color defaultColor
     this->frame = 0;
     this->face = new sf::Sprite();
     this->defaultColor = defaultColor;
+    this->dir = IDLE;
+    this->state = SLEEP;
 
     if (!this->texture->loadFromFile("../ui/animations/GhostAnimation.png")) {
         std::cerr << "Failed to load Ghost animation texture!" << std::endl;
@@ -28,9 +30,8 @@ sf::Sprite GhostUI::getFace() {
 }
 
 void GhostUI::move(){
-    Direction dir = this->gs->getGhostDir(this->ghostType);
-    double stepSize = this->getGhostSpeed(this->ghostType,this->gs->getGhostState(this->ghostType));
-    this->move(dir,stepSize);
+    int stepSize = this->getGhostStepSize(this->ghostType,this->state);
+    this->move(this->dir,stepSize);
     if (this->containedInCell()) gs->updateGhostPos(this->getIndexedPosition(),this->ghostType);
 }
 
@@ -44,16 +45,18 @@ void GhostUI::move(Direction dir,double step_size) {
     }
 }
 
-double GhostUI::getGhostSpeed(GhostType type, GhostState state) {
+int GhostUI::getGhostStepSize(GhostType type, GhostState state) {
     if (state == TRANSITION || state == FRIGHTENED) {state = FRIGHTENED;}
-    else {state = CHASE;}
+    else if (state != EATEN) {state = CHASE;}
     static const std::unordered_map<GhostType, std::unordered_map<GhostState, double>> ghostSpeeds = {
-    { CHASER, {{ FRIGHTENED, CHASER_FRIGHTENED_STEP_SIZE },  { CHASE, CHASER_CHASE_STEP_SIZE }} },
-    { AMBUSHER, {{ FRIGHTENED, AMBUSHER_FRIGHTENED_STEP_SIZE }, { CHASE, AMBUSHER_CHASE_STEP_SIZE }} },
-    { FICKLE, {{ FRIGHTENED, FICKLE_FRIGHTENED_STEP_SIZE }, { CHASE, FICKLE_CHASE_STEP_SIZE }} },
-    { STUPID, {{ FRIGHTENED, STUPID_FRIGHTENED_STEP_SIZE },{ CHASE, STUPID_CHASE_STEP_SIZE }} }
+    { CHASER, {{ FRIGHTENED, CHASER_FRIGHTENED_SPEED },  { CHASE, CHASER_CHASE_SPEED },{EATEN, GHOST_EATEN_SPEED} } },
+    { AMBUSHER, {{ FRIGHTENED, AMBUSHER_FRIGHTENED_SPEED }, { CHASE, AMBUSHER_CHASE_SPEED }, {EATEN, GHOST_EATEN_SPEED}}},
+    { FICKLE, {{ FRIGHTENED, FICKLE_FRIGHTENED_SPEED }, { CHASE, FICKLE_CHASE_SPEED }, {EATEN, GHOST_EATEN_SPEED}}},
+    { STUPID, {{ FRIGHTENED, STUPID_FRIGHTENED_SPEED },{ CHASE, STUPID_CHASE_SPEED }, {EATEN, GHOST_EATEN_SPEED}} ,}
     };
-    return ghostSpeeds.at(type).at(state);
+
+    int stepSize = (int) ghostSpeeds.at(type).at(state) / FRAMES;
+    return stepSize;
 }
 
 void GhostUI::render(GhostState state, Direction ghostDir) {
@@ -91,6 +94,14 @@ void GhostUI::setBodyColorForRendering(GhostState state) {
         case EATEN: this->sprite->setColor(opaqueBlack); break;
         default:    this->sprite->setColor(this->defaultColor); break;
     }
+}
+
+void GhostUI::setDir(Direction direction) {
+    this->dir = direction;
+}
+
+void GhostUI::setState(GhostState state) {
+    this->state = state;
 }
 
 int GhostUI::getRowIndex(Direction ghostDir) {

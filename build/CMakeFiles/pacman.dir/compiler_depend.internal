@@ -7525,6 +7525,7 @@ CMakeFiles/pacman.dir/ui/display.cpp.o
  /Users/samsalehi/Desktop/PersonalProjects/PacMan/ui/globalsUI.hpp
  /Users/samsalehi/Desktop/PersonalProjects/PacMan/ui/ghosts/agentUI.hpp
  /Users/samsalehi/Desktop/PersonalProjects/PacMan/ui/ghosts/ghostUI.hpp
+ /Users/samsalehi/Desktop/PersonalProjects/PacMan/ui/ghosts/speeds.hpp
  /Users/samsalehi/Desktop/PersonalProjects/PacMan/ui/globalsUI.hpp
  /Users/samsalehi/Desktop/PersonalProjects/PacMan/ui/pacmanUI.hpp
  /opt/homebrew/Cellar/sfml/2.6.2/include/SFML/Config.hpp
@@ -11082,6 +11083,7 @@ CMakeFiles/pacman.dir/ui/pacmanUI.cpp.o
  /Users/samsalehi/Desktop/PersonalProjects/PacMan/game/game.hpp
  /Users/samsalehi/Desktop/PersonalProjects/PacMan/game/globals.hpp
  /Users/samsalehi/Desktop/PersonalProjects/PacMan/ui/ghosts/agentUI.hpp
+ /Users/samsalehi/Desktop/PersonalProjects/PacMan/ui/ghosts/speeds.hpp
  /Users/samsalehi/Desktop/PersonalProjects/PacMan/ui/globalsUI.hpp
  /Users/samsalehi/Desktop/PersonalProjects/PacMan/ui/pacmanUI.hpp
  /opt/homebrew/Cellar/sfml/2.6.2/include/SFML/Config.hpp

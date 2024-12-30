@@ -1,5 +1,6 @@
 #include <iostream>
 #include "display.hpp"
+#include "ghosts/speeds.hpp"
 #include "pacmanUI.hpp"
 
 
@@ -7,7 +8,7 @@ void Display::initWindow() {
     this->videoMode.height = WINDOW_HEIGHT;
     this->videoMode.width = WINDOW_WIDTH;
     this->window = new sf::RenderWindow(this->videoMode,"Pacman");
-    this->window->setFramerateLimit(144);
+    this->window->setFramerateLimit(FRAMES);
 }
 
 void Display::initGameObjects() {
@@ -46,12 +47,27 @@ void Display::update() {
     if (!gs->isGameOver()) {
         this->pollEvents();
         this->pacman.move();
-        // generate Directions ghosts should take
-        if (this->chaser.containedInCell()) this->gs->generateGhostMove(CHASER);
-        if (this->ambusher.containedInCell()) this->gs->generateGhostMove(AMBUSHER);
-        if (this->stupid.containedInCell()) this->gs->generateGhostMove(STUPID);
-        if (this->fickle.containedInCell()) this->gs->generateGhostMove(FICKLE);
-
+        // generate Directions ghosts should take : using linear interpolation for rendering.
+        if (this->chaser.containedInCell()) {
+            this->gs->generateGhostMove(CHASER);
+            this->chaser.setDir(this->gs->getGhostDir(CHASER));
+            this->chaser.setState(this->gs->getGhostState(CHASER));
+        }
+        if (this->ambusher.containedInCell()) {
+            this->gs->generateGhostMove(AMBUSHER);
+            this->ambusher.setDir(this->gs->getGhostDir(AMBUSHER));
+            this->ambusher.setState(this->gs->getGhostState(AMBUSHER));
+        }
+        if (this->stupid.containedInCell()) {
+            this->gs->generateGhostMove(STUPID);
+            this->stupid.setDir(this->gs->getGhostDir(STUPID));
+            this->stupid.setState(this->gs->getGhostState(STUPID));
+        }
+        if (this->fickle.containedInCell()) {
+            this->gs->generateGhostMove(FICKLE);
+            this->fickle.setDir(this->gs->getGhostDir(FICKLE));
+            this->fickle.setState(this->gs->getGhostState(FICKLE));
+        }
 
         this->chaser.move();
         this->ambusher.move();

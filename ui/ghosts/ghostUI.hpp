@@ -12,6 +12,8 @@ class GhostUI : public AgentUI {
         GhostType ghostType;
         sf::Sprite * face;
         sf::Color defaultColor;
+        Direction dir;
+        GhostState state;
     public:
         GhostUI(GameState * gameState, sf::Vector2f pos, sf::Color defaultColor, GhostType type);
         
@@ -23,8 +25,8 @@ class GhostUI : public AgentUI {
         // moves Ghost to dir by set_size
         void move(Direction dir,double step_size);
 
-        // gets speed of ghost given type and speed
-        double getGhostSpeed(GhostType type, GhostState state);
+        // gets stepsize of ghost
+        int getGhostStepSize(GhostType type, GhostState state);
 
         void setOrientationForRendering() override;
 
@@ -33,9 +35,11 @@ class GhostUI : public AgentUI {
         void setFacePositionForRendering();
         void setFaceOrientationForRendering(GhostState state, Direction ghostDir);
 
-
         void nextFrame();
         int getRowIndex(Direction ghostDir);
+
+        void setDir(Direction direction);
+        void setState(GhostState state);
 };
 
 

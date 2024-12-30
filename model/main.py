@@ -12,22 +12,13 @@ import pacman
 def main():
     gs = pacman.GameState()
     display = pacman.Display(gs)
-    k = 0
     arr = None
 
     while display.running():
-        k += 1
         display.update()
         display.render()
-        if k == 200:
-            arr = display.get_screenshot()
-            break
 
-    print(arr.shape)
 
-    plt.imshow(arr)
-    plt.axis('off') 
-    plt.show()
             
 
 if __name__ == "__main__":

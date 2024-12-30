@@ -1,5 +1,5 @@
 #include <iostream>
-
+#include "ghosts/speeds.hpp"
 #include "pacmanUI.hpp"
 
 sf::Vector2f startPos = sf::Vector2f(PACMAN_START_X * PIXEL_SIZE, PACMAN_START_Y * PIXEL_SIZE);
@@ -30,11 +30,12 @@ bool PacmanUI::validPacmanMove(Direction dir)  {
 void PacmanUI::move() { 
     if (this->containedInCell() && this->nextDir != this->pacmanDir && gs->validPacmanMove(this->nextDir)) this->switchDirection();
     if (gs->validPacmanMove(pacmanDir)) {
+        int step_size = PACMAN_SPEED / FRAMES;
         switch (pacmanDir) {
-            case UP:    SFposition.y -= PACMAN_STEP_SIZE; break;
-            case DOWN:  SFposition.y += PACMAN_STEP_SIZE; break;
-            case LEFT:  SFposition.x -= PACMAN_STEP_SIZE; break;
-            case RIGHT: SFposition.x += PACMAN_STEP_SIZE; break;
+            case UP:    SFposition.y -= step_size; break;
+            case DOWN:  SFposition.y += step_size; break;
+            case LEFT:  SFposition.x -= step_size; break;
+            case RIGHT: SFposition.x += step_size; break;
             default:    break;
         }
     }

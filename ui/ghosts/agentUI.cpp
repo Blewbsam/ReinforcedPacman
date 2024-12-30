@@ -39,6 +39,7 @@ void AgentUI::setPositionForRendering() {
 
 void AgentUI::setOrientationForRendering(){}
 
+
 Position AgentUI::getIndexedPosition() { // 
     Position pos(std::round((this->SFposition.x)/ PIXEL_SIZE),std::round((this->SFposition.y)/ PIXEL_SIZE));
     return pos;

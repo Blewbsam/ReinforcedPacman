@@ -884,4 +884,5 @@ CMakeFiles/pacman.dir/ui/display.cpp.o: \
   /Users/samsalehi/Desktop/PersonalProjects/PacMan/ui/ghosts/../../game/globals.hpp \
   /Users/samsalehi/Desktop/PersonalProjects/PacMan/ui/ghosts/../../game/game.hpp \
   /Users/samsalehi/Desktop/PersonalProjects/PacMan/ui/ghosts/ghostUI.hpp \
-  /Users/samsalehi/Desktop/PersonalProjects/PacMan/ui/ghosts/../globalsUI.hpp
+  /Users/samsalehi/Desktop/PersonalProjects/PacMan/ui/ghosts/../globalsUI.hpp \
+  /Users/samsalehi/Desktop/PersonalProjects/PacMan/ui/ghosts/speeds.hpp

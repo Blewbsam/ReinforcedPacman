@@ -1,3 +1,7 @@
 decouple GameState
 allow for change in speeds without bugs arising.
 
+Still require smooth rendering.
+
+:: Use linear interpolation for pacman moves.
+

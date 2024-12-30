@@ -7516,6 +7516,7 @@ CMakeFiles/pacman.dir/ui/display.cpp.o: /Users/samsalehi/Desktop/PersonalProject
   /Users/samsalehi/Desktop/PersonalProjects/PacMan/ui/globalsUI.hpp \
   /Users/samsalehi/Desktop/PersonalProjects/PacMan/ui/ghosts/agentUI.hpp \
   /Users/samsalehi/Desktop/PersonalProjects/PacMan/ui/ghosts/ghostUI.hpp \
+  /Users/samsalehi/Desktop/PersonalProjects/PacMan/ui/ghosts/speeds.hpp \
   /Users/samsalehi/Desktop/PersonalProjects/PacMan/ui/globalsUI.hpp \
   /Users/samsalehi/Desktop/PersonalProjects/PacMan/ui/pacmanUI.hpp \
   /opt/homebrew/Cellar/sfml/2.6.2/include/SFML/Config.hpp \
@@ -11069,6 +11070,7 @@ CMakeFiles/pacman.dir/ui/pacmanUI.cpp.o: /Users/samsalehi/Desktop/PersonalProjec
   /Users/samsalehi/Desktop/PersonalProjects/PacMan/game/game.hpp \
   /Users/samsalehi/Desktop/PersonalProjects/PacMan/game/globals.hpp \
   /Users/samsalehi/Desktop/PersonalProjects/PacMan/ui/ghosts/agentUI.hpp \
+  /Users/samsalehi/Desktop/PersonalProjects/PacMan/ui/ghosts/speeds.hpp \
   /Users/samsalehi/Desktop/PersonalProjects/PacMan/ui/globalsUI.hpp \
   /Users/samsalehi/Desktop/PersonalProjects/PacMan/ui/pacmanUI.hpp \
   /opt/homebrew/Cellar/sfml/2.6.2/include/SFML/Config.hpp \
@@ -11153,8 +11155,6 @@ CMakeFiles/pacman.dir/ui/pacmanUI.cpp.o: /Users/samsalehi/Desktop/PersonalProjec
 
 /Users/samsalehi/Desktop/PersonalProjects/PacMan/ui/main.cpp:
 
-/Users/samsalehi/Desktop/PersonalProjects/PacMan/ui/ghosts/speeds.hpp:
-
 /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX14.2.sdk/usr/include/c++/v1/__filesystem/u8path.h:
 
 /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX14.2.sdk/usr/include/c++/v1/__filesystem/recursive_directory_iterator.h:
@@ -11172,6 +11172,8 @@ CMakeFiles/pacman.dir/ui/pacmanUI.cpp.o: /Users/samsalehi/Desktop/PersonalProjec
 /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX14.2.sdk/usr/include/c++/v1/__filesystem/directory_entry.h:
 
 /Users/samsalehi/Desktop/PersonalProjects/PacMan/ui/ghosts/agentUI.cpp:
+
+/Users/samsalehi/Desktop/PersonalProjects/PacMan/ui/ghosts/speeds.hpp:
 
 /opt/homebrew/opt/python@3.13/Frameworks/Python.framework/Versions/3.13/include/python3.13/warnings.h:
 
