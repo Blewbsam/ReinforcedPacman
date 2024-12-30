@@ -11,7 +11,6 @@
 
 class AgentUI {
 protected:
-    GameState * gs;
     sf::Vector2f SFposition;
     sf::Clock animationClock;
     int frame;
@@ -20,7 +19,7 @@ protected:
 public:
     sf::Sprite * sprite;
     sf::Texture * texture;
-    AgentUI(GameState * gameState, sf::Vector2f start);
+    AgentUI(GameState * GameState, sf::Vector2f start);
     ~AgentUI();
 
     // snap graphic position to nearest valid grid

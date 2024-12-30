@@ -5,7 +5,7 @@
 
 
 
-AgentUI::AgentUI(GameState * gameState, sf::Vector2f start) {
+AgentUI::AgentUI(GameState * GameState,sf::Vector2f start) {
     this->SFposition = start;
     this->sprite = new sf::Sprite();
     this->texture = new sf::Texture();
@@ -32,7 +32,6 @@ bool AgentUI::containedInCell() {
 
 
 void AgentUI::setPositionForRendering() {
-    if (gs->jumpAvail(this->getIndexedPosition())) this->setSFPosition(gs->jumpPortal(this->getIndexedPosition()));
     this->sprite->setPosition(this->SFposition.x-PIXEL_SIZE, this->SFposition.y);
 }
 

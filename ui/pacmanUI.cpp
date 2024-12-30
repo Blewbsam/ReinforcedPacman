@@ -5,6 +5,7 @@
 sf::Vector2f startPos = sf::Vector2f(PACMAN_START_X * PIXEL_SIZE, PACMAN_START_Y * PIXEL_SIZE);
 
 PacmanUI::PacmanUI(GameState * gameState) : AgentUI(gameState,startPos) {
+    this->gs = gameState;
     this->pacmanDir = IDLE;
     this->nextDir = RIGHT;
     this->frame = 0;

@@ -14,6 +14,7 @@ class PacmanUI : public AgentUI {
     private:
         Direction pacmanDir;
         Direction nextDir;
+        GameState * gs;
 
     public:
         PacmanUI(GameState * gamestate);
