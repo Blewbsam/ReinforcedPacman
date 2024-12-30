@@ -32,9 +32,11 @@ void Display::initGameObjects() {
     this->door.setFillColor(sf::Color::White);
     this->empty.setSize(sf::Vector2f(PIXEL_SIZE,PIXEL_SIZE));
     this->empty.setFillColor(sf::Color::Black);
+
+
 }
 
-Display::Display(GameState * gameState) :pacman(gameState), chaser(gameState), ambusher(gameState), fickle(gameState), stupid(gameState), gs(gameState) {
+Display::Display(GameState * gameState) :pacman(gameState), gs(gameState) {
     this->initGameObjects();
     this->initWindow();
 }
@@ -77,9 +79,22 @@ void Display::update() {
         this->fickle.move();
         if (this->fickle.containedInCell()) this->gs->updateGhostPos(this->fickle.getIndexedPosition(),FICKLE);
         gs->handleCollisions();
+
+        this->handleTeleports();
     } else {
         this->gameLost();
     }  
+}
+void Display::handleTeleports() {
+    handleTeleport(pacman);
+    handleTeleport(chaser);
+    handleTeleport(stupid);
+    handleTeleport(fickle);
+    handleTeleport(ambusher);
+}
+
+void Display::handleTeleport(AgentUI& agent) {
+    if (gs->jumpAvail(agent.getIndexedPosition())) agent.setSFPosition(gs->jumpPortal(agent.getIndexedPosition()));
 }
 
 void Display::render() {

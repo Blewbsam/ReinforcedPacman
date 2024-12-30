@@ -5,7 +5,7 @@
 
 
 
-AgentUI::AgentUI(GameState * GameState,sf::Vector2f start) {
+AgentUI::AgentUI(sf::Vector2f start) {
     this->SFposition = start;
     this->sprite = new sf::Sprite();
     this->texture = new sf::Texture();

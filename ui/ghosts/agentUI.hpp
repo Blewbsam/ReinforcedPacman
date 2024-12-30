@@ -19,7 +19,7 @@ protected:
 public:
     sf::Sprite * sprite;
     sf::Texture * texture;
-    AgentUI(GameState * GameState, sf::Vector2f start);
+    AgentUI(sf::Vector2f start);
     ~AgentUI();
 
     // snap graphic position to nearest valid grid

@@ -4,7 +4,7 @@
 
 sf::Vector2f startPos = sf::Vector2f(PACMAN_START_X * PIXEL_SIZE, PACMAN_START_Y * PIXEL_SIZE);
 
-PacmanUI::PacmanUI(GameState * gameState) : AgentUI(gameState,startPos) {
+PacmanUI::PacmanUI(GameState * gameState) : AgentUI(startPos) {
     this->gs = gameState;
     this->pacmanDir = IDLE;
     this->nextDir = RIGHT;
@@ -17,8 +17,6 @@ PacmanUI::PacmanUI(GameState * gameState) : AgentUI(gameState,startPos) {
     this->sprite->setTexture(*this->texture);
 
 }
-
-
 
 void PacmanUI::setNextDir(Direction dir) {
     this->nextDir = dir;

@@ -6,7 +6,7 @@
 #include "speeds.hpp"
 
 
-GhostUI::GhostUI(GameState * gameState, sf::Vector2f pos, sf::Color defaultColor, GhostType type) : AgentUI(gameState,pos){
+GhostUI::GhostUI(sf::Vector2f pos, sf::Color defaultColor, GhostType type) : AgentUI(pos){
     this->ghostType = type;
     this->animationSpeed = 0.1f;
     this->frame = 0;
@@ -140,16 +140,16 @@ void GhostUI::nextFrame() {
 
 // Ghost Subclasses constructors
 
-ChaserUI::ChaserUI(GameState * gameState) : GhostUI(gameState,sf::Vector2f(CHASER_START_X,CHASER_START_Y),sf::Color::Red,CHASER){}
+ChaserUI::ChaserUI() : GhostUI(sf::Vector2f(CHASER_START_X,CHASER_START_Y),sf::Color::Red,CHASER){}
 
 
-FickleUI::FickleUI(GameState * gameState) : GhostUI(gameState,sf::Vector2f(FICKLE_START_X,FICKLE_START_Y),sf::Color::Cyan,FICKLE){
+FickleUI::FickleUI() : GhostUI(sf::Vector2f(FICKLE_START_X,FICKLE_START_Y),sf::Color::Cyan,FICKLE){
     this->sprite->setColor(sf::Color::Cyan);
 }
 
 
 sf::Color clydeColor(255, 165, 0);
 
-StupidUI::StupidUI(GameState * gameState) : GhostUI(gameState,sf::Vector2f(STUPID_START_X,STUPID_START_Y),clydeColor,STUPID){}
+StupidUI::StupidUI() : GhostUI(sf::Vector2f(STUPID_START_X,STUPID_START_Y),clydeColor,STUPID){}
 
-AmbusherUI::AmbusherUI(GameState * gameState) : GhostUI(gameState,sf::Vector2f(AMBUSHER_START_X,AMBUSHER_START_Y),sf::Color::Magenta,AMBUSHER){    }
+AmbusherUI::AmbusherUI() : GhostUI(sf::Vector2f(AMBUSHER_START_X,AMBUSHER_START_Y),sf::Color::Magenta,AMBUSHER){    }

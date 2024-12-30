@@ -15,7 +15,7 @@ class GhostUI : public AgentUI {
         Direction dir;
         GhostState state;
     public:
-        GhostUI(GameState * gameState, sf::Vector2f pos, sf::Color defaultColor, GhostType type);
+        GhostUI(sf::Vector2f pos, sf::Color defaultColor, GhostType type);
         
         sf::Sprite getFace();
         
@@ -47,7 +47,7 @@ class GhostUI : public AgentUI {
 
 class AmbusherUI : public GhostUI {
     public:
-    AmbusherUI(GameState * gameState);
+    AmbusherUI();
 };
 
 
@@ -56,7 +56,7 @@ class AmbusherUI : public GhostUI {
 
 class ChaserUI : public GhostUI{    
 public:
-    ChaserUI(GameState * gameState);
+    ChaserUI();
 };
 
 #define FICKLE_START_X PIXEL_SIZE * 9
@@ -64,7 +64,7 @@ public:
 
 class FickleUI : public GhostUI{    
     public:
-    FickleUI(GameState * gameState);
+    FickleUI();
 };
 
 #define STUPID_START_X PIXEL_SIZE * 11
@@ -72,7 +72,7 @@ class FickleUI : public GhostUI{
 
 class StupidUI : public GhostUI{    
     public:
-    StupidUI(GameState * gameState);
+    StupidUI();
 };
 
 

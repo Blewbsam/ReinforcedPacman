@@ -55,6 +55,10 @@ public:
     void renderPacman();
     void renderGhosts();
 
+
+    void handleTeleports();
+    void handleTeleport(AgentUI& agent);
+
     void setPacmanDir(Direction dir);
 
     // use the grid_t structure to render display
