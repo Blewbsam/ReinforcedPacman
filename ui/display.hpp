@@ -29,14 +29,32 @@ private:
     sf::CircleShape pellet;
     sf::CircleShape powerPellet;
 
-
-    // initializaton of display
     void initWindow();
-
-    // initializes gameObjects to proper sizes and colors
     void initGameObjects();
 
-    // animation to run once game is over.
+
+
+    // check for and handle triggered events.
+    void pollEvents();
+
+    void updateGhosts();
+    void updateGhost(GhostUI& ghost);
+
+    void moveGhosts();
+    void moveGhost(GhostUI& ghost);
+
+    void handleTeleports();
+    void handleTeleport(AgentUI& agent);
+
+
+    // following set of functions set agent in approriat position to be displayed
+    void renderPacman();
+    void renderGhosts();
+
+    // use the grid_t structure to render display
+    void renderMaze(); 
+
+
     void gameLost();
 
 public:
@@ -48,27 +66,12 @@ public:
     void update();
     // render required portions onto the display
     void render();
-    // check for and handle triggered events.
-    void pollEvents();
-
-    // following set of functions set agent in approriat position to be displayed
-    void renderPacman();
-    void renderGhosts();
-
-
-    void handleTeleports();
-    void handleTeleport(AgentUI& agent);
 
     void setPacmanDir(Direction dir);
 
-    // use the grid_t structure to render display
-    void renderMaze(); 
-
-
     // returns wether the window is open or not
     bool running() const;
-
+    
     sf::Image getScreenshot();
-
 };
 

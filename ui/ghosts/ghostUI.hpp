@@ -37,6 +37,8 @@ class GhostUI : public AgentUI {
 
         void setDir(Direction direction);
         void setState(GhostState state);
+
+        GhostType getType() const;
 };
 
 

@@ -48,49 +48,56 @@ Display::~Display() {
 void Display::update() {
     if (!gs->isGameOver()) {
         this->pollEvents();
-        this->pacman.move();
-        // generate Directions ghosts should take : using linear interpolation for rendering.
-        if (this->chaser.containedInCell()) {
-            this->gs->generateGhostMove(CHASER);
-            this->chaser.setDir(this->gs->getGhostDir(CHASER));
-            this->chaser.setState(this->gs->getGhostState(CHASER));
-        }
-        if (this->ambusher.containedInCell()) {
-            this->gs->generateGhostMove(AMBUSHER);
-            this->ambusher.setDir(this->gs->getGhostDir(AMBUSHER));
-            this->ambusher.setState(this->gs->getGhostState(AMBUSHER));
-        }
-        if (this->stupid.containedInCell()) {
-            this->gs->generateGhostMove(STUPID);
-            this->stupid.setDir(this->gs->getGhostDir(STUPID));
-            this->stupid.setState(this->gs->getGhostState(STUPID));
-        }
-        if (this->fickle.containedInCell()) {
-            this->gs->generateGhostMove(FICKLE);
-            this->fickle.setDir(this->gs->getGhostDir(FICKLE));
-            this->fickle.setState(this->gs->getGhostState(FICKLE));
-        }
-        this->chaser.move();
-        if (this->chaser.containedInCell()) this->gs->updateGhostPos(this->chaser.getIndexedPosition(),CHASER);
-        this->ambusher.move();
-        if (this->ambusher.containedInCell()) this->gs->updateGhostPos(this->ambusher.getIndexedPosition(),AMBUSHER);
-        this->stupid.move();
-        if (this->stupid.containedInCell()) this->gs->updateGhostPos(this->stupid.getIndexedPosition(),STUPID);
-        this->fickle.move();
-        if (this->fickle.containedInCell()) this->gs->updateGhostPos(this->fickle.getIndexedPosition(),FICKLE);
-        gs->handleCollisions();
 
+        this->pacman.move();
+        this->updateGhosts();
+        this->moveGhosts();
+
+        gs->handleCollisions();
         this->handleTeleports();
     } else {
         this->gameLost();
     }  
 }
+
+
+void Display::updateGhosts() {
+    updateGhost(chaser);
+    updateGhost(ambusher);
+    updateGhost(fickle);
+    updateGhost(stupid);
+}
+
+void Display::updateGhost(GhostUI& ghost) {
+    GhostType type = ghost.getType();
+    if (ghost.containedInCell()) {
+            this->gs->generateGhostMove(type);
+            ghost.setDir(this->gs->getGhostDir(type));
+            ghost.setState(this->gs->getGhostState(type));
+        }
+}
+
+
+void Display::moveGhosts() {
+    moveGhost(chaser);
+    moveGhost(ambusher);
+    moveGhost(fickle);
+    moveGhost(stupid);
+}
+
+void Display::moveGhost(GhostUI& ghost) {
+    ghost.move();
+    if (ghost.containedInCell()) this->gs->updateGhostPos(ghost.getIndexedPosition(),ghost.getType());
+}
+
+
+
 void Display::handleTeleports() {
     handleTeleport(pacman);
     handleTeleport(chaser);
-    handleTeleport(stupid);
-    handleTeleport(fickle);
     handleTeleport(ambusher);
+    handleTeleport(fickle);
+    handleTeleport(stupid);
 }
 
 void Display::handleTeleport(AgentUI& agent) {

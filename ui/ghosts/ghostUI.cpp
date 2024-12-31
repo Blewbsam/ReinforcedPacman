@@ -137,6 +137,10 @@ void GhostUI::nextFrame() {
 }
 
 
+GhostType GhostUI::getType() const {
+    return this->ghostType;
+}
+
 
 // Ghost Subclasses constructors
 
