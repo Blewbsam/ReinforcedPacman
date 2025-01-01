@@ -67,11 +67,15 @@ public:
     // render required portions onto the display
     void render();
 
+
+    void step(int i);
     void setPacmanDir(Direction dir);
+
+    bool pacmanContainedInCell();
 
     // returns wether the window is open or not
     bool running() const;
-    
+
     sf::Image getScreenshot();
 };
 

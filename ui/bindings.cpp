@@ -9,6 +9,7 @@ namespace py = pybind11;
 PYBIND11_MODULE(pacman, m) {
     py::class_<GameState>(m, "GameState")
         .def(py::init<>())
+        .def("game_over",&GameState::isGameOver)
         .def("get_score", &GameState::getScore);
 
     py::class_<Display>(m, "Display")
@@ -16,8 +17,9 @@ PYBIND11_MODULE(pacman, m) {
         .def("running", &Display::running)
         .def("update", &Display::update)
         .def("render", &Display::render)
-        .def("set_pacman_dir",&Display::setPacmanDir)
-        .def("get_screenshot", [](Display &self) { // move to display: figure out how to display images.
+        .def("step",&Display::step)
+        .def("pacman_contained", &Display::pacmanContainedInCell)
+        .def("get_screenshot", [](Display &self) { 
             sf::Image screenshot = self.getScreenshot();
             const sf::Uint8* pixels = screenshot.getPixelsPtr();
             int width = screenshot.getSize().x;

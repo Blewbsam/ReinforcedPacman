@@ -133,6 +133,17 @@ void Display::pollEvents() {
     }
 }
 
+
+void Display::step(int i) {
+    switch (i) {
+        case 0: setPacmanDir(UP); break;
+        case 1: setPacmanDir(DOWN); break;
+        case 2: setPacmanDir(LEFT); break;
+        case 3: setPacmanDir(RIGHT); break;
+        default: std::runtime_error("Given invalid direction for pacman.");
+    }
+}
+
 void Display::setPacmanDir(Direction dir) {
     this->pacman.setNextDir(dir);
 }
@@ -201,6 +212,10 @@ void Display::renderMaze() {
     }
 }
 
+
+bool Display::pacmanContainedInCell() {
+    return this->pacman.containedInCell();
+}
 
 sf::Image Display::getScreenshot() {
     return this->window->capture();

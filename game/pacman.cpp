@@ -5,9 +5,7 @@
 
 
 
-Pacman::Pacman(): Agent(IDLE) {
-
-}
+Pacman::Pacman(): Agent(IDLE) {}
 
 
 
